@@ -8,6 +8,16 @@
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <style>
+        /* This class will be toggled by JavaScript */
+.nav-hidden {
+    transform: translateY(-100%);
+    transition: transform 0.3s ease-in-out;
+}
+
+/* Ensure the base nav has a transition too */
+nav {
+    transition: transform 0.3s ease-in-out;
+}
           #cookie-banner {
     display: none; /* Keeps it hidden so it doesn't flicker on load */
 }
@@ -1422,6 +1432,24 @@ window.addEventListener('load', function() {
     }, { threshold: 0.5 });
 
     statsObserver.observe(document.getElementById('stats-tracker'));
+</script>
+    <script>
+    let lastScrollY = window.scrollY;
+    const nav = document.querySelector('nav');
+
+    window.addEventListener('scroll', () => {
+        const currentScrollY = window.scrollY;
+
+        if (currentScrollY > lastScrollY && currentScrollY > 100) {
+            // Scrolling DOWN - Hide the nav
+            nav.classList.add('nav-hidden');
+        } else {
+            // Scrolling UP - Show the nav
+            nav.classList.remove('nav-hidden');
+        }
+
+        lastScrollY = currentScrollY;
+    });
 </script>
 </body>
 </html>

@@ -8,9 +8,6 @@
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <style>
-
-        
-
           #cookie-banner {
     display: none; /* Keeps it hidden so it doesn't flicker on load */
 }
@@ -18,7 +15,6 @@
 #cookie-banner.show {
     display: block !important; /* JS will trigger this */
 }
-        
         :root {
             --brand-green: #005a32;
             --brand-gold: #c5a059;
@@ -39,66 +35,39 @@
         .bg-brand-gold { background-color: var(--brand-gold); }
         .text-brand-gold { color: var(--brand-gold); }
         
-     .hero-gradient {
-    /* The first part is the dark fade, the second part is your image */
-    background: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.3)), 
-                url('https://lh3.googleusercontent.com/u/0/d/17eO9N7kX5VPDRkIeTx2otJOnOVuGrYrO'); 
-    
-    background-size: cover;       /* Makes image fill the screen */
-    background-position: center;  /* Centers the photo */
-    background-repeat: no-repeat; /* Prevents tiling */
-    height: 100vh;                /* Full screen height */
-    width: 100%;
-    margin: 0;
-    padding: 0;
-    display: flex;                /* Helps center text inside the hero */
-    align-items: center;
-    justify-content: center;
-}
-
-     /* Base Navigation (Transparent background, White text) */
-#mainNav {
-    background-color: transparent;
-   
-}
-
-#mainNav .nav-link, 
-#mainNav span:not(.text-brand-gold), 
-#mainNav i,
-#mainNav .mobile-toggle {
-    color: white !important;
-}
-
-/* Scrolled State (White background, Green text) */
-#mainNav.nav-scrolled {
-    background-color: white !important;
-    box-shadow: 0 10px 30px rgba(0,0,0,0.1);
-}
-
-#mainNav.nav-scrolled .nav-link,
-#mainNav.nav-scrolled span,
-#mainNav.nav-scrolled i,
-#mainNav.nav-scrolled .mobile-toggle {
-    color: #005a32 !important; /* Brand Green */
-}
-
-/* Exception: Keep the Apply Button text white */
-#mainNav.nav-scrolled button.bg-brand-gold {
-    color: white !important;
-}
-
-/* Hide the bar when scrolling down */
-.nav-hidden {
-    transform: translateY(-100%);
-}
-
-        .nav-scrolled {
-            background-color: white !important;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
-            color: var(--brand-green) !important;
-            padding-top: 0.5rem !important;
-            padding-bottom: 0.5rem !important;
+        .hero-gradient {
+            background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.5)), 
+                        url('Images/msis!.jpg');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
         }
+
+        /* Change this in your <style> section */
+#mainNav {
+    background: transparent; /* Makes it clear at the top */
+    backdrop-filter: none;    /* Removes blur at the top */
+    border-bottom: 1px solid rgba(255, 255, 255, 0); /* Hides border initially */
+    transition: all 0.4s ease;
+}
+
+       .nav-scrolled {
+    /* Dark semi-transparent background */
+    background-color: rgba(0, 0, 0, 0.5) !important; 
+    
+    /* The "Glass" blur effect */
+    backdrop-filter: blur(15px); 
+    -webkit-backdrop-filter: blur(15px);
+    
+    /* Thin border and shadow for depth */
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+    
+    /* Keep the text white so it's readable on the dark glass */
+    color: white !important;
+    padding-top: 0.5rem !important;
+    padding-bottom: 0.5rem !important;
+}
         
         .nav-link {
             position: relative;
@@ -228,18 +197,40 @@
             object-fit: cover;
             border-radius: 24px;
         }
+        /* Forces the links and the logo to be white */
+.nav-link         
+        {
+    color: #ffffff !important;
+    transition: all 0.3s ease;
+}
+        /* Optional: Make the links slightly gold when you hover over them */
+#mainNav a:hover {
+    color: var(--brand-gold) !important;
+}
+        /* Add this to your <style> section */
+.brand-text {
+    color: #ffffff !important;
+    transition: color 0.3s ease;
+}
+
+/* Ensure the 'International School' subtitle stays gold or changes as needed */
+.brand-subtitle {
+    color: var(--brand-gold) !important;
+}
+
+
     </style>
 </head>
 <body class="bg-[#fafafa]">
 
-    <!-- Navigation -->
+<!-- Navigation -->
    <nav id="mainNav" class="fixed top-0 w-full z-[1000] px-6 lg:px-12 py-5 flex justify-between items-center">
         <div class="flex items-center gap-4 cursor-pointer group" onclick="showPage('home')">
             <div class="w-14 h-14 bg-white rounded-xl flex items-center justify-center border-b-4 border-brand-gold shadow-lg transition-transform group-hover:scale-105 overflow-hidden">
     <img src="https://lh3.googleusercontent.com/u/0/d/1fqO5ZbpIqUP3npZj_QJxc-mlqK62L8OH" alt="Mustard Seed Logo" class="w-full h-full object-contain p-1">
 </div>
             <div class="hidden sm:block">
-                <span class="block text-xl font-bold tracking-tight leading-none">MUSTARD SEED</span>
+                <span class="block text-xl font-bold tracking-tight leading-none brand-text">MUSTARD SEED</span>
                 <span class="text-[10px] uppercase tracking-[0.3em] font-bold text-brand-gold">International School</span>
             </div>
         </div>
@@ -1259,16 +1250,20 @@ async function submitApplication(event) {
 
     <script>
         // Scroll Logic
-        window.addEventListener('scroll', function() {
-            const nav = document.getElementById('mainNav');
-            const currentPage = document.querySelector('.page-active').id;
-            
-            if (window.scrollY > 80 || currentPage !== 'home') {
-                nav.classList.add('nav-scrolled');
-            } else {
-                nav.classList.remove('nav-scrolled');
-            }
-        });
+      // Update this part of your script
+window.addEventListener('scroll', function() {
+    const nav = document.getElementById('mainNav');
+    const currentPage = document.querySelector('.page-active').id;
+    
+    // If we are NOT on home, OR if we have scrolled down more than 80px
+    if (window.scrollY > 80 || currentPage !== 'home') {
+        nav.classList.add('nav-scrolled');
+        nav.style.backdropFilter = "blur(12px)"; // Adds blur when scrolling
+    } else {
+        nav.classList.remove('nav-scrolled');
+        nav.style.backdropFilter = "none";      // Removes blur at the very top
+    }
+});
 
         // Navigation Engine
         function showPage(pageId) {
@@ -1339,589 +1334,10 @@ async function submitApplication(event) {
             if (document.querySelector('.page-active').id !== 'home') {
                 document.getElementById('mainNav').classList.add('nav-scrolled');
             }
-            };
+        };
     </script>
-    <div id="cookie-banner" class="fixed bottom-0 left-0 w-full z-[9999] p-4">
-    <div class="max-w-4xl mx-auto bg-[#06422a] text-white p-6 rounded-2xl shadow-2xl border border-[#c5a059]/30 flex flex-col md:flex-row items-center justify-between gap-4">
-        <div>
-            <h4 class="font-bold text-[#c5a059]">Cookies & Privacy 🍪</h4>
-            <p class="text-sm">We use cookies to ensure you get the best experience on our website.</p>
-        </div>
-        <button onclick="acceptCookies()" class="bg-[#c5a059] text-[#06422a] px-8 py-2 rounded-full font-bold">
-            Accept 
-        </button>
-    </div>
-</div>
 
-<script>
-function acceptCookies() {
-    document.getElementById('cookie-banner').classList.remove('show');
-    localStorage.setItem('cookiesAccepted', 'true');
-}
-
-window.addEventListener('load', function() {
-    if (!localStorage.getItem('cookiesAccepted')) {
-        document.getElementById('cookie-banner').classList.add('show');
-    }
-});
-</script>
     <script>
-    const statsObserver = new IntersectionObserver((entries) => {
-        entries.forEach(entry => {
-            if (entry.isIntersecting) {
-                const numbers = entry.target.querySelectorAll('.count');
-                numbers.forEach(num => {
-                    const target = +num.getAttribute('data-goal');
-                    const speed = 100; // Adjust for faster/slower count
-                    const inc = target / speed;
-
-                    const update = () => {
-                        const current = +num.innerText.replace(/,/g, '');
-                        if (current < target) {
-                            num.innerText = Math.ceil(current + inc).toLocaleString();
-                            setTimeout(update, 20);
-                        } else {
-                            num.innerText = target.toLocaleString();
-                        }
-                    };
-                    update();
-                });
-                statsObserver.unobserve(entry.target);
-            }
-        });
-    }, { threshold: 0.5 });
-
-    statsObserver.observe(document.getElementById('stats-tracker'));
-</script>
-
-<script>
-async function handleAdmissionSubmit(event) {
-    event.preventDefault();
-    
-    // 1. Check if Terms are accepted
-    const termsAccepted = document.getElementById('terms_check').checked;
-    if (!termsAccepted) {
-        alert("Please agree to the Terms and Conditions to proceed.");
-        return;
-    }
-
-    const btn = document.getElementById('submitBtn');
-    btn.innerText = "PROCESSING...";
-    btn.disabled = true;
-
-    const SCRIPT_URL = "<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Mustard Seed International School | Kiamunyi, Nakuru</title>
-    <script src="https://cdn.tailwindcss.com"></script>
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-
-
-<body class="bg-[#fafafa]">
-
-    <!-- Navigation -->
-    <nav id="mainNav" class="fixed top-0 w-full z-[1000] px-6 lg:px-12 py-5 flex justify-between items-center text-white">
-        <div class="flex items-center gap-4 cursor-pointer group" onclick="showPage('home')">
-            <div class="w-14 h-14 bg-white rounded-xl flex items-center justify-center border-b-4 border-brand-gold shadow-lg transition-transform group-hover:scale-105 overflow-hidden">
-    <img src="https://lh3.googleusercontent.com/u/0/d/1fqO5ZbpIqUP3npZj_QJxc-mlqK62L8OH" alt="Mustard Seed Logo" class="w-full h-full object-contain p-1">
-</div>
-            <div class="hidden sm:block">
-                <span class="block text-xl font-bold tracking-tight leading-none">MUSTARD SEED</span>
-                <span class="text-[10px] uppercase tracking-[0.3em] font-bold text-brand-gold">International School</span>
-            </div>
-        </div>
-        
-        <div class="hidden lg:flex gap-10 font-bold uppercase text-[11px] tracking-widest items-center">
-            <a onclick="showPage('home')" class="nav-link">Home</a>
-            
-            <div class="nav-item">
-    <span class="nav-link flex items-center">About Us <i class="fas fa-chevron-down ml-2 text-[9px]"></i></span>
-    <div class="dropdown-menu">
-        <a onclick="showPage('about-vision')" class="dropdown-item"><i class="fas fa-eye w-4"></i> Our Vision & Mission</a>
-        <a onclick="showPage('about-history')" class="dropdown-item"><i class="fas fa-history w-4"></i> Our History</a>
-    </div>
-</div>
-            
-            <div class="nav-item">
-                <span class="nav-link flex items-center">Academics <i class="fas fa-chevron-down ml-2 text-[9px]"></i></span>
-                <div class="dropdown-menu">
-                    <a onclick="showPage('edu-kg')" class="dropdown-item"><i class="fas fa-child w-4"></i> Kindergarten</a>
-                    <a onclick="showPage('edu-junior')" class="dropdown-item"><i class="fas fa-book-reader w-4"></i> Junior School</a>
-                    <a onclick="showPage('edu-secondary')" class="dropdown-item"><i class="fas fa-user-graduate w-4"></i> Secondary & Senior</a>
-                    <a onclick="showPage('edu-alevel')" class="dropdown-item"><i class="fas fa-microscope w-4"></i> A Levels (Sixth Form)</a>
-                </div>
-            </div>
-
-            <div class="nav-item">
-                <span class="nav-link flex items-center">Admission <i class="fas fa-chevron-down ml-2 text-[9px]"></i></span>
-                <div class="dropdown-menu">
-                    <a onclick="showPage('adm-fees')" class="dropdown-item"><i class="fas fa-file-invoice-dollar w-4"></i> Fee Structure 2025/26</a>
-                    <a onclick="showPage('adm-enroll')" class="dropdown-item"><i class="fas fa-user-plus w-4"></i> Enrollment Form</a>
-                    <a onclick="showPage('adm-faqs')" class="dropdown-item"><i class="fas fa-question-circle w-4"></i> Admissions FAQs</a>
-                </div>
-            </div>
-
-            <a onclick="showPage('school-calendar')" class="nav-link">School Calendar</a>
-
-            <div class="nav-item">
-                <span class="nav-link flex items-center">Facilities <i class="fas fa-chevron-down ml-2 text-[9px]"></i></span>
-                <div class="dropdown-menu">
-                    <a onclick="showPage('fac-dining')" class="dropdown-item"><i class="fas fa-utensils w-4"></i> Dining Hall</a>
-                    <a onclick="showPage('fac-field')" class="dropdown-item"><i class="fas fa-futbol w-4"></i> Athletics & Sports</a>
-                    <a onclick="showPage('fac-pool')" class="dropdown-item"><i class="fas fa-swimmer w-4"></i> Aquatic Center</a>
-                    <a onclick="showPage('fac-boarding')" class="dropdown-item"><i class="fas fa-bed w-4"></i> Flexible Boarding</a>
-                </div>
-            </div>
-
-            <button onclick="showPage('adm-enroll')" class="bg-brand-gold hover:bg-white hover:text-brand-green px-7 py-3 rounded-full text-[11px] transition-all duration-300 shadow-xl">Apply 2026</button>
-        </div>
-
-        <button onclick="toggleMenu()" class="lg:hidden text-2xl p-2">
-            <i class="fas fa-bars-staggered"></i>
-        </button>
-    </nav>
-
-    <!-- Mobile Drawer -->
-   <div id="mobileMenu" class="fixed inset-0 bg-brand-green z-[2000] transform translate-x-full transition-transform duration-500 lg:hidden overflow-y-auto">
-    <div class="p-8 pb-20">
-        <div class="flex justify-between items-center mb-12 border-b border-white/10 pb-6">
-            <div class="flex items-center gap-3">
-                <div class="w-10 h-10 bg-white rounded-lg flex items-center justify-center p-1">
-                    <img src="https://lh3.googleusercontent.com/u/0/d/1fqO5ZbpIqUP3npZj_QJxc-mlqK62L8OH" alt="MSIS" class="w-full h-full object-contain">
-                </div>
-                <span class="text-white font-bold tracking-widest text-sm">MUSTARD SEED</span>
-            </div>
-            <button onclick="toggleMenu()" class="text-white p-2">
-                <i class="fas fa-times text-2xl"></i>
-            </button>
-        </div>
-        
-        <nav class="flex flex-col space-y-2">
-            <a onclick="showPage('home')" class="py-4 text-white text-lg font-bold border-b border-white/5 flex justify-between items-center">
-                <span>HOME</span>
-                <i class="fas fa-arrow-right text-[10px] text-brand-gold"></i>
-            </a>
-
-            <div class="border-b border-white/5">
-                <div onclick="toggleMobileDropdown('m-about')" class="py-4 flex justify-between items-center text-white text-lg font-bold cursor-pointer">
-                    <span>ABOUT US</span>
-                    <i id="m-about-icon" class="fas fa-chevron-down text-xs text-brand-gold transition-transform duration-300"></i>
-                </div>
-                <div id="m-about" class="mobile-dropdown bg-white/5 rounded-2xl overflow-hidden mb-2">
-                    <div class="flex flex-col py-2 px-4 space-y-4 text-gray-300 text-sm">
-                        <a onclick="showPage('about-vision')" class="py-2 flex items-center gap-3"><i class="fas fa-eye text-brand-gold w-4"></i> Vision & Mission</a>
-                        <a onclick="showPage('about-history')" class="py-2 flex items-center gap-3"><i class="fas fa-history text-brand-gold w-4"></i> Our History</a>
-                    </div>
-                </div>
-            </div>
-
-            <div class="border-b border-white/5">
-                <div onclick="toggleMobileDropdown('m-acad')" class="py-4 flex justify-between items-center text-white text-lg font-bold cursor-pointer">
-                    <span>ACADEMICS</span>
-                    <i id="m-acad-icon" class="fas fa-chevron-down text-xs text-brand-gold transition-transform duration-300"></i>
-                </div>
-                <div id="m-acad" class="mobile-dropdown bg-white/5 rounded-2xl overflow-hidden mb-2">
-                    <div class="flex flex-col py-2 px-4 space-y-4 text-gray-300 text-sm">
-                        <a onclick="showPage('edu-kg')" class="py-2 flex items-center gap-3"><i class="fas fa-child text-brand-gold w-4"></i> Kindergarten</a>
-                        <a onclick="showPage('edu-junior')" class="py-2 flex items-center gap-3"><i class="fas fa-book-reader text-brand-gold w-4"></i> Junior School</a>
-                        <a onclick="showPage('edu-secondary')" class="py-2 flex items-center gap-3"><i class="fas fa-user-graduate text-brand-gold w-4"></i> Senior School</a>
-                        <a onclick="showPage('edu-alevel')" class="py-2 flex items-center gap-3"><i class="fas fa-microscope text-brand-gold w-4"></i> A Levels</a>
-                    </div>
-                </div>
-            </div>
-
-            <div class="border-b border-white/5">
-                <div onclick="toggleMobileDropdown('m-adm')" class="py-4 flex justify-between items-center text-white text-lg font-bold cursor-pointer">
-                    <span>ADMISSION</span>
-                    <i id="m-adm-icon" class="fas fa-chevron-down text-xs text-brand-gold transition-transform duration-300"></i>
-                </div>
-                <div id="m-adm" class="mobile-dropdown bg-white/5 rounded-2xl overflow-hidden mb-2">
-                    <div class="flex flex-col py-2 px-4 space-y-4 text-gray-300 text-sm">
-                        <a onclick="showPage('adm-fees')" class="py-2 flex items-center gap-3"><i class="fas fa-file-invoice-dollar text-brand-gold w-4"></i> Fee Structure 25/26</a>
-                        <a onclick="showPage('adm-enroll')" class="py-2 flex items-center gap-3"><i class="fas fa-user-plus text-brand-gold w-4"></i> Enrollment Form</a>
-                        <a onclick="showPage('adm-transport')" class="py-2 flex items-center gap-3"><i class="fas fa-bus text-brand-gold w-4"></i> Transport Routes</a>
-                        <a onclick="showPage('adm-faqs')" class="py-2 flex items-center gap-3"><i class="fas fa-question-circle text-brand-gold w-4"></i> FAQs</a>
-                    </div>
-                </div>
-            </div>
-
-            <a onclick="showPage('school-calendar')" class="py-4 text-white text-lg font-bold border-b border-white/5">CALENDAR 2026</a>
-            
-            <div class="pt-10 flex flex-col gap-4">
-                <button onclick="showPage('adm-enroll')" class="bg-brand-gold text-white py-5 rounded-2xl font-bold tracking-widest shadow-lg">APPLY 2026</button>
-                <div class="flex justify-center gap-6 pt-6 text-white/60">
-                    <i class="fab fa-facebook text-xl"></i>
-                    <i class="fab fa-instagram text-xl"></i>
-                    <i class="fab fa-x-twitter text-xl"></i>
-                </div>
-            </div>
-        </nav>
-    </div>
-</div>
-
-
-<script>
-async function handleAdmissionSubmit(event) {
-    event.preventDefault();
-    const btn = document.getElementById('submitBtn');
-    btn.innerText = "SENDING...";
-    btn.disabled = true;
-
-    // YOUR GOOGLE SCRIPT URL HERE
-    const SCRIPT_URL = "PASTE_YOUR_DEPLOYED_URL_HERE";
-
-    const payload = {
-        studentName: document.getElementById('s_name').value,
-        dob: document.getElementById('s_dob').value,
-        grade: document.getElementById('s_grade').value,
-        parentName: document.getElementById('p_name').value,
-        phone: document.getElementById('p_phone').value
-    };
-
-    try {
-        await fetch(SCRIPT_URL, {
-            method: 'POST',
-            body: JSON.stringify(payload)
-        });
-        alert("Success! The application has been sent to dkiplebel.");
-        event.target.reset();
-    } catch (error) {
-        alert("Submission failed. Please check your internet.");
-    } finally {
-        btn.innerText = "Submit Application";
-        btn.disabled = false;
-    }
-}
-</script>
-
-        <!-- Admission: FAQs -->
-        <section id="adm-faqs" class="page-content py-32 px-6 max-w-4xl mx-auto">
-            <span class="section-tag reveal">Support</span>
-            <h2 class="text-5xl font-bold text-brand-green mb-10 reveal">Frequently Asked Questions</h2>
-            <div class="space-y-4 reveal">
-                <div class="bg-white p-6 rounded-2xl border border-gray-100 shadow-sm">
-                    <h4 class="font-bold text-brand-green mb-2">Is Mustard Seed a Day or Boarding School?</h4>
-                    <p class="text-gray-600 text-sm">We offer both options. Our boarding facilities are available for students from Year 3 through Year 13.</p>
-                </div>
-                <div class="bg-white p-6 rounded-2xl border border-gray-100 shadow-sm">
-                    <h4 class="font-bold text-brand-green mb-2">What is the Teacher-to-Student Ratio?</h4>
-                    <p class="text-gray-600 text-sm">We maintain a low ratio of 1:15 to ensure personalized attention and optimal learning outcomes.</p>
-                </div>
-                <div class="bg-white p-6 rounded-2xl border border-gray-100 shadow-sm">
-                    <h4 class="font-bold text-brand-green mb-2">Do you follow the Kenyan 8-4-4 or CBC curriculum?</h4>
-                    <p class="text-gray-600 text-sm">No, we follow the British National Curriculum (Cambridge International Assessment).</p>
-                </div>
-            </div>
-        </section>
-
-        <!-- Facilities: Dining -->
-        <section id="fac-dining" class="page-content py-32 px-6 max-w-7xl mx-auto">
-            <h2 class="text-5xl font-bold text-brand-green mb-8 reveal">Dining Hall</h2>
-            <div class="grid lg:grid-cols-2 gap-12 items-center">
-                <div class="reveal">
-                    <p class="text-gray-600 text-lg leading-relaxed mb-6">At MSIS, we provide a <strong>balanced diet</strong> designed to support the holistic development of our learners. Our menu specifically accommodates students with <strong>special dietary needs</strong>, ensuring every child is well-nourished. We also offer a daily milk program to promote healthy growth and energy for the school day.</p>
-                    <ul class="space-y-3 text-brand-green font-medium">
-                        <li><i class="fas fa-apple-alt mr-2 text-brand-gold"></i> Balanced Meals</li>
-                        <li><i class="fas fa-leaf mr-2 text-brand-gold"></i> Vegetarian & Gluten-Free Options</li>
-                        <li><i class="fas fa-glass-milk mr-2 text-brand-gold"></i> Daily Fresh Milk & Fruits</li>
-                    </ul>
-                </div>
-               <div class="reveal">
-    <img src="https://lh3.googleusercontent.com/u/0/d/1wLd1sifoikjS-_EdZ1R2jMi4Yfhl6uoZ" alt="Mustard Seed Dining Hall" class="facility-img w-full object-cover">
-</div>
-            </div>
-        </section>
-
-        <!-- Facilities: Field -->
-       <section id="fac-field" class="page-content py-32 px-6 max-w-7xl mx-auto" style="display:none;">
-    <span class="section-tag reveal">Physical Education & Excellence</span>
-    <h2 class="text-5xl md:text-6xl font-bold text-brand-green mb-10 reveal">Athletics & Sports Fields</h2>
-    
-    <div class="grid lg:grid-cols-2 gap-20 items-center mb-20">
-        <div class="reveal">
-            <h3 class="text-3xl font-bold mb-6 text-brand-gold">Beyond Physical Skills</h3>
-            <p class="text-gray-600 leading-relaxed mb-6">
-                Our students learn much more than physical skills through their participation in athletics. The collaborative experience of pursuing and attaining a common goal is unique, especially when combined with interscholastic competition.
-                <br><br>
-                We are <strong>proud of our winning tradition</strong>. Through this experience, students develop courage, strength, finesse, and teamwork, alongside competitive intensity and a generosity of spirit.
-            </p>
-            <div class="grid grid-cols-2 gap-4">
-                <div class="p-4 bg-brand-light rounded-2xl border-l-4 border-brand-green">
-                    <span class="block font-bold text-brand-green">Mental Endurance</span>
-                </div>
-                <div class="p-4 bg-brand-light rounded-2xl border-l-4 border-brand-green">
-                    <span class="block font-bold text-brand-green">Physical Finesse</span>
-                </div>
-            </div>
-        </div>
-        <div class="reveal">
-            <img src="https://lh3.googleusercontent.com/u/0/d/1uRRmDcYM7_JXU3n6y1aSZl8FK_oymq_u" alt="Mustard Seed Sports Court" class="rounded-[40px] shadow-2xl w-full h-[500px] object-cover">
-        </div>
-    </div>
-
-    <div class="grid lg:grid-cols-2 gap-20 items-center mb-20">
-        <div class="reveal order-2 lg:order-1">
-            <img src="https://lh3.googleusercontent.com/u/0/d/1Zy8lp-ZUJSY9PI9wxQGvlrmKGB5kqaGy" alt="Mustard Seed Athletics Field" class="rounded-[40px] shadow-2xl w-full h-[500px] object-cover">
-        </div>
-        <div class="reveal order-1 lg:order-2">
-            <h3 class="text-2xl font-bold mb-6 text-brand-green">Expert Healthcare & Wellness</h3>
-            <p class="text-gray-600 mb-8">
-                Our program is led by a <strong>Certified Athletic Trainer</strong> and Health Specialist. With a strong background in injury care and rehabilitation, we ensure a well-rounded scope on student healthcare.
-            </p>
-            
-            <div class="space-y-4">
-                <div class="flex items-center gap-4 p-4 bg-white rounded-2xl shadow-sm border border-gray-50">
-                    <i class="fas fa-user-md text-brand-gold"></i>
-                    <div>
-                        <span class="block font-bold text-gray-800">Injury Care & Prevention</span>
-                        <span class="text-xs text-gray-500">Professional rehabilitation and wellness focus.</span>
-                    </div>
-                </div>
-                <div class="flex items-center gap-4 p-4 bg-white rounded-2xl shadow-sm border border-gray-50">
-                    <i class="fas fa-heartbeat text-brand-gold"></i>
-                    <div>
-                        <span class="block font-bold text-gray-800">Health Promotion</span>
-                        <span class="text-xs text-gray-500">Continuous education for a safer sports environment.</span>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <div class="reveal text-center max-w-3xl mx-auto">
-        <div class="w-16 h-1 bg-brand-gold mx-auto mb-8"></div>
-        <p class="text-2xl font-serif text-brand-green italic leading-relaxed">
-            "Developing courage as they take risks, competitive intensity while exhibiting generosity of spirit."
-        </p>
-    </div>
-</section>
-        <!-- Facilities: Pool -->
-            <section id="fac-pool" class="page-content py-32 px-6 max-w-7xl mx-auto text-center">
-            <h2 class="text-5xl font-bold text-brand-green mb-8 reveal">Aquatic Center</h2>
-           <img src="https://lh3.googleusercontent.com/u/0/d/1abwHZwrw0GqORTQm1EGamJ64lnFVKOnu" alt="Mustard Seed Aquatic Center" class="facility-img mb-12 reveal w-full object-cover">
-            <div class="max-w-3xl mx-auto reveal">
-                <p class="text-gray-600 text-lg mb-8">Our swimming program is a key part of our <strong>physical education</strong>, offering students the chance to develop water confidence and competitive skills. Beyond the pool, we offer specialized training in <strong>skating and ballet</strong>, allowing learners to discover and develop their unique physical talents in a safe environment.</p>
-            </div>
-        </section> 
-        
-        <section id="fac-boarding" class="page-content py-32 px-6 max-w-7xl mx-auto" style="display:none;">
-    <div class="text-center mb-16 reveal">
-        <h2 class="text-5xl md:text-6xl font-bold text-brand-green mb-4">Boarding</h2>
-        <div class="w-20 h-1 bg-brand-gold mx-auto"></div>
-    </div>
-
-    <div class="grid lg:grid-cols-2 gap-16 items-start">
-        <div class="reveal">
-            <p class="text-gray-600 text-lg leading-relaxed mb-8">
-                Our boarding Wing has modern living quarters making it <strong>A Home Away From Home</strong>. 
-                It is flexible and weekends off campus are granted if requested for by the parent.
-            </p>
-            
-            <h3 class="text-xl font-bold text-brand-green mb-6">We offer the following services to our students:</h3>
-            
-            <ul class="space-y-3 text-gray-600">
-                <li class="flex gap-2"><span>1.</span> Hot water.</li>
-                <li class="flex gap-2"><span>2.</span> Spacious cubicles with comfortable beds.</li>
-                <li class="flex gap-2"><span>3.</span> Personal pigeonholes for safe custody of their property.</li>
-                <li class="flex gap-2"><span>4.</span> A <strong>balanced diet</strong> which accommodates students with special diet needs.</li>
-                <li class="flex gap-2"><span>5.</span> Perimeter wall for maximum security.</li>
-                <li class="flex gap-2"><span>6.</span> Presence of staff to ensure individualized care of boarders.</li>
-                <li class="flex gap-2"><span>7.</span> Well monitored entertainment.</li>
-                <li class="flex gap-2"><span>8.</span> Weekend talent development and educational pass times.</li>
-                <li class="flex gap-2"><span>9.</span> Valuable study time on weekends.</li>
-            </ul>
-
-            <div class="mt-12 grid md:grid-cols-2 gap-8 border-t pt-8">
-                <div>
-                    <h4 class="font-bold text-brand-green mb-2">Visits</h4>
-                    <p class="text-sm text-gray-500 italic">Parents are encouraged to visit their children so long as such visits are pre-arranged with the school.</p>
-                </div>
-                <div>
-                    <h4 class="font-bold text-brand-green mb-2">Learners' Welfare</h4>
-                    <p class="text-sm text-gray-500 italic">Quality healthcare is provided by a <strong>resident nurse</strong> who works closely with the school matron.</p>
-                </div>
-            </div>
-        </div>
-
-        <div class="reveal">
-            <div class="relative">
-                <div class="absolute -top-4 -left-4 w-full h-full border-2 border-brand-gold rounded-[40px] -z-10"></div>
-                <img src="https://lh3.googleusercontent.com/u/0/d/1FLlVKDs_YM_BX9hLMkNRxim_Hm9-x2AV" alt="Mustard Seed Boarding Facilities" class="rounded-[40px] shadow-2xl w-full h-[500px] object-cover">
-            </div>
-        </div>
-    </div>
-</section>
-
-        <!-- Calendar Section -->
-        <section id="school-calendar" class="page-content py-32 px-6 bg-white">
-            <div class="max-w-6xl mx-auto">
-                <span class="section-tag reveal">Events & Term Dates</span>
-                <h2 class="text-5xl font-bold text-brand-green mb-10 reveal">Academic Calendar 2026</h2>
-                
-                <div class="grid md:grid-cols-3 gap-8">
-                    <div class="bg-gray-50 p-8 rounded-3xl calendar-card reveal">
-                        <h3 class="text-2xl font-bold text-brand-green mb-4">Term 2 (Lent)</h3>
-                        <ul class="space-y-4 text-sm">
-                            <li class="flex justify-between border-b pb-2"><span>Term Opens</span><span class="font-bold">Jan 6, 2026</span></li>
-                            <li class="flex justify-between border-b pb-2"><span>Entrance Assessments</span><span class="font-bold">Jan 12</span></li>
-                            <li class="flex justify-between border-b pb-2"><span>Mid-Term Break</span><span class="font-bold">Feb 16-22</span></li>
-                            <li class="flex justify-between"><span>Term Ends</span><span class="font-bold">Mar 27</span></li>
-                        </ul>
-                    </div>
-                    <div class="bg-gray-50 p-8 rounded-3xl calendar-card reveal" style="transition-delay: 100ms;">
-                        <h3 class="text-2xl font-bold text-brand-green mb-4">Term 3 (Trinity)</h3>
-                        <ul class="space-y-4 text-sm">
-                            <li class="flex justify-between border-b pb-2"><span>Term Opens</span><span class="font-bold">Apr 21, 2026</span></li>
-                            <li class="flex justify-between border-b pb-2"><span>IGCSE Exams</span><span class="font-bold">May/June</span></li>
-                            <li class="flex justify-between border-b pb-2"><span>Mid-Term Break</span><span class="font-bold">May 25-29</span></li>
-                            <li class="flex justify-between"><span>Term Ends</span><span class="font-bold">July 3</span></li>
-                        </ul>
-                    </div>
-                    <div class="bg-gray-50 p-8 rounded-3xl calendar-card reveal" style="transition-delay: 200ms;">
-                        <h3 class="text-2xl font-bold text-brand-green mb-4">Term 1 2026/27</h3>
-                        <ul class="space-y-4 text-sm">
-                            <li class="flex justify-between border-b pb-2"><span>New Induction</span><span class="font-bold">Aug 24, 2026</span></li>
-                            <li class="flex justify-between border-b pb-2"><span>Term Opens</span><span class="font-bold">Aug 25, 2026</span></li>
-                            <li class="flex justify-between border-b pb-2"><span>Founder's Day</span><span class="font-bold">Nov 14</span></li>
-                            <li class="flex justify-between"><span>Term Ends</span><span class="font-bold">Dec 4</span></li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
-        </section>
-    
-    <script>
-        
-        
-
-        // Navigation Engine
-        function showPage(pageId) {
-            const pages = document.querySelectorAll('.page-content');
-            pages.forEach(page => {
-                page.classList.remove('page-active');
-                page.style.display = 'none';
-                page.querySelectorAll('.reveal').forEach(el => el.classList.remove('active'));
-            });
-
-            const selectedPage = document.getElementById(pageId);
-            if (selectedPage) {
-                selectedPage.style.display = 'block';
-                setTimeout(() => {
-                    selectedPage.classList.add('page-active');
-                    initScrollReveal();
-                }, 50);
-            }
-
-            // Reset UI states
-            window.scrollTo({ top: 0, behavior: 'smooth' });
-            if (pageId !== 'home') {
-                document.getElementById('mainNav').classList.add('nav-scrolled');
-            } else {
-                if (window.scrollY <= 80) document.getElementById('mainNav').classList.remove('nav-scrolled');
-            }
-
-            // Close mobile menu if open
-            const mobileMenu = document.getElementById('mobileMenu');
-            if (mobileMenu.classList.contains('translate-x-0')) {
-                toggleMenu();
-            }
-        }
-
-        // Animation Engine
-        function initScrollReveal() {
-            const observerOptions = { threshold: 0.1, rootMargin: "0px 0px -50px 0px" };
-            const observer = new IntersectionObserver((entries) => {
-                entries.forEach(entry => { 
-                    if (entry.isIntersecting) entry.target.classList.add('active'); 
-                });
-            }, observerOptions);
-            document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
-        }
-
-        // Mobile Menu Toggles
-        function toggleMenu() {
-            const menu = document.getElementById('mobileMenu');
-            menu.classList.toggle('translate-x-full');
-            menu.classList.toggle('translate-x-0');
-            document.body.classList.toggle('overflow-hidden');
-        }
-
-        function toggleMobileDropdown(id) {
-            const el = document.getElementById(id);
-            const parent = el.previousElementSibling;
-            const icon = parent.querySelector('i');
-            
-            el.classList.toggle('active');
-            icon.classList.toggle('fa-plus');
-            icon.classList.toggle('fa-minus');
-        }
-
-        // Initialize on load
-        window.onload = function() {
-            initScrollReveal();
-            // Force nav color if starting on subpage
-            if (document.querySelector('.page-active').id !== 'home') {
-                document.getElementById('mainNav').classList.add('nav-scrolled');
-            }
-            };
-    </script>
-    <div id="cookie-banner" class="fixed bottom-0 left-0 w-full z-[9999] p-4">
-    <div class="max-w-4xl mx-auto bg-[#06422a] text-white p-6 rounded-2xl shadow-2xl border border-[#c5a059]/30 flex flex-col md:flex-row items-center justify-between gap-4">
-        <div>
-            <h4 class="font-bold text-[#c5a059]">Cookies & Privacy 🍪</h4>
-            <p class="text-sm">We use cookies to ensure you get the best experience on our website.</p>
-        </div>
-        <button onclick="acceptCookies()" class="bg-[#c5a059] text-[#06422a] px-8 py-2 rounded-full font-bold">
-            Accept 
-        </button>
-    </div>
-</div>
-
-<script>
-function acceptCookies() {
-    document.getElementById('cookie-banner').classList.remove('show');
-    localStorage.setItem('cookiesAccepted', 'true');
-}
-
-window.addEventListener('load', function() {
-    if (!localStorage.getItem('cookiesAccepted')) {
-        document.getElementById('cookie-banner').classList.add('show');
-    }
-});
-</script>
-    <script>
-    const statsObserver = new IntersectionObserver((entries) => {
-        entries.forEach(entry => {
-            if (entry.isIntersecting) {
-                const numbers = entry.target.querySelectorAll('.count');
-                numbers.forEach(num => {
-                    const target = +num.getAttribute('data-goal');
-                    const speed = 100; // Adjust for faster/slower count
-                    const inc = target / speed;
-
-                    const update = () => {
-                        const current = +num.innerText.replace(/,/g, '');
-                        if (current < target) {
-                            num.innerText = Math.ceil(current + inc).toLocaleString();
-                            setTimeout(update, 20);
-                        } else {
-                            num.innerText = target.toLocaleString();
-                        }
-                    };
-                    update();
-                });
-                statsObserver.unobserve(entry.target);
-            }
-        });
-    }, { threshold: 0.5 });
-
-    statsObserver.observe(document.getElementById('stats-tracker'));
-</script>
-
-<script>
 async function handleAdmissionSubmit(event) {
     event.preventDefault();
     
@@ -1967,27 +1383,45 @@ async function handleAdmissionSubmit(event) {
     }
 }
 </script>
-<script>
+    <script>
+function acceptCookies() {
+    document.getElementById('cookie-banner').classList.remove('show');
+    localStorage.setItem('cookiesAccepted', 'true');
+}
 
-const nav = document.getElementById('mainNav');
-
-window.addEventListener('scroll', () => {
-    const currentScroll = window.pageYOffset;
-
-    if (currentScroll > 50) {
-        // Hide the bar when moving away from the top
-        nav.classList.add('nav-hidden');
-        // Pre-apply the 'scrolled' class so it has green text when it reappears
-        nav.classList.add('nav-scrolled');
-    } else {
-        // Show the bar and make it transparent/white text at the very top
-        nav.classList.remove('nav-hidden');
-        nav.classList.remove('nav-scrolled');
+window.addEventListener('load', function() {
+    if (!localStorage.getItem('cookiesAccepted')) {
+        document.getElementById('cookie-banner').classList.add('show');
     }
 });
 </script>
+    <script>
+    const statsObserver = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                const numbers = entry.target.querySelectorAll('.count');
+                numbers.forEach(num => {
+                    const target = +num.getAttribute('data-goal');
+                    const speed = 100; // Adjust for faster/slower count
+                    const inc = target / speed;
 
+                    const update = () => {
+                        const current = +num.innerText.replace(/,/g, '');
+                        if (current < target) {
+                            num.innerText = Math.ceil(current + inc).toLocaleString();
+                            setTimeout(update, 20);
+                        } else {
+                            num.innerText = target.toLocaleString();
+                        }
+                    };
+                    update();
+                });
+                statsObserver.unobserve(entry.target);
+            }
+        });
+    }, { threshold: 0.5 });
+
+    statsObserver.observe(document.getElementById('stats-tracker'));
+</script>
 </body>
 </html>
-
-    

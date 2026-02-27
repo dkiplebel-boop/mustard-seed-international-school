@@ -227,7 +227,55 @@ nav {
 .brand-subtitle {
     color: var(--brand-gold) !important;
 }
+      /* Refined Mobile Drawer Styles */
+#mobileMenu {
+    backdrop-filter: blur(15px);
+    -webkit-backdrop-filter: blur(15px);
+    background-color: rgba(0, 90, 50, 0.98); /* Brand green with slight transparency */
+}
 
+/* Hide scrollbar but allow scrolling */
+#mobileMenu::-webkit-scrollbar {
+    display: none;
+}
+
+#mobileMenu {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+}
+
+.mobile-dropdown {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.4s ease-out; /* Smooth growth */
+}
+
+.mobile-dropdown.active {
+    max-height: 500px; /* Adjust based on how many links you have */
+}
+
+/* Specific style for the white collapse button */
+.mobile-close-btn {
+    color: #ffffff !important;
+}
+:root {
+    /* Easily change this hex code to change the icon color */
+    --menu-icon-color: #ffffff; 
+}
+
+.mobile-nav-toggle {
+    color: var(--menu-icon-color) !important;
+    transition: color 0.3s ease, transform 0.2s ease;
+}
+
+/* Optional: Change color when the user taps/hovers */
+.mobile-nav-toggle:hover {
+    color: var(--brand-gold) !important;
+}
+
+.mobile-nav-toggle:active {
+    transform: scale(0.9);
+}
 
     </style>
 </head>
@@ -299,119 +347,119 @@ nav {
             <button onclick="showPage('adm-enroll')" class="bg-[#c5a059] text-white px-8 py-4 rounded-full transition-all duration-300 hover:bg-white hover:text-[#005a32] border border-[#005a32]">Apply 2026</button>
         </div>
 
-        <button onclick="toggleMenu()" class="lg:hidden text-2xl p-2">
-            <i class="fas fa-bars-staggered"></i>
-        </button>
+       <button onclick="toggleMenu()" class="lg:hidden text-2xl p-2 mobile-nav-toggle">
+    <i class="fas fa-bars-staggered"></i>
+</button>
     </nav>
 
     <!-- Mobile Drawer -->
-   <div id="mobileMenu" class="fixed inset-0 bg-brand-green z-[2000] transform translate-x-full transition-transform duration-500 lg:hidden overflow-y-auto">
-    <div class="p-8 pb-20">
-        <div class="flex justify-between items-center mb-12 border-b border-white/10 pb-6">
+  <div id="mobileMenu" class="fixed inset-0 bg-brand-green/95 z-[2000] transform translate-x-full transition-transform duration-500 lg:hidden overflow-y-auto">
+    <div class="p-6 pb-12">
+        <div class="flex justify-between items-center mb-8 border-b border-white/10 pb-6">
             <div class="flex items-center gap-3">
                 <div class="w-10 h-10 bg-white rounded-lg flex items-center justify-center p-1">
                     <img src="https://lh3.googleusercontent.com/u/0/d/1fqO5ZbpIqUP3npZj_QJxc-mlqK62L8OH" alt="MSIS" class="w-full h-full object-contain">
                 </div>
-                <span class="text-white font-bold tracking-widest text-sm">MUSTARD SEED</span>
+                <div>
+                    <span class="block text-white font-bold tracking-widest text-xs">MUSTARD SEED</span>
+                    <span class="text-[8px] uppercase text-brand-gold font-bold">International School</span>
+                </div>
             </div>
-            <button onclick="toggleMenu()" class="text-white p-2">
-                <i class="fas fa-times text-2xl"></i>
-            </button>
+            <button onclick="toggleMenu()" class="text-white p-2 hover:rotate-90 transition-transform">
+    <i class="fas fa-times text-2xl"></i>
+</button>
         </div>
         
-        <nav class="flex flex-col space-y-2">
-            <a onclick="showPage('home')" class="py-4 text-white text-lg font-bold border-b border-white/5 flex justify-between items-center">
+        <nav class="flex flex-col space-y-1">
+            <a onclick="showPage('home'); toggleMenu();" class="py-4 text-white text-base font-bold border-b border-white/5 flex justify-between items-center">
                 <span>HOME</span>
-                <i class="fas fa-arrow-right text-[10px] text-brand-gold"></i>
+                <i class="fas fa-home text-[12px] text-brand-gold/50"></i>
             </a>
 
             <div class="border-b border-white/5">
-                <div onclick="toggleMobileDropdown('m-about')" class="py-4 flex justify-between items-center text-white text-lg font-bold cursor-pointer">
+                <div onclick="toggleMobileDropdown('m-about')" class="py-4 flex justify-between items-center text-white text-base font-bold cursor-pointer">
                     <span>ABOUT US</span>
                     <i id="m-about-icon" class="fas fa-chevron-down text-xs text-brand-gold transition-transform duration-300"></i>
                 </div>
-                <div id="m-about" class="mobile-dropdown bg-white/5 rounded-2xl overflow-hidden mb-2">
-                    <div class="flex flex-col py-2 px-4 space-y-4 text-gray-300 text-sm">
-                        <a onclick="showPage('about-vision')" class="py-2 flex items-center gap-3"><i class="fas fa-eye text-brand-gold w-4"></i> Vision & Mission</a>
-                        <a onclick="showPage('about-history')" class="py-2 flex items-center gap-3"><i class="fas fa-history text-brand-gold w-4"></i> Our History</a>
+                <div id="m-about" class="mobile-dropdown bg-black/10 rounded-xl overflow-hidden mb-2">
+                    <div class="flex flex-col py-2 px-4 space-y-1 text-gray-300 text-sm">
+                        <a onclick="showPage('about-vision'); toggleMenu();" class="py-3 flex items-center gap-3"><i class="fas fa-eye text-brand-gold w-4"></i> Vision & Mission</a>
+                        <a onclick="showPage('about-history'); toggleMenu();" class="py-3 flex items-center gap-3"><i class="fas fa-history text-brand-gold w-4"></i> Our History</a>
                     </div>
                 </div>
             </div>
 
             <div class="border-b border-white/5">
-                <div onclick="toggleMobileDropdown('m-acad')" class="py-4 flex justify-between items-center text-white text-lg font-bold cursor-pointer">
+                <div onclick="toggleMobileDropdown('m-acad')" class="py-4 flex justify-between items-center text-white text-base font-bold cursor-pointer">
                     <span>ACADEMICS</span>
                     <i id="m-acad-icon" class="fas fa-chevron-down text-xs text-brand-gold transition-transform duration-300"></i>
                 </div>
-                <div id="m-acad" class="mobile-dropdown bg-white/5 rounded-2xl overflow-hidden mb-2">
-                    <div class="flex flex-col py-2 px-4 space-y-4 text-gray-300 text-sm">
-                        <a onclick="showPage('edu-kg')" class="py-2 flex items-center gap-3"><i class="fas fa-child text-brand-gold w-4"></i> 
-                            Kindergarten</a>
-                        <a onclick="showPage('edu-junior')" class="py-2 flex items-center gap-3"><i class="fas fa-book-reader text-brand-gold w-
-                                                                                                     4"></i> Junior School</a>
-
-                        <a onclick="showPage('edu-secondary')" class="py-2 flex items-center gap-3"><i class="fas fa-user-graduate text-brand-
-                                                                                                        gold w-4"></i> Senior School</a>
-                        <a onclick="showPage('edu-alevel')" class="py-2 flex items-center gap-3"><i class="fas fa-microscope text-brand-gold w-4">
-                            
-                        </i> A Levels</a>
+                <div id="m-acad" class="mobile-dropdown bg-black/10 rounded-xl overflow-hidden mb-2">
+                    <div class="flex flex-col py-2 px-4 space-y-1 text-gray-300 text-sm">
+                        <a onclick="showPage('edu-kg'); toggleMenu();" class="py-3 flex items-center gap-3"><i class="fas fa-child text-brand-gold w-4"></i> Kindergarten</a>
+                        <a onclick="showPage('edu-junior'); toggleMenu();" class="py-3 flex items-center gap-3"><i class="fas fa-book-reader text-brand-gold w-4"></i> Junior School</a>
+                        <a onclick="showPage('edu-secondary'); toggleMenu();" class="py-3 flex items-center gap-3"><i class="fas fa-user-graduate text-brand-gold w-4"></i> Senior School</a>
+                        <a onclick="showPage('edu-alevel'); toggleMenu();" class="py-3 flex items-center gap-3"><i class="fas fa-microscope text-brand-gold w-4"></i> A Levels</a>
                     </div>
                 </div>
             </div>
 
             <div class="border-b border-white/5">
-                <div onclick="toggleMobileDropdown('m-adm')" class="py-4 flex justify-between items-center text-white text-lg font-bold cursor-pointer">
+                <div onclick="toggleMobileDropdown('m-adm')" class="py-4 flex justify-between items-center text-white text-base font-bold cursor-pointer">
                     <span>ADMISSION</span>
                     <i id="m-adm-icon" class="fas fa-chevron-down text-xs text-brand-gold transition-transform duration-300"></i>
                 </div>
-                <div id="m-adm" class="mobile-dropdown bg-white/5 rounded-2xl overflow-hidden mb-2">
-                    <div class="flex flex-col py-2 px-4 space-y-4 text-gray-300 text-sm">
-                        <a onclick="showPage('adm-fees')" class="py-2 flex items-center gap-3"><i class="fas fa-file-invoice-dollar text-brand-gold w-4"></i> Fee Structure 25/26</a>
-                        <a onclick="showPage('adm-enroll')" class="py-2 flex items-center gap-3"><i class="fas fa-user-plus text-brand-gold w-4"></i> Enrollment Form</a>
-                        <a onclick="showPage('adm-faqs')" class="py-2 flex items-center gap-3"><i class="fas fa-question-circle text-brand-gold w-4"></i> FAQs</a>
+                <div id="m-adm" class="mobile-dropdown bg-black/10 rounded-xl overflow-hidden mb-2">
+                    <div class="flex flex-col py-2 px-4 space-y-1 text-gray-300 text-sm">
+                        <a onclick="showPage('adm-fees'); toggleMenu();" class="py-3 flex items-center gap-3"><i class="fas fa-file-invoice-dollar text-brand-gold w-4"></i> Fee Structure 25/26</a>
+                        <a onclick="showPage('adm-enroll'); toggleMenu();" class="py-3 flex items-center gap-3"><i class="fas fa-user-plus text-brand-gold w-4"></i> Enrollment Form</a>
+                        <a onclick="showPage('adm-faqs'); toggleMenu();" class="py-3 flex items-center gap-3"><i class="fas fa-question-circle text-brand-gold w-4"></i> FAQs</a>
                     </div>
                 </div>
             </div>
             
             <div class="border-b border-white/5">
-    <div onclick="toggleMobileDropdown('m-facilities')" class="py-4 flex justify-between items-center text-white text-lg font-bold cursor-pointer">
-       <div class="border-b border-white/5">
-    <div onclick="toggleMobileDropdown('m-facilities')" class="py-4 flex justify-between items-center text-white text-lg font-bold cursor-pointer">
-       
-        <span>FACILITIES</span>
-        <i id="m-facilities-icon" class="fas fa-chevron-down text-xs text-brand-gold transition-transform duration-300"></i>
-    </div>
-    <div id="m-facilities" class="mobile-dropdown bg-white/5 rounded-2xl overflow-hidden mb-2">
-        <div class="flex flex-col py-2 px-4 space-y-4 text-gray-300 text-sm">
-            <a onclick="showPage('fac-dining')" class="py-2 flex items-center gap-3"><i class="fas fa-utensils text-brand-gold w-4"></i> Dining Hall</a>
-            <a onclick="showPage('fac-field')" class="py-2 flex items-center gap-3"><i class="fas fa-futbol text-brand-gold w-4"></i> Athletics & Sports</a>
-            <a onclick="showPage('fac-pool')" class="py-2 flex items-center gap-3"><i class="fas fa-swimmer text-brand-gold w-4"></i> Aquatic Center</a>
-        </div>
-    </div>
-</div>
+                <div onclick="toggleMobileDropdown('m-facilities')" class="py-4 flex justify-between items-center text-white text-base font-bold cursor-pointer">
+                    <span>FACILITIES</span>
+                    <i id="m-facilities-icon" class="fas fa-chevron-down text-xs text-brand-gold transition-transform duration-300"></i>
+                </div>
+                <div id="m-facilities" class="mobile-dropdown bg-black/10 rounded-xl overflow-hidden mb-2">
+                    <div class="flex flex-col py-2 px-4 space-y-1 text-gray-300 text-sm">
+                        <a onclick="showPage('fac-dining'); toggleMenu();" class="py-3 flex items-center gap-3"><i class="fas fa-utensils text-brand-gold w-4"></i> Dining Hall</a>
+                        <a onclick="showPage('fac-field'); toggleMenu();" class="py-3 flex items-center gap-3"><i class="fas fa-futbol text-brand-gold w-4"></i> Athletics & Sports</a>
+                        <a onclick="showPage('fac-pool'); toggleMenu();" class="py-3 flex items-center gap-3"><i class="fas fa-swimmer text-brand-gold w-4"></i> Aquatic Center</a>
+                        <a onclick="showPage('fac-boarding'); toggleMenu();" class="py-3 flex items-center gap-3"><i class="fas fa-bed text-brand-gold w-4"></i> Boarding</a>
+                    </div>
+                </div>
+            </div>
 
-<div class="border-b border-white/5">
-    <div onclick="toggleMobileDropdown('m-labs')" class="py-4 flex justify-between items-center text-white text-lg font-bold cursor-pointer">
-        <span>LABS & LIBRARY</span>
-        <i id="m-labs-icon" class="fas fa-chevron-down text-xs text-brand-gold transition-transform duration-300"></i>
-    </div>
-    <div id="m-labs" class="mobile-dropdown bg-white/5 rounded-2xl overflow-hidden mb-2">
-        <div class="flex flex-col py-2 px-4 space-y-4 text-gray-300 text-sm">
-            <a onclick="showPage('fac-ict')" class="py-2 flex items-center gap-3"><i class="fas fa-laptop-code text-brand-gold w-4"></i> ICT Lab</a>
-            <a onclick="showPage('fac-science')" class="py-2 flex items-center gap-3"><i class="fas fa-flask text-brand-gold w-4"></i> Science Lab</a>
-            <a onclick="showPage('fac-library')" class="py-2 flex items-center gap-3"><i class="fas fa-book-open text-brand-gold w-4"></i> Library</a>
-        </div>
-    </div>
-</div>
+            <div class="border-b border-white/5">
+                <div onclick="toggleMobileDropdown('m-labs')" class="py-4 flex justify-between items-center text-white text-base font-bold cursor-pointer">
+                    <span>LABS & LIBRARY</span>
+                    <i id="m-labs-icon" class="fas fa-chevron-down text-xs text-brand-gold transition-transform duration-300"></i>
+                </div>
+                <div id="m-labs" class="mobile-dropdown bg-black/10 rounded-xl overflow-hidden mb-2">
+                    <div class="flex flex-col py-2 px-4 space-y-1 text-gray-300 text-sm">
+                        <a onclick="showPage('fac-ict'); toggleMenu();" class="py-3 flex items-center gap-3"><i class="fas fa-laptop-code text-brand-gold w-4"></i> ICT Lab</a>
+                        <a onclick="showPage('fac-science'); toggleMenu();" class="py-3 flex items-center gap-3"><i class="fas fa-flask text-brand-gold w-4"></i> Science Lab</a>
+                        <a onclick="showPage('fac-library'); toggleMenu();" class="py-3 flex items-center gap-3"><i class="fas fa-book-open text-brand-gold w-4"></i> Library</a>
+                    </div>
+                </div>
+            </div>
 
-            <a onclick="showPage('school-calendar')" class="py-4 text-white text-lg font-bold border-b border-white/5">CALENDAR 2026</a>
+            <a onclick="showPage('school-calendar'); toggleMenu();" class="py-4 text-white text-base font-bold border-b border-white/5 flex justify-between items-center">
+                <span>CALENDAR 2026</span>
+                <i class="fas fa-calendar-alt text-[12px] text-brand-gold/50"></i>
+            </a>
             
-            <div class="pt-10 flex flex-col gap-4">
-                <button onclick="showPage('adm-enroll')" class="bg-brand-gold text-white py-5 rounded-2xl font-bold tracking-widest shadow-lg">APPLY 2026</button>
-                <div class="flex justify-center gap-6 pt-6 text-white/60">
-                    <i class="fab fa-facebook text-xl"></i>
-                    <i class="fab fa-instagram text-xl"></i>
-                    <i class="fab fa-x-twitter text-xl"></i>
+            <div class="pt-8 flex flex-col gap-4">
+                <button onclick="showPage('adm-enroll'); toggleMenu();" class="bg-brand-gold text-white py-4 rounded-xl font-bold tracking-widest shadow-lg active:scale-95 transition-transform">
+                    APPLY 2026
+                </button>
+                <div class="flex justify-center gap-8 pt-6 text-white/40">
+                    <a href="#" class="hover:text-brand-gold transition-colors"><i class="fab fa-facebook text-2xl"></i></a>
+                    <a href="#" class="hover:text-brand-gold transition-colors"><i class="fab fa-instagram text-2xl"></i></a>
+                    <a href="#" class="hover:text-brand-gold transition-colors"><i class="fab fa-x-twitter text-2xl"></i></a>
                 </div>
             </div>
         </nav>
@@ -1250,7 +1298,7 @@ async function submitApplication(event) {
     
     <div class="grid lg:grid-cols-2 gap-20 items-center mb-16">
         <div class="reveal order-2 lg:order-1">
-            <img src="https://images.unsplash.com/photo-1582719471384-894fbb16e074?q=80&w=1974" alt="Biology and Chemistry Lab" class="rounded-[40px] shadow-2xl w-full h-[500px] object-cover">
+            <img src="https://lh3.googleusercontent.com/u/0/d/12e85OPSSCcq49XT1dBWyhWRDbBjJkNs3" alt="Biology and Chemistry Lab" class="rounded-[40px] shadow-2xl w-full h-[500px] object-cover">
         </div>
         <div class="reveal order-1 lg:order-2">
             <h3 class="text-3xl font-bold mb-6 text-brand-gold">Scientific Inquiry & Analysis</h3>
@@ -1280,7 +1328,7 @@ async function submitApplication(event) {
             </div>
         </div>
         <div class="reveal">
-            <img src="https://images.unsplash.com/photo-1532187875605-1ef6c237a1e0?q=80&w=2070" alt="Students in Lab" class="rounded-[40px] shadow-2xl w-full h-[400px] object-cover">
+            <img src="https://lh3.googleusercontent.com/u/0/d/1KyODFaGMLXQ5I8Hv9U0F9qQYm4SqoIxc" alt="Students in Lab" class="rounded-[40px] shadow-2xl w-full h-[400px] object-cover">
         </div>
     </div>
 </section>
@@ -1302,13 +1350,13 @@ async function submitApplication(event) {
             </div>
         </div>
         <div class="reveal">
-            <img src="https://images.unsplash.com/photo-1497633762265-9d179a990aa6?q=80&w=2073" alt="School Library" class="rounded-[40px] shadow-2xl w-full h-[500px] object-cover">
+            <img src="https://lh3.googleusercontent.com/u/0/d/1ab68KLuZ1jg4Pc1HIvPGQ-VuCb78RZ2T" alt="School Library" class="rounded-[40px] shadow-2xl w-full h-[500px] object-cover">
         </div>
     </div>
 
     <div class="grid lg:grid-cols-2 gap-20 items-start">
         <div class="reveal order-2 lg:order-1">
-            <img src="https://images.unsplash.com/photo-1521587760476-6c12a4b040da?q=80&w=2070" alt="Quiet Research Area" class="rounded-[40px] shadow-2xl w-full h-[400px] object-cover">
+            <img src=" https://lh3.googleusercontent.com/u/0/d/17226lc5dq46u1Xc-F75RPkfVen1pIepf" alt="Quiet Research Area" class="rounded-[40px] shadow-2xl w-full h-[400px] object-cover">
         </div>
         <div class="reveal order-1 lg:order-2">
             <h3 class="text-2xl font-bold mb-6 text-brand-green">Hub of Information</h3>
@@ -1490,22 +1538,35 @@ window.addEventListener('scroll', function() {
         }
 
         // Mobile Menu Toggles
-        function toggleMenu() {
-            const menu = document.getElementById('mobileMenu');
-            menu.classList.toggle('translate-x-full');
-            menu.classList.toggle('translate-x-0');
-            document.body.classList.toggle('overflow-hidden');
-        }
+       function toggleMenu() {
+    const menu = document.getElementById('mobileMenu');
+    // This slides the drawer in and out using the Tailwind translate class
+    menu.classList.toggle('translate-x-full');
+}
 
-        function toggleMobileDropdown(id) {
-            const el = document.getElementById(id);
-            const parent = el.previousElementSibling;
-            const icon = parent.querySelector('i');
-            
-            el.classList.toggle('active');
-            icon.classList.toggle('fa-plus');
-            icon.classList.toggle('fa-minus');
-        }
+function toggleMobileDropdown(id) {
+    const dropdown = document.getElementById(id);
+    const icon = document.getElementById(id + '-icon');
+    
+    // Toggle the dropdown visibility
+    dropdown.classList.toggle('active');
+    
+    // Rotate the chevron icon
+    if (icon) {
+        icon.style.transform = dropdown.classList.contains('active') ? 'rotate(180deg)' : 'rotate(0deg)';
+    }
+}
+
+function showPage(pageId) {
+    // Hide all pages
+    document.querySelectorAll('.page-content').forEach(page => {
+        page.style.display = 'none';
+    });
+    // Show selected page
+    document.getElementById(pageId).style.display = 'block';
+    // Scroll to top
+    window.scrollTo(0, 0);
+}
 
         // Initialize on load
         window.onload = function() {

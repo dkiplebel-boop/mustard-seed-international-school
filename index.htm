@@ -54,29 +54,22 @@ nav {
         }
 
         /* Change this in your <style> section */
+/* Updated Navigation Styles */
 #mainNav {
-    background: transparent; /* Makes it clear at the top */
-    backdrop-filter: none;    /* Removes blur at the top */
-    border-bottom: 1px solid rgba(255, 255, 255, 0); /* Hides border initially */
+    background: linear-gradient(to bottom, rgba(0,0,0,0.3) 0%, transparent 100%); /* Adds subtle visibility at the very top */
+    backdrop-filter: none;
+   
     transition: all 0.4s ease;
 }
 
-       .nav-scrolled {
-    /* Dark semi-transparent background */
-    background-color: rgba(0, 0, 0, 0.5) !important; 
-    
-    /* The "Glass" blur effect */
+.nav-scrolled {
+    background-color: rgba(0, 58, 32, 0.95) !important; /* Brand green with glass effect */
     backdrop-filter: blur(15px); 
     -webkit-backdrop-filter: blur(15px);
-    
-    /* Thin border and shadow for depth */
-    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+   
     box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
-    
-    /* Keep the text white so it's readable on the dark glass */
-    color: white !important;
-    padding-top: 0.5rem !important;
-    padding-bottom: 0.5rem !important;
+    padding-top: 0.75rem !important;
+    padding-bottom: 0.75rem !important;
 }
         
         .nav-link {
@@ -336,7 +329,7 @@ nav {
             </div>
             
             <div class="nav-item">
-    <span class="nav-link flex items-center">Labs & Library <i class="fas fa-chevron-down ml-2 text-[9px]"></i></span>
+    <span class="nav-link flex items-center">The Hub <i class="fas fa-chevron-down ml-2 text-[9px]"></i></span>
     <div class="dropdown-menu">
         <a onclick="showPage('fac-ict')" class="dropdown-item"><i class="fas fa-laptop-code w-4"></i> ICT Laboratory</a>
         <a onclick="showPage('fac-science')" class="dropdown-item"><i class="fas fa-flask w-4"></i> Science Laboratory</a>
@@ -435,7 +428,7 @@ nav {
 
             <div class="border-b border-white/5">
                 <div onclick="toggleMobileDropdown('m-labs')" class="py-4 flex justify-between items-center text-white text-base font-bold cursor-pointer">
-                    <span>LABS & LIBRARY</span>
+                    <span>The Hub</span>
                     <i id="m-labs-icon" class="fas fa-chevron-down text-xs text-brand-gold transition-transform duration-300"></i>
                 </div>
                 <div id="m-labs" class="mobile-dropdown bg-black/10 rounded-xl overflow-hidden mb-2">
@@ -474,7 +467,7 @@ nav {
                     <p class="text-xl md:text-2xl mb-12 font-light text-gray-200 max-w-2xl mx-auto reveal">Providing a world-class British Curriculum education in the heart of Nakuru's serene suburbs. Shaping leaders for the 2026 global landscape.</p>
                     <div class="flex flex-col sm:flex-row gap-5 justify-center reveal">
                         <button onclick="showPage('edu-secondary')" class="bg-[#c5a059] text-white px-8 py-4 rounded-full transition-all duration-300 hover:bg-white hover:text-[#005a32] border border-[#005a32]">Explore Academics</button>
-                        <button onclick="showPage('adm-fees')" class="bg-[##F4FAFC] text-white px-8 py-4 rounded-full transition-all duration-300 hover:bg-white hover:text-[#005a32] border border-[#005a32]">View 2025/26 Fees</button>
+                        <button onclick="showPage('adm-fees')" class="bg-[##F4FAFC] text-white px-8 py-4 rounded-full transition-all duration-300 hover:bg-white hover:text-[#005a32] border border-[#ffffff]">View 2025/26 Fees</button>
                     </div>
                 </div>
             </div>
@@ -510,21 +503,21 @@ nav {
         
         <div style="flex: 1; min-width: 200px;">
             <h3 style="color: #06422a; font-size: 50px; font-weight: 300; margin: 0; font-family: 'Times New Roman', serif;">
-                <span class="count" data-goal="15652">0</span>+
+                <span class="count" data-goal="2000">0</span>+
             </h3>
             <p style="color: #888; font-size: 14px; text-transform: uppercase; margin-top: 5px;">Students Enrolled</p>
         </div>
 
         <div style="flex: 1; min-width: 200px;">
             <h3 style="color: #06422a; font-size: 50px; font-weight: 300; margin: 0; font-family: 'Times New Roman', serif;">
-                <span class="count" data-goal="21">0</span>
+                <span class="count" data-goal="26">0</span>
             </h3>
             <p style="color: #888; font-size: 14px; text-transform: uppercase; margin-top: 5px;">Years of Operation</p>
         </div>
 
         <div style="flex: 1; min-width: 200px;">
             <h3 style="color:#06422a; font-size: 50px; font-weight: 300; margin: 0; font-family: 'Times New Roman', serif;">
-                <span class="count" data-goal="97">0</span>%
+                <span class="count" data-goal="86">0</span>%
             </h3>
             <p style="color: #888; font-size: 14px; text-transform: uppercase; margin-top: 5px;">Passing to Universities</p>
         </div>
@@ -575,7 +568,7 @@ nav {
             </p>
             <div class="flex gap-8 border-t pt-8">
                 <div>
-                    <span class="block text-3xl font-bold text-brand-green">2005</span>
+                    <span class="block text-3xl font-bold text-brand-green">1999</span>
                     <span class="text-xs uppercase tracking-widest text-gray-400">Founded</span>
                 </div>
                 <div>
@@ -1529,6 +1522,16 @@ window.addEventListener('scroll', function() {
                     initScrollReveal();
                 }, 50);
             }
+
+             {
+    // ... your existing logic to hide/show sections ...
+    
+    // Add this to reset the nav bar appearance every time a new page opens
+    window.scrollTo(0, 0);
+    const nav = document.getElementById('mainNav');
+    nav.classList.remove('nav-scrolled');
+    nav.classList.remove('nav-hidden');
+}
 
             // Reset UI states
             window.scrollTo({ top: 0, behavior: 'smooth' });

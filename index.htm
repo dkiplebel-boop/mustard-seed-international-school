@@ -270,27 +270,86 @@ nav {
     transform: scale(0.9);
 }
 
+        /* Dark Mode Styles */
+.dark-mode {
+    background-color: #1a1a1a !important;
+    color: #e5e7eb !important;
+}
+
+.dark-mode .bg-white, 
+.dark-mode section, 
+.dark-mode .page-content {
+    background-color: #1a1a1a !important;
+    color: #e5e7eb !important;
+}
+
+.dark-mode .text-gray-500, 
+.dark-mode .text-gray-600 {
+    color: #9ca3af !important;
+}
+
+.dark-mode .fee-table tr:nth-child(even) {
+    background-color: #262626;
+}
+
+.dark-mode .fee-table td {
+    border-bottom: 1px solid #333;
+}
+
+.dark-mode .dropdown-menu {
+    background: #262626;
+    border-color: #444;
+}
+
+.dark-mode .dropdown-item {
+    color: #ddd;
+}
+        /* Invert logo container background in dark mode */
+.dark-mode .nav-logo-container {
+    background-color: #262626 !important;
+    border-bottom-color: var(--brand-gold) !important;
+}
+
+/* Fix logo visibility (if needed, use filter: invert(1) for black logos) */
+.dark-mode .nav-logo-container img {
+    filter: brightness(0.9);
+}
+
+/* Counter Section Dark Mode */
+.dark-mode #stats-tracker {
+    background-color: #1a1a1a !important;
+    border-top-color: #333 !important;
+}
+
+.dark-mode #stats-tracker h3 {
+    color: var(--brand-gold) !important;
+}
+
+.dark-mode #stats-tracker p {
+    color: #9ca3af !important;
+}
     </style>
 </head>
 <body class="bg-[#fafafa]">
 
 <!-- Navigation -->
    <nav id="mainNav" class="fixed top-0 w-full z-[1000] px-6 lg:px-12 py-5 flex justify-between items-center">
-        <div class="flex items-center gap-4 cursor-pointer group" onclick="showPage('home')">
-            <div class="w-14 h-14 bg-white rounded-xl flex items-center justify-center border-b-4 border-brand-gold shadow-lg transition-transform group-hover:scale-105 overflow-hidden">
-    <img src="https://lh3.googleusercontent.com/u/0/d/1fqO5ZbpIqUP3npZj_QJxc-mlqK62L8OH" alt="Mustard Seed Logo" class="w-full h-full object-contain p-1">
-</div>
+       <div class="flex items-center gap-4 cursor-pointer group" onclick="showPage('home')">
+    <div class="w-14 h-14 bg-white rounded-xl flex items-center justify-center border-b-4 border-brand-gold shadow-lg transition-transform group-hover:scale-105 overflow-hidden nav-logo-container">
+        <img src="https://lh3.googleusercontent.com/u/0/d/1fqO5ZbpIqUP3npZj_QJxc-mlqK62L8OH" alt="Mustard Seed Logo" class="w-full h-full object-contain p-1">
+    </div>
+    </div>
             <div class="hidden sm:block">
                 <span class="block text-xl font-bold tracking-tight leading-none brand-text">MUSTARD SEED</span>
                 <span class="text-[10px] uppercase tracking-[0.3em] font-bold text-brand-gold">International School</span>
             </div>
-        </div>
+        
         
         <div class="hidden lg:flex gap-10 font-bold uppercase text-[11px] tracking-widest items-center">
             <a onclick="showPage('home')" class="nav-link">Home</a>
             
             <div class="nav-item">
-    <span class="nav-link flex items-center">About Us <i class="fas fa-chevron-down ml-2 text-[9px]"></i></span>
+    <span class="nav-link flex items-center">Ethos<i class="fas fa-chevron-down ml-2 text-[9px]"></i></span>
     <div class="dropdown-menu">
         <a onclick="showPage('about-vision')" class="dropdown-item"><i class="fas fa-eye w-4"></i> Our Vision & Mission</a>
         <a onclick="showPage('about-history')" class="dropdown-item"><i class="fas fa-history w-4"></i> Our History</a>
@@ -329,13 +388,16 @@ nav {
             </div>
             
             <div class="nav-item">
-    <span class="nav-link flex items-center">The Hub <i class="fas fa-chevron-down ml-2 text-[9px]"></i></span>
+    <span class="nav-link flex items-center"> Hub <i class="fas fa-chevron-down ml-2 text-[9px]"></i></span>
     <div class="dropdown-menu">
         <a onclick="showPage('fac-ict')" class="dropdown-item"><i class="fas fa-laptop-code w-4"></i> ICT Laboratory</a>
         <a onclick="showPage('fac-science')" class="dropdown-item"><i class="fas fa-flask w-4"></i> Science Laboratory</a>
         <a onclick="showPage('fac-library')" class="dropdown-item"><i class="fas fa-book-open w-4"></i> Literacy Library</a>
     </div>
 </div>
+            <button onclick="toggleDarkMode()" class="text-white hover:text-brand-gold transition-colors p-2 mx-2" title="Toggle Dark Mode">
+    <i id="theme-icon-desktop" class="fas fa-moon text-lg"></i>
+</button>
 
             <button onclick="showPage('adm-enroll')" class="bg-[#c5a059] text-white px-8 py-4 rounded-full transition-all duration-300 hover:bg-white hover:text-[#005a32] border border-[#005a32]">Apply 2026</button>
         </div>
@@ -445,10 +507,20 @@ nav {
                 <i class="fas fa-calendar-alt text-[12px] text-brand-gold/50"></i>
             </a>
             
+            <div class="flex items-center gap-4">
+    <button onclick="toggleDarkMode()" class="text-white hover:text-brand-gold transition-colors p-2" title="Toggle Dark Mode">
+        <i id="theme-icon" class="fas fa-moon text-lg"></i>
+    </button>
+    <button onclick="showPage('adm-enroll')" class="bg-[#c5a059] text-white px-8 py-4 rounded-full transition-all duration-300 hover:bg-white hover:text-[#005a32] border border-[#005a32]">Apply 2026</button>
+</div>
+            
             <div class="pt-8 flex flex-col gap-4">
                 <button onclick="showPage('adm-enroll'); toggleMenu();" class="bg-brand-gold text-white py-4 rounded-xl font-bold tracking-widest shadow-lg active:scale-95 transition-transform">
                     APPLY 2026
                 </button>
+
+               
+                
                 <div class="flex justify-center gap-8 pt-6 text-white/40">
                     <a href="#" class="hover:text-brand-gold transition-colors"><i class="fab fa-facebook text-2xl"></i></a>
                     <a href="#" class="hover:text-brand-gold transition-colors"><i class="fab fa-instagram text-2xl"></i></a>
@@ -498,7 +570,7 @@ nav {
                     </div>
                 </div>
             </div>
-            <div id="stats-tracker" style="background: #FFFFFF; padding: 60px 0; width: 100%; border-top: 1px solid #eee;">
+           <div id="stats-tracker" class="py-[60px] w-full border-t border-gray-100 transition-colors duration-300">
     <div style="max-width: 1100px; margin: 0 auto; display: flex; flex-wrap: wrap; justify-content: space-around; text-align: center;">
         
         <div style="flex: 1; min-width: 200px;">
@@ -955,6 +1027,31 @@ function loadVideo() {
             </ul>
         </div>
     </div>
+           <div class="mt-20 p-10 bg-brand-light rounded-[40px] shadow-inner reveal">
+    <h3 class="text-3xl font-bold text-brand-green mb-8 text-center">Estimated Fees Calculator</h3>
+    <div class="grid md:grid-cols-2 gap-10">
+        <div class="space-y-6">
+            <div>
+                <label>Select Level</label>
+                <select id="calc-level" class="form-input">
+                    <option value="45000">Kindergarten</option>
+                    <option value="65000">Junior School (Yr 1-6)</option>
+                    <option value="85000">Secondary (Yr 7-11)</option>
+                    <option value="120000">A-Levels (Sixth Form)</option>
+                </select>
+            </div>
+            <div class="flex items-center gap-4">
+                <input type="checkbox" id="calc-boarding" class="w-5 h-5 accent-brand-green">
+                <label class="mb-0">Include Boarding (+40,000 KES)</label>
+            </div>
+            <button onclick="calculateFees()" class="w-full bg-brand-green text-white py-4 rounded-xl font-bold hover:bg-brand-gold transition-colors">Calculate Total</button>
+        </div>
+        <div class="bg-white p-8 rounded-3xl shadow-lg flex flex-col justify-center items-center text-center">
+            <span class="text-gray-500 uppercase text-xs font-bold tracking-widest mb-2">Estimated Per Term</span>
+            <div class="text-5xl font-bold text-brand-green">KES <span id="total-display">0</span></div>
+        </div>
+    </div>
+</div>
 </section>
 
         
@@ -1737,5 +1834,36 @@ window.addEventListener('load', function() {
         lastScrollY = currentScrollY;
     });
 </script>
+<script>
+   function toggleDarkMode() {
+    document.body.classList.toggle('dark-mode');
+    
+    // Select both desktop and mobile icons
+    const desktopIcon = document.getElementById('theme-icon-desktop');
+    const mobileIcon = document.getElementById('theme-icon'); // Existing mobile icon ID
+
+    const isDark = document.body.classList.contains('dark-mode');
+    
+    // Update both icons
+    if (isDark) {
+        if(desktopIcon) desktopIcon.classList.replace('fa-moon', 'fa-sun');
+        if(mobileIcon) mobileIcon.classList.replace('fa-moon', 'fa-sun');
+    } else {
+        if(desktopIcon) desktopIcon.classList.replace('fa-sun', 'fa-moon');
+        if(mobileIcon) mobileIcon.classList.replace('fa-sun', 'fa-moon');
+    }
+}
+</script>
+<script>
+// Fees Calculator Logic
+function calculateFees() {
+    const baseFee = parseInt(document.getElementById('calc-level').value);
+    const boardingFee = document.getElementById('calc-boarding').checked ? 40000 : 0;
+    const total = baseFee + boardingFee;
+    
+    document.getElementById('total-display').innerText = total.toLocaleString();
+}
+
+    </script>
 </body>
 </html>

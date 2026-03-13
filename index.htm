@@ -372,10 +372,17 @@ nav {
                     <a onclick="showPage('adm-fees')" class="dropdown-item"><i class="fas fa-file-invoice-dollar w-4"></i> Fee Structure 2025/26</a>
                     <a onclick="showPage('adm-enroll')" class="dropdown-item"><i class="fas fa-user-plus w-4"></i> Enrollment Form</a>
                     <a onclick="showPage('adm-faqs')" class="dropdown-item"><i class="fas fa-question-circle w-4"></i> Admissions FAQs</a>
+                     <a onclick="showPage('transport')" class="dropdown-item"><i class="fas fa-bus w-4"></i> Transport </a>
                 </div>
             </div>
 
-            <a onclick="showPage('school-calendar')" class="nav-link">Calendar</a>
+           <div class="nav-item">
+    <span class="nav-link flex items-center">Academia <i class="fas fa-chevron-down ml-2 text-[9px]"></i></span>
+    <div class="dropdown-menu">
+        <a onclick="showPage('school-calendar')" class="dropdown-item"><i class="fas fa-calendar-alt w-4"></i> School Calendar</a>
+        <a onclick="showPage('NE')" class="dropdown-item"><i class="fas fa-bullhorn w-4"></i> News & Events</a>
+    </div>
+</div>
 
             <div class="nav-item">
                 <span class="nav-link flex items-center">Facilities <i class="fas fa-chevron-down ml-2 text-[9px]"></i></span>
@@ -469,6 +476,7 @@ nav {
                         <a onclick="showPage('adm-fees'); toggleMenu();" class="py-3 flex items-center gap-3"><i class="fas fa-file-invoice-dollar text-brand-gold w-4"></i> Fee Structure 25/26</a>
                         <a onclick="showPage('adm-enroll'); toggleMenu();" class="py-3 flex items-center gap-3"><i class="fas fa-user-plus text-brand-gold w-4"></i> Enrollment Form</a>
                         <a onclick="showPage('adm-faqs'); toggleMenu();" class="py-3 flex items-center gap-3"><i class="fas fa-question-circle text-brand-gold w-4"></i> FAQs</a>
+                        <a onclick="showPage('transport'); toggleMenu();" class="py-3 flex items-center gap-3"><i class="fas fa-bus text-brand-gold w-4"></i> Transport</a>
                     </div>
                 </div>
             </div>
@@ -502,10 +510,18 @@ nav {
                 </div>
             </div>
 
-            <a onclick="showPage('school-calendar'); toggleMenu();" class="py-4 text-white text-base font-bold border-b border-white/5 flex justify-between items-center">
-                <span>CALENDAR 2026</span>
-                <i class="fas fa-calendar-alt text-[12px] text-brand-gold/50"></i>
-            </a>
+           <div class="border-b border-white/5">
+    <div onclick="toggleMobileDropdown('m-academia')" class="py-4 flex justify-between items-center text-white text-base font-bold cursor-pointer">
+        <span>ACADEMIA</span>
+        <i id="m-academia-icon" class="fas fa-chevron-down text-xs text-brand-gold transition-transform duration-300"></i>
+    </div>
+    <div id="m-academia" class="mobile-dropdown bg-black/10 rounded-xl overflow-hidden mb-2">
+        <div class="flex flex-col py-2 px-4 space-y-1 text-gray-300 text-sm">
+            <a onclick="showPage('school-calendar'); toggleMenu();" class="py-3 flex items-center gap-3"><i class="fas fa-calendar-alt text-brand-gold w-4"></i> School Calendar</a>
+            <a onclick="showPage('news-events'); toggleMenu();" class="py-3 flex items-center gap-3"><i class="fas fa-bullhorn text-brand-gold w-4"></i> News & Events</a>
+        </div>
+    </div>
+</div>
             
             <div class="flex items-center gap-4">
     <button onclick="toggleDarkMode()" class="text-white hover:text-brand-gold transition-colors p-2" title="Toggle Dark Mode">
@@ -536,7 +552,7 @@ nav {
                     <h1 class="text-6xl md:text-8xl font-bold mb-8 leading-tight reveal">Elevating Global <br/><span class="text-brand-gold italic">Perspectives.</span></h1>
                     <p class="text-xl md:text-2xl mb-12 font-light text-gray-200 max-w-2xl mx-auto reveal">Providing a world-class British Curriculum education in the heart of Nakuru's serene suburbs. Shaping leaders for the 2026 global landscape.</p>
                     <div class="flex flex-col sm:flex-row gap-5 justify-center reveal">
-                        <button onclick="showPage('edu-secondary')" class="bg-[#c5a059] text-white px-8 py-4 rounded-full transition-all duration-300 hover:bg-white hover:text-[#005a32] border border-[#005a32]">Explore Academics</button>
+                        <button onclick="showPage('book-tour')" class="bg-[#c5a059] text-white px-8 py-4 rounded-full transition-all duration-300 hover:bg-white hover:text-[#005a32] border border-[#005a32]">Book a Tour</button>
                         <button onclick="showPage('adm-fees')" class="bg-[##F4FAFC] text-white px-8 py-4 rounded-full transition-all duration-300 hover:bg-white hover:text-[#005a32] border border-[#ffffff]">View 2025/26 Fees</button>
                     </div>
                 </div>
@@ -568,6 +584,81 @@ nav {
                     </div>
                 </div>
             </div>
+<div class="py-16 px-6 bg-white border-t border-gray-50">
+  
+    <div class="max-w-7xl mx-auto w-full">
+        <div class="text-center mb-12 reveal">
+            <span class="px-4 py-1.5 rounded-full bg-[#005a32]/5 text-[#005a32] text-[10px] font-bold uppercase tracking-[0.2em] border border-[#005a32]/10">Academic Excellence</span>
+            <h2 class="text-3xl md:text-5xl font-bold text-[#005a32] mt-5 mb-4 font-['Playfair_Display']">Our Academic Journey</h2>
+            <p class="text-gray-500 max-w-xl mx-auto text-base">A seamless transition through every stage of development, following the British National Curriculum.</p>
+        </div>
+
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+            
+            <div onclick="showPage('edu-kg')" class="group cursor-pointer relative h-[450px] rounded-[32px] overflow-hidden border border-gray-100 shadow-sm hover:shadow-xl transition-all duration-700 reveal bg-white">
+                <img src="https://lh3.googleusercontent.com/u/0/d/1HltWsCbSGZrwZXVAeyobIVhyD2oydvUp" class="absolute inset-0 w-full h-full object-cover transition-transform duration-1000 group-hover:scale-110">
+                <div class="absolute inset-0 bg-gradient-to-t from-[#005a32] via-[#005a32]/30 to-transparent opacity-90"></div>
+                <div class="absolute bottom-0 p-6 w-full transform transition-all duration-500">
+                    <span class="text-[#c5a059] font-bold tracking-widest text-[10px] uppercase mb-1 block">Stage 01</span>
+                    <h3 class="text-xl font-bold text-white mb-2">Kindergarten</h3>
+                    <div class="max-h-0 overflow-hidden group-hover:max-h-24 transition-all duration-500 ease-in-out">
+                        <p class="text-white/80 text-xs mb-4">Nurturing curiosity and discovery through the EYFS framework for our youngest learners.</p>
+                    </div>
+                    <div class="flex items-center gap-2 text-[#c5a059] font-bold text-xs">
+                        Explore EYFS <i class="fa-solid fa-arrow-right-long transition-transform group-hover:translate-x-2"></i>
+                    </div>
+                </div>
+            </div>
+
+            <div onclick="showPage('edu-junior')" class="group cursor-pointer relative h-[450px] rounded-[32px] overflow-hidden border border-gray-100 shadow-sm hover:shadow-xl transition-all duration-700 reveal bg-white">
+                <img src=" https://lh3.googleusercontent.com/u/0/d/1lbJtW54LAcgx9lx1ye3Z0hpkL_ax6wAN" class="absolute inset-0 w-full h-full object-cover transition-transform duration-1000 group-hover:scale-110">
+                <div class="absolute inset-0 bg-gradient-to-t from-[#005a32] via-[#005a32]/30 to-transparent opacity-90"></div>
+                <div class="absolute bottom-0 p-6 w-full transform transition-all duration-500">
+                    <span class="text-[#c5a059] font-bold tracking-widest text-[10px] uppercase mb-1 block">Stage 02</span>
+                    <h3 class="text-xl font-bold text-white mb-2">Junior School</h3>
+                    <div class="max-h-0 overflow-hidden group-hover:max-h-24 transition-all duration-500 ease-in-out">
+                        <p class="text-white/80 text-xs mb-4">Building strong academic foundations in core subjects with a focus on holistic growth.</p>
+                    </div>
+                    <div class="flex items-center gap-2 text-[#c5a059] font-bold text-xs">
+                        Explore Junior <i class="fa-solid fa-arrow-right-long transition-transform group-hover:translate-x-2"></i>
+                    </div>
+                </div>
+            </div>
+
+            <div onclick="showPage('edu-secondary')" class="group cursor-pointer relative h-[450px] rounded-[32px] overflow-hidden border border-gray-100 shadow-sm hover:shadow-xl transition-all duration-700 reveal bg-white">
+                <img src="https://lh3.googleusercontent.com/u/0/d/1KSd5ZzEd8UQbWdlmQ8UsrAD-JW684YIQ" class="absolute inset-0 w-full h-full object-cover transition-transform duration-1000 group-hover:scale-110">
+                <div class="absolute inset-0 bg-gradient-to-t from-[#005a32] via-[#005a32]/30 to-transparent opacity-90"></div>
+                <div class="absolute bottom-0 p-6 w-full transform transition-all duration-500">
+                    <span class="text-[#c5a059] font-bold tracking-widest text-[10px] uppercase mb-1 block">Stage 03</span>
+                    <h3 class="text-xl font-bold text-white mb-2">Senior School</h3>
+                    <div class="max-h-0 overflow-hidden group-hover:max-h-24 transition-all duration-500 ease-in-out">
+                        <p class="text-white/80 text-xs mb-4">Preparing for IGCSE success with specialized subject focus and global pathways.</p>
+                    </div>
+                    <div class="flex items-center gap-2 text-[#c5a059] font-bold text-xs">
+                        Explore Senior <i class="fa-solid fa-arrow-right-long transition-transform group-hover:translate-x-2"></i>
+                    </div>
+                </div>
+            </div>
+
+            <div onclick="showPage('fac-boarding')" class="group cursor-pointer relative h-[450px] rounded-[32px] overflow-hidden border border-gray-100 shadow-sm hover:shadow-xl transition-all duration-700 reveal bg-white">
+                <img src="https://images.unsplash.com/photo-1555854817-2b22603c76db?auto=format&fit=crop&q=80&w=800" class="absolute inset-0 w-full h-full object-cover transition-transform duration-1000 group-hover:scale-110">
+                <div class="absolute inset-0 bg-gradient-to-t from-[#c5a059] via-[#c5a059]/40 to-transparent opacity-95"></div>
+                <div class="absolute bottom-0 p-6 w-full transform transition-all duration-500">
+                    <span class="text-[#005a32] font-bold tracking-widest text-[10px] uppercase mb-1 block">Living</span>
+                    <h3 class="text-xl font-bold text-white mb-2">Boarding Life</h3>
+                    <div class="max-h-0 overflow-hidden group-hover:max-h-24 transition-all duration-500 ease-in-out">
+                        <p class="text-white/80 text-xs mb-4">A home away from home offering a safe, disciplined, and supportive residence.</p>
+                    </div>
+                    <div class="flex items-center gap-2 text-white font-bold text-[10px] bg-[#005a32]/90 backdrop-blur-sm px-3 py-2 rounded-full w-fit">
+                        Learn More <i class="fa-solid fa-house-chimney transition-transform group-hover:scale-110"></i>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>
+          <div class="py-16 px-6 bg-white border-t border-gray-50">  
            <div id="stats-tracker" class="py-[60px] w-full border-t border-gray-100 transition-colors duration-300">
     <div style="max-width: 1100px; margin: 0 auto; display: flex; flex-wrap: wrap; justify-content: space-around; text-align: center;">
         
@@ -594,6 +685,8 @@ nav {
 
     </div>
 </div>
+              </div>
+          
         </section>
         <!-- About us-->
         <section id="about-vision" class="page-content py-32 px-6 max-w-7xl mx-auto" style="display:none;">
@@ -616,7 +709,7 @@ nav {
             </div>
         </div>
         <div class="reveal">
-            <img src="https://lh3.googleusercontent.com/u/0/d/1YQbTjkE6BXXnJBq0Nhb4zxXoG3Pi4oR5" alt="Mustard Seed Vision" class="rounded-[40px] shadow-2xl w-full h-[400px] object-cover">
+            <img src="https://lh3.googleusercontent.com/u/0/d/1pqURhgpXbVzz3oDpM_WXreV6wRll2zya" alt="Mustard Seed Vision" class="rounded-[40px] shadow-2xl w-full h-[400px] object-cover">
         </div>
     </div>
 
@@ -681,6 +774,34 @@ function loadVideo() {
             </div>
         </div>
     </div>
+  
+  <div class="my-16">
+    <h2 class="text-3xl font-bold text-brand-green dark:text-brand-gold font-serif mb-8 text-center lg:text-left italic">
+        Our Kiamunyi Campus Location
+    </h2>
+
+    <div class="relative group">
+        <div class="absolute -inset-2 bg-brand-gold/10 rounded-3xl transform -rotate-1 group-hover:rotate-0 transition-transform duration-500"></div>
+        
+        <div class="relative h-[450px] w-full rounded-2xl overflow-hidden shadow-xl border border-gray-200 dark:border-white/10">
+            <iframe 
+                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3989.761044438318!2d36.015091774351334!3d-0.27855353542453476!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x18298dc955555555%3A0xc3f5a0928014e427!2sMustard%20Seed%20International%20Schools!5e0!3m2!1sen!2ske!4v1710355000000!5m2!1sen!2ske" 
+                width="100%" 
+                height="100%" 
+                style="border:0;" 
+                allowfullscreen="" 
+                loading="lazy" 
+                referrerpolicy="no-referrer-when-downgrade">
+            </iframe>
+        </div>
+        
+        <div class="mt-4 flex items-center justify-end px-2">
+            <a href="https://maps.app.goo.gl/o1S9W6S5v6eW6pM47" target="_blank" class="text-xs font-bold text-brand-green dark:text-brand-gold uppercase tracking-widest hover:underline flex items-center gap-2">
+                Get Directions <i class="fas fa-external-link-alt text-[10px]"></i>
+            </a>
+        </div>
+    </div>
+</div>
 </section>
         
         <!-- Academics: Kindergarten -->
@@ -701,7 +822,7 @@ function loadVideo() {
             </div>
         </div>
         <div class="reveal">
-            <img src="https://lh3.googleusercontent.com/u/0/d/1OlnCbUdzbUvYH0FwRIEcxZKueWIIoCy-" alt="Mustard Seed Kindergarten Students" class="rounded-[40px] shadow-2xl w-full h-[500px] object-cover">
+            <img src="https://lh3.googleusercontent.com/u/0/d/1578rg7ZJulSumbMPb-YTrDQ9bmEvU9UA" alt="Mustard Seed Kindergarten Students" class="rounded-[40px] shadow-2xl w-full h-[500px] object-cover">
         </div>
     </div>
 
@@ -804,7 +925,7 @@ function loadVideo() {
 
     <div class="grid lg:grid-cols-2 gap-20 items-start mb-16">
         <div class="reveal order-2 lg:order-1">
-            <img src="https://lh3.googleusercontent.com/u/0/d/1wJEkjXTStxwpeOW7LU9XFCD84Kmovlgg" alt="Junior Science Laboratory" class="rounded-[40px] shadow-2xl w-full h-[400px] object-cover">
+            <img src="https://lh3.googleusercontent.com/u/0/d/1CbbGynElq_w1vz0NuSTGgq_xGjzMKRjD" alt="Junior Science Laboratory" class="rounded-[40px] shadow-2xl w-full h-[400px] object-cover">
         </div>
         
         <div class="reveal order-1 lg:order-2">
@@ -837,6 +958,52 @@ function loadVideo() {
             </p>
         </div>
     </div>
+           <div class="mt-16">
+    <div class="flex items-center space-x-4 mb-10">
+        <div class="h-1 w-12 bg-[#c5a059]"></div>
+        <h3 class="text-3xl font-bold text-[#005a32] font-serif">Junior Clubs & Sports</h3>
+    </div>
+
+    <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+        
+        <div class="group relative overflow-hidden rounded-3xl h-80 shadow-lg transition-all duration-500">
+            <img src="https://images.unsplash.com/photo-1599587412197-e83f3f9b177e?auto=format&fit=crop&q=80&w=800" alt="Rollerblading" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110">
+            <div class="absolute inset-0 bg-gradient-to-t from-black/90 via-transparent to-transparent flex flex-col justify-end p-6">
+                <div class="flex items-center text-white mb-1">
+                    <span class="font-bold text-lg">Rollerblading</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="group relative overflow-hidden rounded-3xl h-80 shadow-lg transition-all duration-500">
+            <img src="https://lh3.googleusercontent.com/u/0/d/1MxuU0o2pXxpdgWBYOxQcA2j1NyocpGqB" alt="ICT Club" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110">
+            <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent flex flex-col justify-end p-6">
+                <div class="flex items-center text-white mb-1">
+                    <span class="font-bold text-lg">Scout</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="group relative overflow-hidden rounded-3xl h-80 shadow-lg transition-all duration-500">
+            <img src="https://lh3.googleusercontent.com/u/0/d/1TgrJX3yAfUuloXWHbT3ebGPdvV2SZjdr" alt="Junior Football" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110">
+            <div class="absolute inset-0 bg-gradient-to-t from-black/90 via-transparent to-transparent flex flex-col justify-end p-6">
+                <div class="flex items-center text-white mb-1">
+                    <span class="font-bold text-lg">Taekwondo</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="group relative overflow-hidden rounded-3xl h-80 shadow-lg transition-all duration-500">
+            <img src="https://lh3.googleusercontent.com/u/0/d/1FZauTG3Lp1-c7rfLMJBuKqbBFKsx4xAa" alt="Junior Swimming" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110">
+            <div class="absolute inset-0 bg-gradient-to-t from-black/90 via-transparent to-transparent flex flex-col justify-end p-6">
+                <div class="flex items-center text-white mb-1">
+                    <span class="font-bold text-lg">Swimming</span>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>
 </section>
 
         <!-- Academics: Secondary -->
@@ -857,7 +1024,7 @@ function loadVideo() {
             </div>
         </div>
         <div class="reveal">
-            <img src="https://lh3.googleusercontent.com/u/0/d/11bWw65dczNqHSrKRKCYn1bipzW301XPO" alt="Mustard Seed Senior Students" class="rounded-[40px] shadow-2xl w-full h-[500px] object-cover">
+            <img src="https://lh3.googleusercontent.com/u/0/d/1YQbTjkE6BXXnJBq0Nhb4zxXoG3Pi4oR5" alt="Mustard Seed Senior Students" class="rounded-[40px] shadow-2xl w-full h-[500px] object-cover">
         </div>
     </div>
 
@@ -894,7 +1061,7 @@ function loadVideo() {
 
     <div class="grid lg:grid-cols-2 gap-20 items-start mb-16">
         <div class="reveal order-2 lg:order-1">
-            <img src="https://lh3.googleusercontent.com/u/0/d/1KSd5ZzEd8UQbWdlmQ8UsrAD-JW684YIQ" alt="Cambridge International Curriculum" class="rounded-[40px] shadow-2xl w-full h-[450px] object-cover">
+            <img src="https://lh3.googleusercontent.com/u/0/d/11bWw65dczNqHSrKRKCYn1bipzW301XPO" alt="Cambridge International Curriculum" class="rounded-[40px] shadow-2xl w-full h-[450px] object-cover">
         </div>
         <div class="reveal order-1 lg:order-2">
             <h3 class="text-2xl font-bold mb-6 text-brand-green">Curriculum Pathway</h3>
@@ -925,21 +1092,119 @@ function loadVideo() {
             </div>
         </div>
     </div>
+<div class="mt-20 border-t border-gray-100 pt-16">
+    <div class="text-center mb-12">
+        <h3 class="text-3xl font-bold text-[#005a32] font-serif mb-4">Learn More About IGCSE</h3>
+        <p class="text-gray-500 max-w-2xl mx-auto">Foundational knowledge and global standards for students aged 15-16.</p>
+    </div>
 
-    <div class="grid md:grid-cols-2 gap-8 reveal">
-        <div class="p-8 bg-brand-green text-white rounded-3xl shadow-lg">
-            <h4 class="font-bold mb-4 flex items-center gap-2"><i class="fas fa-trophy text-brand-gold"></i> Games and Sports</h4>
-            <p class="text-sm opacity-90 leading-relaxed">
-                We focus on recreational sport, health, and fitness. Whether learning to compete or playing to win, every learner has the opportunity to get involved regardless of ability.
-            </p>
+    <div class="bg-white p-8 rounded-3xl shadow-lg border border-gray-50 mb-12">
+        <div class="flex items-center mb-8">
+            <div class="w-12 h-12 bg-[#c5a059]/10 text-[#c5a059] rounded-xl flex items-center justify-center mr-4">
+                <i class="fas fa-book-open text-xl"></i>
+            </div>
+            <h4 class="text-2xl font-bold text-[#005a32]">IGCSE Subjects</h4>
         </div>
-        <div class="p-8 bg-white border border-gray-100 rounded-3xl shadow-sm">
-            <h4 class="font-bold text-brand-green mb-4 flex items-center gap-2"><i class="fas fa-hands-helping text-brand-gold"></i> Learning Support</h4>
-            <p class="text-sm text-gray-600 leading-relaxed">
-                An intervention programme providing students with academic and social skills. Students learn to recognize their strengths and take responsibility for their own success.
-            </p>
+        <div class="grid grid-cols-2 md:grid-cols-4 gap-4 text-sm text-gray-600">
+
+            <div class="flex items-center"><i class="fas fa-chevron-right text-[10px] mr-2 text-[#c5a059]"></i> Biology</div>
+            <div class="flex items-center"><i class="fas fa-chevron-right text-[10px] mr-2 text-[#c5a059]"></i> Business Studies</div>
+            <div class="flex items-center"><i class="fas fa-chevron-right text-[10px] mr-2 text-[#c5a059]"></i> Chemistry</div>
+            <div class="flex items-center"><i class="fas fa-chevron-right text-[10px] mr-2 text-[#c5a059]"></i> English Language</div>
+            <div class="flex items-center"><i class="fas fa-chevron-right text-[10px] mr-2 text-[#c5a059]"></i> English Literature</div>
+            <div class="flex items-center"><i class="fas fa-chevron-right text-[10px] mr-2 text-[#c5a059]"></i> French</div>
+            <div class="flex items-center"><i class="fas fa-chevron-right text-[10px] mr-2 text-[#c5a059]"></i> Geography</div>
+            <div class="flex items-center"><i class="fas fa-chevron-right text-[10px] mr-2 text-[#c5a059]"></i> History</div>
+            <div class="flex items-center"><i class="fas fa-chevron-right text-[10px] mr-2 text-[#c5a059]"></i> Kiswahili</div>
+            <div class="flex items-center"><i class="fas fa-chevron-right text-[10px] mr-2 text-[#c5a059]"></i> Mathematics</div>
+            <div class="flex items-center"><i class="fas fa-chevron-right text-[10px] mr-2 text-[#c5a059]"></i> Music</div>
+            <div class="flex items-center"><i class="fas fa-chevron-right text-[10px] mr-2 text-[#c5a059]"></i> Physical Education</div>
+            <div class="flex items-center"><i class="fas fa-chevron-right text-[10px] mr-2 text-[#c5a059]"></i> Physics</div>
+       
         </div>
     </div>
+
+    <div class="grid md:grid-cols-2 gap-8">
+        <div class="space-y-8">
+            <div class="bg-gray-50 p-6 rounded-2xl border-l-4 border-[#c5a059]">
+                <h5 class="font-bold text-[#005a32] mb-2 uppercase text-xs tracking-widest">IGCSE Grading System</h5>
+                <p class="text-sm text-gray-600 leading-relaxed">
+                    The Cambridge Examination Board uses an **A*-G grading system** by which all work is assessed. Grades are awarded in the months following examination and coursework submission.
+                </p>
+            </div>
+
+            <div class="bg-gray-50 p-6 rounded-2xl border-l-4 border-[#005a32]">
+                <h5 class="font-bold text-[#005a32] mb-2 uppercase text-xs tracking-widest">IGCSE & GCSE Differences</h5>
+                <p class="text-sm text-gray-600 leading-relaxed">
+                    GCSE is compulsory within the UK, whereas the **IGCSE** is delivered to thousands of students worldwide. Both are highly-regarded variants of the UK National Curriculum and suitable precursors to A-level study. 
+                    <a href="#" class="text-[#c5a059] font-bold hover:underline">Click here for more information.</a>
+                </p>
+            </div>
+        </div>
+
+        <div class="space-y-8">
+            <div class="bg-gray-50 p-6 rounded-2xl border-l-4 border-[#c5a059]">
+                <h5 class="font-bold text-[#005a32] mb-2 uppercase text-xs tracking-widest">IGCSE Teachers</h5>
+                <p class="text-sm text-gray-600 leading-relaxed">
+                    Our educators are highly experienced in delivering the syllabus and assessment criteria. We aim to provide growing young adults with the skills necessary to thrive in future studies and understand the world around them.
+                </p>
+            </div>
+
+            <div class="bg-gray-50 p-6 rounded-2xl border-l-4 border-[#005a32]">
+                <h5 class="font-bold text-[#005a32] mb-2 uppercase text-xs tracking-widest">IGCSE Assessment</h5>
+                <p class="text-sm text-gray-600 leading-relaxed">
+                    Criteria vary by subject: written exam papers, language oral examinations, or practicals for Drama and Science. Students may also present a coursework portfolio as part of the end-of-year review.
+                </p>
+            </div>
+        </div>
+    </div>
+
+    <div class="mt-16">
+    <div class="flex items-center space-x-4 mb-10">
+        <div class="h-1 w-12 bg-[#c5a059]"></div>
+        <h3 class="text-3xl font-bold text-[#005a32] font-serif">Junior Clubs & Sports</h3>
+    </div>
+
+    <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+        
+        <div class="group relative overflow-hidden rounded-3xl h-80 shadow-lg transition-all duration-500">
+            <img src="https://images.unsplash.com/photo-1599587412197-e83f3f9b177e?auto=format&fit=crop&q=80&w=800" alt="Football" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110">
+            <div class="absolute inset-0 bg-gradient-to-t from-black/90 via-transparent to-transparent flex flex-col justify-end p-6">
+                <div class="flex items-center text-white mb-1">
+                    <span class="font-bold text-lg">Football</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="group relative overflow-hidden rounded-3xl h-80 shadow-lg transition-all duration-500">
+            <img src="uU0o2pXxpdgWBYOxQcA2j1NyocpGqB" alt="Basketball" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110">
+            <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent flex flex-col justify-end p-6">
+                <div class="flex items-center text-white mb-1">
+                    <span class="font-bold text-lg">Basketball</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="group relative overflow-hidden rounded-3xl h-80 shadow-lg transition-all duration-500">
+            <img src="https://lh3.googleusercontent.com/u/0/d/140M_6AEEC43WyoR9d6tmhjIeT9gS2QEB" alt="Junior Football" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110">
+            <div class="absolute inset-0 bg-gradient-to-t from-black/90 via-transparent to-transparent flex flex-col justify-end p-6">
+                <div class="flex items-center text-white mb-1">
+                    <span class="font-bold text-lg">Netball</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="group relative overflow-hidden rounded-3xl h-80 shadow-lg transition-all duration-500">
+            <img src="https://lh3.googleusercontent.com/u/0/d/1FZauTG3Lp1-c7rfLMJBuKqbBFKsx4xAa" alt="Junior Swimming" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110">
+            <div class="absolute inset-0 bg-gradient-to-t from-black/90 via-transparent to-transparent flex flex-col justify-end p-6">
+                <div class="flex items-center text-white mb-1">
+                    <span class="font-bold text-lg">Swimming</span>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>
 </section>
 
         <!-- Academics: A-Levels -->
@@ -966,6 +1231,7 @@ function loadVideo() {
                     </div>
                 </div>
             </div>
+            
         </section>
 
         <!-- Admission: Fee Structure -->
@@ -1254,6 +1520,88 @@ async function submitApplication(event) {
                 </div>
             </div>
         </section>
+    <!-- Transport-->
+    <section id="transport" class="page-content py-24 px-6 max-w-7xl mx-auto" style="display:none;">
+    <div>
+            <h3 class="text-3xl font-bold text-[#005a32]">School Transport Services</h3>
+            <p class="text-gray-500">Termly charges based on zone location and proximity</p>
+        </div>
+    
+
+    <div class="grid md:grid-cols-2 gap-6">
+        <div class="flex justify-between items-center p-5 bg-gray-50 rounded-2xl border-l-4 border-[#c5a059]">
+            <div class="pr-4">
+                <p class="text-xs text-[#c5a059] font-bold uppercase tracking-wider">Zone 1</p>
+                <p class="text-gray-700 font-medium">Mercy Njeri, Nyumba Tano, Olive, Soil</p>
+            </div>
+            <span class="text-xl font-bold text-[#005a32] whitespace-nowrap">Ksh 10,680</span>
+        </div>
+
+        <div class="flex justify-between items-center p-5 bg-gray-50 rounded-2xl border-l-4 border-[#c5a059]">
+            <div class="pr-4">
+                <p class="text-xs text-[#c5a059] font-bold uppercase tracking-wider">Zone 2</p>
+                <p class="text-gray-700 font-medium">Baraka Estate, Notice Board</p>
+            </div>
+            <span class="text-xl font-bold text-[#005a32] whitespace-nowrap">Ksh 7,650</span>
+        </div>
+
+        <div class="flex justify-between items-center p-5 bg-gray-50 rounded-2xl border-l-4 border-[#c5a059]">
+            <div class="pr-4">
+                <p class="text-xs text-[#c5a059] font-bold uppercase tracking-wider">Zone 3</p>
+                <p class="text-gray-700 font-medium">London, Total, Eveready/Githima, Ngata Bridge</p>
+            </div>
+            <span class="text-xl font-bold text-[#005a32] whitespace-nowrap">Ksh 17,570</span>
+        </div>
+
+        <div class="flex justify-between items-center p-5 bg-gray-50 rounded-2xl border-l-4 border-[#c5a059]">
+            <div class="pr-4">
+                <p class="text-xs text-[#c5a059] font-bold uppercase tracking-wider">Zone 4</p>
+                <p class="text-gray-700 font-medium text-sm">Milimani, Town, Section 58, Shell, Blankets, Kerima, Langalanga, Castles, Kaloleni C, Lakeview, Shabaab, Ngata gates</p>
+            </div>
+            <span class="text-xl font-bold text-[#005a32] whitespace-nowrap">Ksh 26,290</span>
+        </div>
+
+        <div class="flex justify-between items-center p-5 bg-gray-50 rounded-2xl border-l-4 border-[#c5a059]">
+            <div class="pr-4">
+                <p class="text-xs text-[#c5a059] font-bold uppercase tracking-wider">Zone 5</p>
+                <p class="text-gray-700 font-medium">Njoro, Shinners, Mawanga</p>
+            </div>
+            <span class="text-xl font-bold text-[#005a32] whitespace-nowrap">Ksh 29,020</span>
+        </div>
+
+        <div class="flex justify-between items-center p-5 bg-gray-50 rounded-2xl border-l-4 border-[#c5a059]">
+            <div class="pr-4">
+                <p class="text-xs text-[#c5a059] font-bold uppercase tracking-wider">Zone 6</p>
+                <p class="text-gray-700 font-medium">Kabarak</p>
+            </div>
+            <span class="text-xl font-bold text-[#005a32] whitespace-nowrap">Ksh 31,790</span>
+        </div>
+
+        <div class="flex justify-between items-center p-5 bg-gray-50 rounded-2xl border-l-4 border-[#c5a059]">
+            <div class="pr-4">
+                <p class="text-xs text-[#c5a059] font-bold uppercase tracking-wider">Zone 7</p>
+                <p class="text-gray-700 font-medium">Sobea</p>
+            </div>
+            <span class="text-xl font-bold text-[#005a32] whitespace-nowrap">Ksh 36,450</span>
+        </div>
+
+        <div class="flex justify-between items-center p-5 bg-gray-50 rounded-2xl border-l-4 border-[#c5a059]">
+            <div class="pr-4">
+                <p class="text-xs text-[#c5a059] font-bold uppercase tracking-wider">Zone 8</p>
+                <p class="text-gray-700 font-medium">Machine</p>
+            </div>
+            <span class="text-xl font-bold text-[#005a32] whitespace-nowrap">Ksh 37,970</span>
+        </div>
+    </div>
+
+    <div class="mt-8 p-4 bg-blue-50 rounded-xl flex items-center border border-blue-100">
+        <i class="fas fa-info-circle text-[#005a32] mr-3"></i>
+        <p class="text-sm text-gray-600 font-medium">
+            <span class="text-[#005a32] font-bold uppercase">Note:</span> 
+            One-way transport is charged at <span class="text-[#005a32] font-bold text-base">60%</span> of the termly fee.
+        </p>
+    </div>
+</section>
 
         <!-- Facilities: Dining -->
         <section id="fac-dining" class="page-content py-32 px-6 max-w-7xl mx-auto">
@@ -1327,13 +1675,6 @@ async function submitApplication(event) {
                 </div>
             </div>
         </div>
-    </div>
-
-    <div class="reveal text-center max-w-3xl mx-auto">
-        <div class="w-16 h-1 bg-brand-gold mx-auto mb-8"></div>
-        <p class="text-2xl font-serif text-brand-green italic leading-relaxed">
-            "Developing courage as they take risks, competitive intensity while exhibiting generosity of spirit."
-        </p>
     </div>
 </section>
         <!-- Facilities: Pool -->
@@ -1429,7 +1770,7 @@ async function submitApplication(event) {
             </div>
         </div>
         <div class="reveal">
-            <img src="https://images.unsplash.com/photo-1517694712202-14dd9538aa97?q=80&w=2070" alt="Modern ICT Lab" class="rounded-[40px] shadow-2xl w-full h-[500px] object-cover">
+            <img src="https://lh3.googleusercontent.com/u/0/d/1DWz9Z62E6YtWzudOOiYgx3OxqfzostK9" alt="Modern ICT Lab" class="rounded-[40px] shadow-2xl w-full h-[500px] object-cover">
         </div>
     </div>
 
@@ -1521,7 +1862,7 @@ async function submitApplication(event) {
 
     <div class="grid lg:grid-cols-2 gap-20 items-start">
         <div class="reveal order-2 lg:order-1">
-            <img src=" https://lh3.googleusercontent.com/u/0/d/17226lc5dq46u1Xc-F75RPkfVen1pIepf" alt="Quiet Research Area" class="rounded-[40px] shadow-2xl w-full h-[400px] object-cover">
+            <img src=" https://lh3.googleusercontent.com/u/0/d/1WiN5MWVVHHD6t3u0I958o75nr0z-CzvK" alt="Quiet Research Area" class="rounded-[40px] shadow-2xl w-full h-[400px] object-cover">
         </div>
         <div class="reveal order-1 lg:order-2">
             <h3 class="text-2xl font-bold mb-6 text-brand-green">Hub of Information</h3>
@@ -1572,8 +1913,134 @@ async function submitApplication(event) {
                     </div>
                 </div>
             </div>
-        </section>
-  
+            </section>
+            <!--Event & News-->
+            <section id="NE" class="page-content py-32 px-6 bg-[#f9f9f7] transition-colors dark:bg-[#ffffff]">
+    <div class="max-w-7xl mx-auto">
+        <span class="section-tag">Updates & Happenings</span>
+        <h2 class="text-5xl font-bold text-brand-green mb-16 dark:text-brand-gold">School News & Events</h2>
+        
+        <div class="grid lg:grid-cols-3 gap-12">
+            
+            <div class="lg:col-span-2 space-y-8" id="news-container">
+                <h3 class="text-2xl font-bold border-b border-gray-200 pb-4 mb-8 dark:text-white dark:border-white/10">Latest News</h3>
+                
+                <article class="bg-white dark:bg-white/5 rounded-3xl p-6 shadow-sm border border-gray-100 dark:border-white/10 flex flex-col md:flex-row gap-6 hover:shadow-md transition-shadow">
+                    <div class="w-full md:w-40 h-40 rounded-2xl bg-gray-100 dark:bg-white/10 flex-shrink-0 flex items-center justify-center">
+                        <i class="fas fa-file-signature text-3xl text-brand-gold"></i>
+                    </div>
+                    <div class="flex-1">
+                        <div class="text-brand-gold font-bold text-[10px] uppercase tracking-wider mb-2">March 10, 2026</div>
+                        <h4 class="text-xl font-bold mb-3 dark:text-white">IGCSE Mock Exam Preparations</h4>
+                        <p class="text-gray-500 dark:text-gray-400 text-sm leading-relaxed mb-4">
+                            Year 11 students will begin mock examinations on Monday 16th March. Ensure you have black pens and calculators ready. <strong>Be in the exam room 10 mins early.</strong>
+                        </p>
+                    </div>
+                </article>
+                
+                <article class="bg-white dark:bg-white/5 rounded-3xl p-6 shadow-sm border border-gray-100 dark:border-white/10 flex flex-col md:flex-row gap-6 hover:shadow-md transition-shadow">
+    <div class="w-full md:w-40 h-40 rounded-2xl bg-gray-100 dark:bg-white/10 flex-shrink-0 flex items-center justify-center">
+        <i class="fas fa-newspaper text-3xl text-brand-gold"></i>
+    </div>
+    <div class="flex-1">
+        <div class="text-brand-gold font-bold text-[10px] uppercase tracking-wider mb-2">New Date Here</div>
+        <h4 class="text-xl font-bold mb-3 dark:text-white">Swimming Gala</h4>
+        <p class="text-gray-500 dark:text-gray-400 text-sm leading-relaxed mb-4">
+            Detailes to be posted
+        </p>
+    </div>
+</article>
+
+                </div>
+
+        
+
+            <div class="space-y-6" id="events-container">
+                <h3 class="text-2xl font-bold border-b border-gray-200 pb-4 mb-8 dark:text-white dark:border-white/10">Upcoming Dates</h3>
+                
+                <div class="group bg-white dark:bg-white/5 p-5 rounded-2xl shadow-sm border border-gray-100 dark:border-white/10 flex items-center gap-5 hover:bg-brand-green hover:text-white transition-all cursor-default">
+                    <div class="text-center min-w-[60px] border-r border-gray-100 dark:border-white/10 pr-5 group-hover:border-white/20">
+                        <div class="text-2xl font-bold text-brand-green dark:text-brand-gold group-hover:text-white">16</div>
+                        <div class="text-[10px] uppercase font-bold text-brand-gold group-hover:text-brand-gold">Mar</div>
+                    </div>
+                    <div>
+                        <h4 class="font-bold text-sm group-hover:text-white">Mock Exams Begin</h4>
+                        <p class="text-gray-400 dark:text-gray-500 text-[11px] group-hover:text-white/80">8:00 AM — Exam Hall</p>
+                    </div>
+                </div>
+
+                <div class="group bg-white dark:bg-white/5 p-5 rounded-2xl shadow-sm border border-gray-100 dark:border-white/10 flex items-center gap-5 hover:bg-brand-green hover:text-white transition-all cursor-default">
+                    <div class="text-center min-w-[60px] border-r border-gray-100 dark:border-white/10 pr-5 group-hover:border-white/20">
+                        <div class="text-2xl font-bold text-brand-green dark:text-brand-gold group-hover:text-white">03</div>
+                        <div class="text-[10px] uppercase font-bold text-brand-gold group-hover:text-brand-gold">Apr</div>
+                    </div>
+                    <div>
+                        <h4 class="font-bold text-sm group-hover:text-white">Term 2 Closing</h4>
+                        <p class="text-gray-400 dark:text-gray-500 text-[11px] group-hover:text-white/80">Full Day Event</p>
+                    </div>
+                </div>
+
+                </div> 
+
+        </div>
+    </div>
+</section>
+    
+    <section id="book-tour" class="page-content py-24 px-6 bg-white dark:bg-[#ffffff]" style="display:none;">
+    <div class="max-w-4xl mx-auto">
+        <div class="text-center mb-16">
+            <span class="section-tag">Visit Us</span>
+            <h2 class="text-5xl font-bold text-brand-green dark:text-brand-gold font-serif mt-4">Schedule a Private Tour</h2>
+            <p class="text-gray-500 dark:text-gray-400 mt-4">Experience the serene Kiamunyi atmosphere and tour our world-class facilities firsthand.</p>
+        </div>
+
+        <div class="bg-white dark:bg-white/5 p-8 md:p-12 rounded-[40px] shadow-2xl border border-gray-100 dark:border-white/10">
+            <form onsubmit="submitTourRequest(event)" class="space-y-8">
+                
+                <div class="grid md:grid-cols-2 gap-8">
+                    <div>
+                        <label class="block text-sm font-bold text-brand-green dark:text-brand-gold uppercase tracking-widest mb-3">Parent Name</label>
+                        <input type="text" required class="w-full px-6 py-4 rounded-2xl border border-gray-200 dark:bg-black/20 dark:border-white/10 focus:ring-2 focus:ring-brand-gold outline-none transition-all" placeholder="Enter full name">
+                    </div>
+                    <div>
+                        <label class="block text-sm font-bold text-brand-green dark:text-brand-gold uppercase tracking-widest mb-3">Email Address</label>
+                        <input type="email" required class="w-full px-6 py-4 rounded-2xl border border-gray-200 dark:bg-black/20 dark:border-white/10 focus:ring-2 focus:ring-brand-gold outline-none transition-all" placeholder="email@example.com">
+                    </div>
+                </div>
+
+                <div class="grid md:grid-cols-2 gap-8">
+                    <div>
+                        <label class="block text-sm font-bold text-brand-green dark:text-brand-gold uppercase tracking-widest mb-3">Phone Number</label>
+                        <input type="tel" required class="w-full px-6 py-4 rounded-2xl border border-gray-200 dark:bg-black/20 dark:border-white/10 focus:ring-2 focus:ring-brand-gold outline-none transition-all" placeholder="+254...">
+                    </div>
+                    <div>
+                        <label class="block text-sm font-bold text-brand-green dark:text-brand-gold uppercase tracking-widest mb-3">Preferred Date</label>
+                        <input type="date" required class="w-full px-6 py-4 rounded-2xl border border-gray-200 dark:bg-black/20 dark:border-white/10 focus:ring-2 focus:ring-brand-gold outline-none transition-all">
+                    </div>
+                </div>
+
+                <div>
+                    <label class="block text-sm font-bold text-brand-green dark:text-brand-gold uppercase tracking-widest mb-3">Grade Level of Interest</label>
+                    <select class="w-full px-6 py-4 rounded-2xl border border-gray-200 dark:bg-black/20 dark:border-white/10 focus:ring-2 focus:ring-brand-gold outline-none transition-all appearance-none">
+                        <option>Early Years (EYFS)</option>
+                        <option>Junior School</option>
+                        <option>Secondary (IGCSE)</option>
+                        <option>Sixth Form (A-Levels)</option>
+                    </select>
+                </div>
+
+                <div>
+                    <label class="block text-sm font-bold text-brand-green dark:text-brand-gold uppercase tracking-widest mb-3">Additional Notes</label>
+                    <textarea class="w-full px-6 py-4 rounded-2xl border border-gray-200 dark:bg-black/20 dark:border-white/10 focus:ring-2 focus:ring-brand-gold outline-none transition-all h-32" placeholder="Any specific requirements?"></textarea>
+                </div>
+
+                <button type="submit" class="w-full bg-brand-green text-white py-6 rounded-2xl font-bold tracking-[0.2em] hover:bg-brand-gold transition-all shadow-xl transform hover:-translate-y-1 uppercase">
+                    Confirm Tour Request
+                </button>
+            </form>
+        </div>
+    </div>
+</section>
 
     <footer class="bg-brand-green text-white pt-24 pb-12 px-6">
         <div class="max-w-7xl mx-auto grid md:grid-cols-3 gap-12 border-b border-white/10 pb-12 mb-12">
@@ -1590,14 +2057,15 @@ async function submitApplication(event) {
                 <p class="text-gray-300 mb-2"><i class="fas fa-phone mr-2"></i> +254 704336717</p>
                 <p class="text-gray-300"><i class="fas fa-envelope mr-2"></i> dkiplebel@gmail.com</p>
             </div>
-            <div>
+           <div>
                 <h4 class="font-bold text-brand-gold uppercase tracking-widest text-sm mb-6">Newsletter</h4>
                 <div class="flex">
                     <input type="text" placeholder="Email" class="bg-white/10 p-4 rounded-l-xl w-full outline-none">
                     <button class="bg-brand-gold px-6 rounded-r-xl"><i class="fas fa-paper-plane"></i></button>
                 </div>
             </div>
-        </div>
+            </div>
+        
     
         
         <div class="bg-[#0b2b1a] py-16 border-t border-white/5">
@@ -1887,6 +2355,43 @@ function calculateFees() {
     document.getElementById('total-display').innerText = total.toLocaleString();
 }
 
+    </script>
+<script>
+    async function submitTourRequest(event) {
+    event.preventDefault();
+    const form = event.target;
+    const btn = form.querySelector('button');
+    
+    btn.innerText = "SENDING...";
+    btn.disabled = true;
+
+    // Mapping inputs to the backend data names
+    const tourData = {
+        parentName: form.elements[0].value,
+        email: form.elements[1].value,
+        phone: form.elements[2].value,
+        tourDate: form.elements[3].value,
+        grade: form.elements[4].value,
+        notes: form.elements[5].value
+    };
+
+    try {
+        // REPLACE THIS URL WITH YOUR NEW DEPLOYED SCRIPT URL
+        await fetch('https://script.google.com/macros/s/AKfycbygcCgjMuaAGlIOSLrdJy9q1aTyWmk3M93Z1H_e4S5wwQtaEul38eukJPfS6ytWe-Ep/exec', {
+            method: 'POST',
+            mode: 'no-cors',
+            body: JSON.stringify(tourData)
+        });
+
+        alert("Request Sent! A formal invitation has been sent to your email.");
+        form.reset();
+    } catch (error) {
+        alert("Something went wrong. Please try again.");
+    } finally {
+        btn.innerText = "CONFIRM TOUR REQUEST";
+        btn.disabled = false;
+    }
+}
     </script>
 </body>
 </html>

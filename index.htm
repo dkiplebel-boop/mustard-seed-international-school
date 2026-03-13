@@ -1031,12 +1031,29 @@ function loadVideo() {
         <div class="space-y-6">
             <div>
                 <label>Select Level</label>
-                <select id="calc-level" class="form-input">
-                    <option value="45000">Kindergarten</option>
-                    <option value="65000">Junior School (Yr 1-6)</option>
-                    <option value="85000">Secondary (Yr 7-11)</option>
-                    <option value="120000">A-Levels (Sixth Form)</option>
-                </select>
+               <select id="calc-level" class="form-input bg-white">
+    <optgroup label="Early Years">
+        <option value="38500">Playgroup (PG)</option>
+        <option value="42900">K1 - K3</option>
+    </optgroup>
+    <optgroup label="Junior School">
+        <option value="51800">Year 1</option>
+        <option value="51800">Year 2</option>
+        <option value="61500">Year 3</option>
+        <option value="61500">Year 4</option>
+        <option value="68900">Year 5</option>
+        <option value="68900">Year 6</option>
+    </optgroup>
+    <optgroup label="Secondary & Senior">
+        <option value="80000">Year 7</option>
+        <option value="80000">Year 8</option>
+        <option value="90250">Year 9</option>
+        <option value="90250">Year 10</option>
+        <option value="92600">Year 11</option>
+        <option value="91580">Year 12</option>
+        <option value="91580">Year 13</option>
+    </optgroup>
+</select>
             </div>
             <div class="flex items-center gap-4">
                 <input type="checkbox" id="calc-boarding" class="w-5 h-5 accent-brand-green">
@@ -1093,17 +1110,25 @@ function loadVideo() {
 
                     <div>
                         <label class="block text-sm font-medium mb-2">Applying for Level</label>
-                        <select id="s_grade" class="w-full p-4 rounded-2xl border bg-gray-50 outline-none">
-                            <optgroup label="Early Years">
-                                <option>Playgroup</option>
-                                <option>PP1 / KG1</option>
-                                <option>PP2 / KG2</option>
-                            </optgroup>
-                            <optgroup label="Primary & Secondary">
-                                <option>Year 1 - 6</option>
-                                <option>Year 7 - 9 (Junior)</option>
-                                <option>Year 10 - 13 (Senior)</option>
-                            </optgroup>
+
+                       <select id="s_grade" class="w-full p-4 rounded-2xl border bg-gray-50 outline-none">
+    <option value="">Select a Year...</option>
+    <option value="Playgroup">Playgroup</option>
+    <option value="K1-K3">K1 - K3</option>
+    <option value="Year 1">Year 1</option>
+    <option value="Year 2">Year 2</option>
+    <option value="Year 3">Year 3</option>
+    <option value="Year 4">Year 4</option>
+    <option value="Year 5">Year 5</option>
+    <option value="Year 6">Year 6</option>
+    <option value="Year 7">Year 7</option>
+    <option value="Year 8">Year 8</option>
+    <option value="Year 9">Year 9</option>
+    <option value="Year 10">Year 10</option>
+    <option value="Year 11">Year 11</option>
+    <option value="Year 12">Year 12</option>
+    <option value="Year 13">Year 13</option>
+
                         </select>
                     </div>
 

@@ -1992,73 +1992,84 @@ async function submitApplication(event) {
             </div>
             </section>
             <!--Event & News-->
-            <section id="NE" class="page-content py-32 px-6 bg-[#f9f9f7] transition-colors dark:bg-[#ffffff]">
+        <section id="NE" class="page-content py-32 px-6 bg-[var(--brand-light)]" style="display:none;">
     <div class="max-w-7xl mx-auto">
-        <span class="section-tag">Updates & Happenings</span>
-        <h2 class="text-5xl font-bold text-brand-green mb-16 dark:text-brand-gold">School News & Events</h2>
-        
-        <div class="grid lg:grid-cols-3 gap-12">
-            
-            <div class="lg:col-span-2 space-y-8" id="news-container">
-                <h3 class="text-2xl font-bold border-b border-gray-200 pb-4 mb-8 dark:text-white dark:border-white/10">Latest News</h3>
-                
-                <article class="bg-white dark:bg-white/5 rounded-3xl p-6 shadow-sm border border-gray-100 dark:border-white/10 flex flex-col md:flex-row gap-6 hover:shadow-md transition-shadow">
-                    <div class="w-full md:w-40 h-40 rounded-2xl bg-gray-100 dark:bg-white/10 flex-shrink-0 flex items-center justify-center">
-                        <i class="fas fa-file-signature text-3xl text-brand-gold"></i>
-                    </div>
-                    <div class="flex-1">
-                        <div class="text-brand-gold font-bold text-[10px] uppercase tracking-wider mb-2">March 10, 2026</div>
-                        <h4 class="text-xl font-bold mb-3 dark:text-white">IGCSE Mock Exam Preparations</h4>
-                        <p class="text-gray-500 dark:text-gray-400 text-sm leading-relaxed mb-4">
-                            Year 11 students will begin mock examinations on Monday 16th March. Ensure you have black pens and calculators ready. <strong>Be in the exam room 10 mins early.</strong>
-                        </p>
-                    </div>
-                </article>
-                
-                <article class="bg-white dark:bg-white/5 rounded-3xl p-6 shadow-sm border border-gray-100 dark:border-white/10 flex flex-col md:flex-row gap-6 hover:shadow-md transition-shadow">
-    <div class="w-full md:w-40 h-40 rounded-2xl bg-gray-100 dark:bg-white/10 flex-shrink-0 flex items-center justify-center">
-        <i class="fas fa-newspaper text-3xl text-brand-gold"></i>
-    </div>
-    <div class="flex-1">
-        <div class="text-brand-gold font-bold text-[10px] uppercase tracking-wider mb-2">New Date Here</div>
-        <h4 class="text-xl font-bold mb-3 dark:text-white">Swimming Gala</h4>
-        <p class="text-gray-500 dark:text-gray-400 text-sm leading-relaxed mb-4">
-            Detailes to be posted
-        </p>
-    </div>
-</article>
+        <div class="text-center mb-16 reveal">
+            <span class="inline-block bg-[#e8f0eb] text-brand-green px-4 py-1.5 rounded-full text-[10px] font-bold uppercase tracking-widest mb-4">
+                Campus Life
+            </span>
+            <h2 class="text-5xl font-bold text-brand-green mt-4 mb-6">Latest News & Events</h2>
+            <p class="text-gray-600 max-w-2xl mx-auto">Stay updated with the vibrant happenings, academic milestones, and upcoming activities at Mustard Seed International School.</p>
+        </div>
 
+        <div class="grid md:grid-cols-3 gap-8">
+            <div class="bg-white p-8 rounded-[32px] shadow-sm border border-gray-100 reveal group hover:shadow-md transition-all duration-300">
+                <div class="flex items-center gap-3 mb-6">
+                    <span class="w-2 h-2 rounded-full bg-brand-gold"></span>
+                    <span class="text-xs font-bold text-brand-gold uppercase tracking-widest">16 March 2026</span>
                 </div>
+                <h3 class="text-2xl font-bold mb-4 text-brand-green group-hover:text-brand-gold transition-colors">YR 11 Mock 2 Preparetion for IGCSE</h3>
+                <p class="text-gray-500 mb-8 leading-relaxed">All candidates are reminded that the mock examinations begin on March 16th. Please ensure you are familiar with the timetable, arrive promptly, and have all necessary stationery. This is a crucial opportunity to prepare for the final exams. Best of luck to all students!</p>
+                <a href="#" class="inline-flex items-center gap-2 text-brand-green font-bold text-sm uppercase tracking-wider group/link">
+                    Read Story <i class="fas fa-arrow-right text-xs transition-transform group-hover/link:translate-x-1"></i>
+                </a>
+            </div>
 
-        
+            <div class="bg-white p-8 rounded-[32px] shadow-sm border border-gray-100 reveal group hover:shadow-md transition-all duration-300">
+                <div class="flex items-center gap-3 mb-6">
+                    <span class="w-2 h-2 rounded-full bg-brand-gold"></span>
+                    <span class="text-xs font-bold text-brand-gold uppercase tracking-widest">02 April 2026</span>
+                </div>
+                <h3 class="text-2xl font-bold mb-4 text-brand-green group-hover:text-brand-gold transition-colors">Annual Talent Show</h3>
+                <p class="text-gray-500 mb-8 leading-relaxed">Discover the incredible inventions and showcasing amazing talent during the closing day of term 2</p>
+                <a href="#" class="inline-flex items-center gap-2 text-brand-green font-bold text-sm uppercase tracking-wider group/link">
+                    Read Story <i class="fas fa-arrow-right text-xs transition-transform group-hover/link:translate-x-1"></i>
+                </a>
+            </div>
 
-            <div class="space-y-6" id="events-container">
-                <h3 class="text-2xl font-bold border-b border-gray-200 pb-4 mb-8 dark:text-white dark:border-white/10">Upcoming Dates</h3>
-                
-                <div class="group bg-white dark:bg-white/5 p-5 rounded-2xl shadow-sm border border-gray-100 dark:border-white/10 flex items-center gap-5 hover:bg-brand-green hover:text-white transition-all cursor-default">
-                    <div class="text-center min-w-[60px] border-r border-gray-100 dark:border-white/10 pr-5 group-hover:border-white/20">
-                        <div class="text-2xl font-bold text-brand-green dark:text-brand-gold group-hover:text-white">16</div>
-                        <div class="text-[10px] uppercase font-bold text-brand-gold group-hover:text-brand-gold">Mar</div>
-                    </div>
-                    <div>
-                        <h4 class="font-bold text-sm group-hover:text-white">Mock Exams Begin</h4>
-                        <p class="text-gray-400 dark:text-gray-500 text-[11px] group-hover:text-white/80">8:00 AM — Exam Hall</p>
+            <div class="bg-white p-8 rounded-[32px] shadow-sm border border-gray-100 reveal group hover:shadow-md transition-all duration-300">
+                <div class="flex items-center gap-3 mb-6">
+                    <span class="w-2 h-2 rounded-full bg-brand-gold"></span>
+                    <span class="text-xs font-bold text-brand-gold uppercase tracking-widest">N/A</span>
+                </div>
+                <h3 class="text-2xl font-bold mb-4 text-brand-green group-hover:text-brand-gold transition-colors">No event </h3>
+                <p class="text-gray-500 mb-8 leading-relaxed">posting soon.</p>
+                <a href="#" class="inline-flex items-center gap-2 text-brand-green font-bold text-sm uppercase tracking-wider group/link">
+                    Read Story <i class="fas fa-arrow-right text-xs transition-transform group-hover/link:translate-x-1"></i>
+                </a>
+            </div>
+        </div>
+
+        <div class="mt-20 max-w-4xl mx-auto reveal">
+            <h3 class="text-2xl font-bold text-brand-green mb-8 flex items-center gap-3">
+                <i class="far fa-calendar-alt text-brand-gold"></i> Upcoming Calendar
+            </h3>
+            <div class="space-y-4">
+                <div class="flex items-center justify-between p-6 bg-white rounded-2xl border border-gray-100 shadow-sm">
+                    <div class="flex items-center gap-6">
+                        <div class="text-center border-r border-gray-100 pr-6">
+                            <span class="block text-2xl font-bold text-brand-gold">16</span>
+                            <span class="text-[10px] uppercase font-bold text-gray-400">March</span>
+                        </div>
+                        <div>
+                            <h4 class="font-bold text-brand-green">Mock 2 Examination</h4>
+                            <p class="text-sm text-gray-500">End-term exams and candidates preparation for IGCSE</p>
+                        </div>
                     </div>
                 </div>
-
-                <div class="group bg-white dark:bg-white/5 p-5 rounded-2xl shadow-sm border border-gray-100 dark:border-white/10 flex items-center gap-5 hover:bg-brand-green hover:text-white transition-all cursor-default">
-                    <div class="text-center min-w-[60px] border-r border-gray-100 dark:border-white/10 pr-5 group-hover:border-white/20">
-                        <div class="text-2xl font-bold text-brand-green dark:text-brand-gold group-hover:text-white">03</div>
-                        <div class="text-[10px] uppercase font-bold text-brand-gold group-hover:text-brand-gold">Apr</div>
-                    </div>
-                    <div>
-                        <h4 class="font-bold text-sm group-hover:text-white">Term 2 Closing</h4>
-                        <p class="text-gray-400 dark:text-gray-500 text-[11px] group-hover:text-white/80">Full Day Event</p>
+                <div class="flex items-center justify-between p-6 bg-white rounded-2xl border border-gray-100 shadow-sm">
+                    <div class="flex items-center gap-6">
+                        <div class="text-center border-r border-gray-100 pr-6">
+                            <span class="block text-2xl font-bold text-brand-gold">06</span>
+                            <span class="text-[10px] uppercase font-bold text-gray-400">April</span>
+                        </div>
+                        <div>
+                            <h4 class="font-bold text-brand-green">Closing day</h4>
+                            <p class="text-sm text-gray-500">The last day of Term 2 2026</p>
+                        </div>
                     </div>
                 </div>
-
-                </div> 
-
+            </div>
         </div>
     </div>
 </section>

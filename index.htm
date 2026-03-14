@@ -388,8 +388,8 @@ nav {
                 <span class="nav-link flex items-center">Facilities <i class="fas fa-chevron-down ml-2 text-[9px]"></i></span>
                 <div class="dropdown-menu">
                     <a onclick="showPage('fac-dining')" class="dropdown-item"><i class="fas fa-utensils w-4"></i> Dining Hall</a>
-                    <a onclick="showPage('fac-field')" class="dropdown-item"><i class="fas fa-futbol w-4"></i> Athletics & Sports</a>
-                    <a onclick="showPage('fac-pool')" class="dropdown-item"><i class="fas fa-swimmer w-4"></i> Aquatic Center</a>
+                    <a onclick="showPage('fac-gym')" class="dropdown-item"><i class="fas fa-dumbbell w-4"></i> Gym</a>
+                    <a onclick="showPage('fac-sports')" class="dropdown-item"><i class="fas fa-running w-4"></i> Sports & Aquatics</a>
                     <a onclick="showPage('fac-boarding')" class="dropdown-item"><i class="fas fa-bed w-4"></i> Flexible Boarding</a>
                 </div>
             </div>
@@ -490,8 +490,8 @@ nav {
                 <div id="m-facilities" class="mobile-dropdown bg-black/10 rounded-xl overflow-hidden mb-2">
                     <div class="flex flex-col py-2 px-4 space-y-1 text-gray-300 text-sm">
                         <a onclick="showPage('fac-dining'); toggleMenu();" class="py-3 flex items-center gap-3"><i class="fas fa-utensils text-brand-gold w-4"></i> Dining Hall</a>
-                        <a onclick="showPage('fac-field'); toggleMenu();" class="py-3 flex items-center gap-3"><i class="fas fa-futbol text-brand-gold w-4"></i> Athletics & Sports</a>
-                        <a onclick="showPage('fac-pool'); toggleMenu();" class="py-3 flex items-center gap-3"><i class="fas fa-swimmer text-brand-gold w-4"></i> Aquatic Center</a>
+                        <a onclick="showPage('fac-gym'); toggleMenu();" class="py-3 flex items-center gap-3"><i class="fas fa-dumbbell text-brand-gold w-4"></i> Athletics & Sports</a>
+                        <a onclick="showPage('fac-sports'); toggleMenu();" class="py-3 flex items-center gap-3"><i class="fas fa-running text-brand-gold w-4"></i> Aquatic Center</a>
                         <a onclick="showPage('fac-boarding'); toggleMenu();" class="py-3 flex items-center gap-3"><i class="fas fa-bed text-brand-gold w-4"></i> Boarding</a>
                     </div>
                 </div>
@@ -853,9 +853,9 @@ function loadVideo() {
         </div>
     </div>
 
-    <div class="reveal">
+    <div class="reveal mb-32">
         <h3 class="text-2xl font-bold text-center text-brand-green mb-10">EYFS Areas of Learning & Development</h3>
-        <div class="grid md:grid-cols-3 gap-6">
+        <div class="grid grid-cols-2 md:grid-cols-3 gap-6">
             <div class="p-8 bg-white border border-gray-100 rounded-3xl shadow-sm text-center hover:shadow-md transition-shadow">
                 <div class="w-12 h-12 bg-brand-light rounded-full flex items-center justify-center mx-auto mb-4">
                     <i class="fas fa-comments text-brand-green"></i>
@@ -901,23 +901,29 @@ function loadVideo() {
         </div>
     </div>
 
-          <div class="mt-20">
-    <h3 class="text-3xl font-bold text-brand-green mb-10 text-center">Kindergarten Activities</h3>
-    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-        <div class="relative group h-64 rounded-2xl overflow-hidden shadow-lg">
-            <img src="https://lh3.googleusercontent.com/u/0/d/15pQFqHhBZiYgPDsCRxZjvJYAKIbKLP6b" class="w-full h-full object-cover transition-transform group-hover:scale-110" alt="Ballet">
-            <div class="absolute inset-0 bg-black/30 flex items-center justify-center">
-                <span class="text-white font-bold text-2xl tracking-widest uppercase">Ballet</span>
+    <div class="reveal mt-20">
+        <h3 class="text-3xl font-bold text-brand-green mb-10 text-center">Kindergarten Activities</h3>
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+            <div class="relative group h-72 rounded-[32px] overflow-hidden shadow-lg">
+                <img src="https://lh3.googleusercontent.com/u/0/d/15pQFqHhBZiYgPDsCRxZjvJYAKIbKLP6b" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" alt="Ballet">
+                <div class="absolute inset-0 bg-black/40 flex items-center justify-center">
+                    <span class="text-white font-bold text-xl tracking-widest uppercase">Ballet</span>
+                </div>
             </div>
-        </div>
-        <div class="relative group h-64 rounded-2xl overflow-hidden shadow-lg">
-            <img src=" https://lh3.googleusercontent.com/u/0/d/1TpbBh7d_VjEQg8Wj5CR52JFXCKqQ9M1B" class="w-full h-full object-cover transition-transform group-hover:scale-110" alt="Rollerblading">
-            <div class="absolute inset-0 bg-black/30 flex items-center justify-center">
-                <span class="text-white font-bold text-2xl tracking-widest uppercase">Rollerblading</span>
+            <div class="relative group h-72 rounded-[32px] overflow-hidden shadow-lg">
+                <img src="https://lh3.googleusercontent.com/u/0/d/1TpbBh7d_VjEQg8Wj5CR52JFXCKqQ9M1B" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" alt="Rollerblading">
+                <div class="absolute inset-0 bg-black/40 flex items-center justify-center">
+                    <span class="text-white font-bold text-xl tracking-widest uppercase">Rollerblading</span>
+                </div>
+            </div>
+            <div class="relative group h-72 rounded-[32px] overflow-hidden shadow-lg">
+                <img src="https://lh3.googleusercontent.com/u/0/d/13bSHE4cgx5Fb6ap2iIAnW3KVBOWEsVvs" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" alt="Home Science">
+                <div class="absolute inset-0 bg-black/40 flex items-center justify-center">
+                    <span class="text-white font-bold text-xl tracking-widest uppercase text-center px-4">Home Science Club</span>
+                </div>
             </div>
         </div>
     </div>
-</div>
 </section>
         <!-- Academics: Junior School -->
        <section id="edu-junior" class="page-content py-32 px-6 max-w-7xl mx-auto" style="display:none;">
@@ -945,7 +951,7 @@ function loadVideo() {
 
     <div class="grid lg:grid-cols-2 gap-20 items-start mb-16">
         <div class="reveal order-2 lg:order-1">
-            <img src="https://lh3.googleusercontent.com/u/0/d/1CbbGynElq_w1vz0NuSTGgq_xGjzMKRjD" alt="Junior Science Laboratory" class="rounded-[40px] shadow-2xl w-full h-[400px] object-cover">
+            <img src="https://lh3.googleusercontent.com/u/0/d/18YfcRhTQH3NK8amF_ZWC6cw7fU4xLiSE" alt="Junior Science Laboratory" class="rounded-[40px] shadow-2xl w-full h-[400px] object-cover">
         </div>
         
         <div class="reveal order-1 lg:order-2">
@@ -1210,31 +1216,42 @@ function loadVideo() {
 </section>
 
         <!-- Academics: A-Levels -->
-        <section id="edu-alevel" class="page-content py-32 px-6 max-w-7xl mx-auto text-center">
-            <div class="max-w-4xl mx-auto">
-                <span class="section-tag reveal">Sixth Form (Year 12-13)</span>
-                <h2 class="text-5xl md:text-6xl font-bold text-brand-green mb-8 reveal">A Levels Program</h2>
-                <p class="text-gray-600 text-lg mb-12 reveal">Our Sixth Form serves as the definitive pinnacle of the Mustard Seed experience—a sophisticated bridge between foundational education and global leadership. We provide a bespoke, pre-university environment where academic rigor meets intellectual freedom. Here, students don't just study a curriculum; they master their chosen disciplines through a culture of independent inquiry and critical dialectics. Our mission is to refine the character and sharpen the intellect of our scholars, ensuring they stand as top-tier candidates for admission to the world's most prestigious universities.</p>
-                <div class="grid md:grid-cols-3 gap-6 reveal">
-                    <div class="p-8 bg-white shadow-xl rounded-3xl border border-gray-100">
-                        <i class="fas fa-university text-3xl text-brand-gold mb-4"></i>
-                        <h4 class="font-bold text-xl mb-2">Uni Advisory</h4>
-                        <p class="text-sm text-gray-500">Dedicated counselors for UCAS and US Common App.</p>
-                    </div>
-                    <div class="p-8 bg-white shadow-xl rounded-3xl border border-gray-100">
-                        <i class="fas fa-lightbulb text-3xl text-brand-gold mb-4"></i>
-                        <h4 class="font-bold text-xl mb-2">Critical Thinking</h4>
-                        <p class="text-sm text-gray-500">Advanced seminar-style learning methods.</p>
-                    </div>
-                    <div class="p-8 bg-white shadow-xl rounded-3xl border border-gray-100">
-                        <i class="fas fa-id-card text-3xl text-brand-gold mb-4"></i>
-                        <h4 class="font-bold text-xl mb-2">Leadership</h4>
-                        <p class="text-sm text-gray-500">Senior prefectural roles and community service.</p>
-                    </div>
-                </div>
+       <section id="edu-alevel" class="page-content py-32 px-6 max-w-7xl mx-auto text-center">
+    <div class="max-w-4xl mx-auto">
+        <span class="section-tag reveal">Sixth Form (Year 12-13)</span>
+        <h2 class="text-5xl md:text-6xl font-bold text-brand-green mb-8 reveal">A Levels Program</h2>
+        <p class="text-gray-600 text-lg mb-12 reveal">Our Sixth Form serves as the definitive pinnacle of the Mustard Seed experience—a sophisticated bridge between foundational education and global leadership. We provide a bespoke, pre-university environment where academic rigor meets intellectual freedom. Here, students don't just study a curriculum; they master their chosen disciplines through a culture of independent inquiry and critical dialectics. Our mission is to refine the character and sharpen the intellect of our scholars, ensuring they stand as top-tier candidates for admission to the world's most prestigious universities.</p>
+        
+        <div class="grid md:grid-cols-3 gap-6 reveal mb-20">
+            <div class="p-8 bg-white shadow-xl rounded-3xl border border-gray-100">
+                <i class="fas fa-university text-3xl text-brand-gold mb-4"></i>
+                <h4 class="font-bold text-xl mb-2">Uni Advisory</h4>
+                <p class="text-sm text-gray-500">Dedicated counselors for UCAS and US Common App.</p>
             </div>
-            
-        </section>
+            <div class="p-8 bg-white shadow-xl rounded-3xl border border-gray-100">
+                <i class="fas fa-lightbulb text-3xl text-brand-gold mb-4"></i>
+                <h4 class="font-bold text-xl mb-2">Critical Thinking</h4>
+                <p class="text-sm text-gray-500">Advanced seminar-style learning methods.</p>
+            </div>
+            <div class="p-8 bg-white shadow-xl rounded-3xl border border-gray-100">
+                <i class="fas fa-id-card text-3xl text-brand-gold mb-4"></i>
+                <h4 class="font-bold text-xl mb-2">Leadership</h4>
+                <p class="text-sm text-gray-500">Senior prefectural roles and community service.</p>
+            </div>
+        </div>
+    </div>
+
+    <div class="reveal px-4">
+        <div class="relative h-[500px] md:h-[600px] rounded-[40px] overflow-hidden shadow-2xl">
+            <img src=" https://lh3.googleusercontent.com/u/0/d/1SyJ5udFlcUXFSWmbPiWbtTe1H-3Qh9pW" 
+                 alt="A Level Students" class="w-full h-full object-cover">
+            <div class="absolute inset-0 bg-gradient-to-t from-brand-green/40 to-transparent"></div>
+            <div class="absolute bottom-10 left-1/2 -translate-x-1/2 w-full text-white text-center">
+                <p class="text-2xl font-serif italic">Empowering the Leaders of Tomorrow</p>
+            </div>
+        </div>
+    </div>
+</section>
 
         <!-- Admission: Fee Structure -->
        <section id="adm-fees" class="page-content py-32 px-6 max-w-7xl mx-auto" style="display:none;">
@@ -1523,197 +1540,400 @@ async function submitApplication(event) {
             </div>
         </section>
     <!-- Transport-->
-    <section id="transport" class="page-content py-24 px-6 max-w-7xl mx-auto" style="display:none;">
-    <div>
-            <h3 class="text-3xl font-bold text-[#005a32]">School Transport Services</h3>
-            <p class="text-gray-500">Termly charges based on zone location and proximity</p>
-        </div>
-    
-
-    <div class="grid md:grid-cols-2 gap-6">
-        <div class="flex justify-between items-center p-5 bg-gray-50 rounded-2xl border-l-4 border-[#c5a059]">
-            <div class="pr-4">
-                <p class="text-xs text-[#c5a059] font-bold uppercase tracking-wider">Zone 1</p>
-                <p class="text-gray-700 font-medium">Mercy Njeri, Nyumba Tano, Olive, Soil</p>
+    <section id="transport" class="page-content py-20 bg-[var(--brand-light)]" style="display:none;">
+    <div class="max-w-7xl mx-auto px-6">
+        
+        <div class="grid lg:grid-cols-2 gap-16 items-center mb-24">
+            <div class="reveal">
+                <span class="section-tag">Logistics</span>
+                <h2 class="text-5xl font-bold text-brand-green mb-8">Safe & Reliable Transport</h2>
+                <p class="text-gray-600 leading-relaxed mb-8 text-lg">
+                    Ensuring our students commute in comfort and arrive at school safely every day. We provide a comprehensive door-to-door transport service across Nakuru and its environs.
+                </p>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                    <div class="flex items-center gap-3 p-4 bg-white rounded-2xl shadow-sm border border-gray-100">
+                        <i class="fas fa-bus text-brand-gold"></i>
+                        <span class="font-bold text-gray-700">Door-to-Door</span>
+                    </div>
+                    <div class="flex items-center gap-3 p-4 bg-white rounded-2xl shadow-sm border border-gray-100">
+                        <i class="fas fa-user-check text-brand-gold"></i>
+                        <span class="font-bold text-gray-700">Trained Attendants</span>
+                    </div>
+                </div>
             </div>
-            <span class="text-xl font-bold text-[#005a32] whitespace-nowrap">Ksh 10,680</span>
-        </div>
 
-        <div class="flex justify-between items-center p-5 bg-gray-50 rounded-2xl border-l-4 border-[#c5a059]">
-            <div class="pr-4">
-                <p class="text-xs text-[#c5a059] font-bold uppercase tracking-wider">Zone 2</p>
-                <p class="text-gray-700 font-medium">Baraka Estate, Notice Board</p>
+            <div class="reveal">
+                <div class="relative h-[450px] rounded-[40px] overflow-hidden shadow-2xl">
+                    <img src="https://lh3.googleusercontent.com/u/0/d/155loCImnBz6R6e0P1wz-nPBueruV9u5J" 
+                         alt="School Bus Fleet" class="w-full h-full object-cover">
+                </div>
             </div>
-            <span class="text-xl font-bold text-[#005a32] whitespace-nowrap">Ksh 7,650</span>
         </div>
 
-        <div class="flex justify-between items-center p-5 bg-gray-50 rounded-2xl border-l-4 border-[#c5a059]">
-            <div class="pr-4">
-                <p class="text-xs text-[#c5a059] font-bold uppercase tracking-wider">Zone 3</p>
-                <p class="text-gray-700 font-medium">London, Total, Eveready/Githima, Ngata Bridge</p>
+        <div class="mb-24 reveal">
+            <div class="mb-10">
+                <h3 class="text-3xl font-bold text-[#005a32]">School Transport Services</h3>
+                <p class="text-gray-500">Termly charges based on zone location and proximity</p>
             </div>
-            <span class="text-xl font-bold text-[#005a32] whitespace-nowrap">Ksh 17,570</span>
-        </div>
 
-        <div class="flex justify-between items-center p-5 bg-gray-50 rounded-2xl border-l-4 border-[#c5a059]">
-            <div class="pr-4">
-                <p class="text-xs text-[#c5a059] font-bold uppercase tracking-wider">Zone 4</p>
-                <p class="text-gray-700 font-medium text-sm">Milimani, Town, Section 58, Shell, Blankets, Kerima, Langalanga, Castles, Kaloleni C, Lakeview, Shabaab, Ngata gates</p>
+            <div class="grid md:grid-cols-2 gap-6">
+                <div class="flex justify-between items-center p-5 bg-white rounded-2xl border-l-4 border-[#c5a059] shadow-sm">
+                    <div class="pr-4">
+                        <p class="text-xs text-[#c5a059] font-bold uppercase tracking-wider">Zone 1</p>
+                        <p class="text-gray-700 font-medium">Mercy Njeri, Nyumba Tano, Olive, Soil</p>
+                    </div>
+                    <span class="text-xl font-bold text-[#005a32] whitespace-nowrap">Ksh 10,680</span>
+                </div>
+
+                <div class="flex justify-between items-center p-5 bg-white rounded-2xl border-l-4 border-[#c5a059] shadow-sm">
+                    <div class="pr-4">
+                        <p class="text-xs text-[#c5a059] font-bold uppercase tracking-wider">Zone 2</p>
+                        <p class="text-gray-700 font-medium">Baraka Estate, Notice Board</p>
+                    </div>
+                    <span class="text-xl font-bold text-[#005a32] whitespace-nowrap">Ksh 7,650</span>
+                </div>
+
+                <div class="flex justify-between items-center p-5 bg-white rounded-2xl border-l-4 border-[#c5a059] shadow-sm">
+                    <div class="pr-4">
+                        <p class="text-xs text-[#c5a059] font-bold uppercase tracking-wider">Zone 3</p>
+                        <p class="text-gray-700 font-medium">London, Total, Eveready/Githima, Ngata Bridge</p>
+                    </div>
+                    <span class="text-xl font-bold text-[#005a32] whitespace-nowrap">Ksh 17,570</span>
+                </div>
+
+                <div class="flex justify-between items-center p-5 bg-white rounded-2xl border-l-4 border-[#c5a059] shadow-sm">
+                    <div class="pr-4">
+                        <p class="text-xs text-[#c5a059] font-bold uppercase tracking-wider">Zone 4</p>
+                        <p class="text-gray-700 font-medium text-sm">Milimani, Town, Section 58, Shell, Blankets, Kerima, Langalanga, Castles, Kaloleni C, Lakeview, Shabaab, Ngata gates</p>
+                    </div>
+                    <span class="text-xl font-bold text-[#005a32] whitespace-nowrap">Ksh 26,290</span>
+                </div>
+
+                <div class="flex justify-between items-center p-5 bg-white rounded-2xl border-l-4 border-[#c5a059] shadow-sm">
+                    <div class="pr-4">
+                        <p class="text-xs text-[#c5a059] font-bold uppercase tracking-wider">Zone 5</p>
+                        <p class="text-gray-700 font-medium">Njoro, Shinners, Mawanga</p>
+                    </div>
+                    <span class="text-xl font-bold text-[#005a32] whitespace-nowrap">Ksh 29,020</span>
+                </div>
+
+                <div class="flex justify-between items-center p-5 bg-white rounded-2xl border-l-4 border-[#c5a059] shadow-sm">
+                    <div class="pr-4">
+                        <p class="text-xs text-[#c5a059] font-bold uppercase tracking-wider">Zone 6</p>
+                        <p class="text-gray-700 font-medium">Kabarak</p>
+                    </div>
+                    <span class="text-xl font-bold text-[#005a32] whitespace-nowrap">Ksh 31,790</span>
+                </div>
+
+                <div class="flex justify-between items-center p-5 bg-white rounded-2xl border-l-4 border-[#c5a059] shadow-sm">
+                    <div class="pr-4">
+                        <p class="text-xs text-[#c5a059] font-bold uppercase tracking-wider">Zone 7</p>
+                        <p class="text-gray-700 font-medium">Sobea</p>
+                    </div>
+                    <span class="text-xl font-bold text-[#005a32] whitespace-nowrap">Ksh 36,450</span>
+                </div>
+
+                <div class="flex justify-between items-center p-5 bg-white rounded-2xl border-l-4 border-[#c5a059] shadow-sm">
+                    <div class="pr-4">
+                        <p class="text-xs text-[#c5a059] font-bold uppercase tracking-wider">Zone 8</p>
+                        <p class="text-gray-700 font-medium">Machine</p>
+                    </div>
+                    <span class="text-xl font-bold text-[#005a32] whitespace-nowrap">Ksh 37,970</span>
+                </div>
             </div>
-            <span class="text-xl font-bold text-[#005a32] whitespace-nowrap">Ksh 26,290</span>
-        </div>
 
-        <div class="flex justify-between items-center p-5 bg-gray-50 rounded-2xl border-l-4 border-[#c5a059]">
-            <div class="pr-4">
-                <p class="text-xs text-[#c5a059] font-bold uppercase tracking-wider">Zone 5</p>
-                <p class="text-gray-700 font-medium">Njoro, Shinners, Mawanga</p>
+            <div class="mt-8 p-4 bg-blue-50 rounded-xl flex items-center border border-blue-100">
+                <i class="fas fa-info-circle text-[#005a32] mr-3"></i>
+                <p class="text-sm text-gray-600 font-medium">
+                    <span class="text-[#005a32] font-bold uppercase">Note:</span> 
+                    One-way transport is charged at <span class="text-[#005a32] font-bold text-base">60%</span> of the termly fee.
+                </p>
             </div>
-            <span class="text-xl font-bold text-[#005a32] whitespace-nowrap">Ksh 29,020</span>
         </div>
 
-        <div class="flex justify-between items-center p-5 bg-gray-50 rounded-2xl border-l-4 border-[#c5a059]">
-            <div class="pr-4">
-                <p class="text-xs text-[#c5a059] font-bold uppercase tracking-wider">Zone 6</p>
-                <p class="text-gray-700 font-medium">Kabarak</p>
+        <div class="reveal pb-10">
+            <div class="relative h-[500px] rounded-[40px] overflow-hidden shadow-xl">
+                <img src="https://lh3.googleusercontent.com/u/0/d/1CbbGynElq_w1vz0NuSTGgq_xGjzMKRjD" 
+                     alt="Safe Transport Environment" class="w-full h-full object-cover">
+                <div class="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent"></div>
+                <div class="absolute bottom-10 left-10 text-white">
+                    <p class="text-3xl font-bold mb-2">Safety is Our Priority</p>
+                    <p class="text-lg opacity-90">GPS tracked fleet for real-time monitoring and peace of mind.</p>
+                </div>
             </div>
-            <span class="text-xl font-bold text-[#005a32] whitespace-nowrap">Ksh 31,790</span>
         </div>
 
-        <div class="flex justify-between items-center p-5 bg-gray-50 rounded-2xl border-l-4 border-[#c5a059]">
-            <div class="pr-4">
-                <p class="text-xs text-[#c5a059] font-bold uppercase tracking-wider">Zone 7</p>
-                <p class="text-gray-700 font-medium">Sobea</p>
-            </div>
-            <span class="text-xl font-bold text-[#005a32] whitespace-nowrap">Ksh 36,450</span>
-        </div>
-
-        <div class="flex justify-between items-center p-5 bg-gray-50 rounded-2xl border-l-4 border-[#c5a059]">
-            <div class="pr-4">
-                <p class="text-xs text-[#c5a059] font-bold uppercase tracking-wider">Zone 8</p>
-                <p class="text-gray-700 font-medium">Machine</p>
-            </div>
-            <span class="text-xl font-bold text-[#005a32] whitespace-nowrap">Ksh 37,970</span>
-        </div>
-    </div>
-
-    <div class="mt-8 p-4 bg-blue-50 rounded-xl flex items-center border border-blue-100">
-        <i class="fas fa-info-circle text-[#005a32] mr-3"></i>
-        <p class="text-sm text-gray-600 font-medium">
-            <span class="text-[#005a32] font-bold uppercase">Note:</span> 
-            One-way transport is charged at <span class="text-[#005a32] font-bold text-base">60%</span> of the termly fee.
-        </p>
     </div>
 </section>
 
         <!-- Facilities: Dining -->
-        <section id="fac-dining" class="page-content py-32 px-6 max-w-7xl mx-auto">
-            <h2 class="text-5xl font-bold text-brand-green mb-8 reveal">Dining Hall</h2>
+<section id="fac-dining" class="page-content py-32 px-6 bg-[var(--brand-light)]" style="display:none;">
+    <div class="max-w-7xl mx-auto">
+        <div class="text-center mb-16 reveal">
+            <span class="section-tag">Healthy Living</span>
+            <h2 class="text-5xl font-bold text-brand-green mt-4">Dining & Nutrition</h2>
+        </div>
+
+        <div class="space-y-12">
             <div class="grid lg:grid-cols-2 gap-12 items-center">
-                <div class="reveal">
-                    <p class="text-gray-600 text-lg leading-relaxed mb-6">At MSIS, we provide a <strong>balanced diet</strong> designed to support the holistic development of our learners. Our menu specifically accommodates students with <strong>special dietary needs</strong>, ensuring every child is well-nourished. We also offer a daily milk program to promote healthy growth and energy for the school day.</p>
-                    <ul class="space-y-3 text-brand-green font-medium">
-                        <li><i class="fas fa-apple-alt mr-2 text-brand-gold"></i> Balanced Meals</li>
-                        <li><i class="fas fa-leaf mr-2 text-brand-gold"></i> Vegetarian & Gluten-Free Options</li>
-                        <li><i class="fas fa-glass-milk mr-2 text-brand-gold"></i> Daily Fresh Milk & Fruits</li>
+                <div class="reveal order-2 lg:order-1">
+                    <h3 class="text-3xl font-bold text-brand-green mb-6">A Welcoming Atmosphere</h3>
+                    <p class="text-gray-600 leading-relaxed mb-6">
+                        Our dining hall is designed to be more than just a place to eat; it's a space for community and refreshment. With plenty of natural light and comfortable seating, students can recharge for their afternoon lessons.
+                    </p>
+                    <ul class="space-y-3 mb-8">
+                        <li class="flex items-center gap-3 text-gray-700 font-medium">
+                            <i class="fas fa-check text-brand-gold"></i> Chef-Prepared Meals
+                        </li>
+                        <li class="flex items-center gap-3 text-gray-700 font-medium">
+                            <i class="fas fa-check text-brand-gold"></i> Diverse International Menu
+                        </li>
                     </ul>
                 </div>
-               <div class="reveal">
-    <img src="https://lh3.googleusercontent.com/u/0/d/1wLd1sifoikjS-_EdZ1R2jMi4Yfhl6uoZ" alt="Mustard Seed Dining Hall" class="facility-img w-full object-cover">
-</div>
-            </div>
-        </section>
-
-        <!-- Facilities: Field -->
-       <section id="fac-field" class="page-content py-32 px-6 max-w-7xl mx-auto" style="display:none;">
-    <span class="section-tag reveal">Physical Education & Excellence</span>
-    <h2 class="text-5xl md:text-6xl font-bold text-brand-green mb-10 reveal">Athletics & Sports Fields</h2>
-    
-    <div class="grid lg:grid-cols-2 gap-20 items-center mb-20">
-        <div class="reveal">
-            <h3 class="text-3xl font-bold mb-6 text-brand-gold">Beyond Physical Skills</h3>
-            <p class="text-gray-600 leading-relaxed mb-6">
-                Our students learn much more than physical skills through their participation in athletics. The collaborative experience of pursuing and attaining a common goal is unique, especially when combined with interscholastic competition.
-                <br><br>
-                We are <strong>proud of our winning tradition</strong>. Through this experience, students develop courage, strength, finesse, and teamwork, alongside competitive intensity and a generosity of spirit.
-            </p>
-            <div class="grid grid-cols-2 gap-4">
-                <div class="p-4 bg-brand-light rounded-2xl border-l-4 border-brand-green">
-                    <span class="block font-bold text-brand-green">Mental Endurance</span>
+                <div class="reveal order-1 lg:order-2">
+                    <div class="relative h-[400px] w-full overflow-hidden rounded-[32px] shadow-xl">
+                        <img src="https://lh3.googleusercontent.com/u/0/d/1wLd1sifoikjS-_EdZ1R2jMi4Yfhl6uoZ" 
+                             alt="Dining Hall Interior" 
+                             class="w-full h-full object-cover">
+                    </div>
                 </div>
-                <div class="p-4 bg-brand-light rounded-2xl border-l-4 border-brand-green">
-                    <span class="block font-bold text-brand-green">Physical Finesse</span>
+            </div>
+
+            <div class="grid lg:grid-cols-2 gap-12 items-center pt-12">
+                <div class="reveal">
+                    <div class="relative h-[400px] w-full overflow-hidden rounded-[32px] shadow-xl">
+                        <img src="https://lh3.googleusercontent.com/u/0/d/1b57PxbX55tub7ZHUq2ozh2yFBpGR4XfG" 
+                             alt="Fresh Nutritious Meals" 
+                             class="w-full h-full object-cover">
+                    </div>
+                </div>
+                <div class="reveal">
+                    <h3 class="text-3xl font-bold text-brand-green mb-6">Nutritional Excellence</h3>
+                    <p class="text-gray-600 leading-relaxed">
+                        We prioritize farm-to-table freshness, ensuring every meal is packed with the nutrients growing minds need. Our dedicated catering team accommodates all dietary requirements, including vegetarian, vegan, and religious preferences.
+                    </p>
+                    <div class="mt-8">
+                        <button onclick="showPage('book-tour')" class="bg-brand-green text-white px-10 py-4 rounded-full font-bold hover:bg-brand-gold transition-all shadow-lg hover:-translate-y-1">
+                            Visit Our Facilities
+                        </button>
+                    </div>
                 </div>
             </div>
         </div>
-        <div class="reveal">
-            <img src="https://lh3.googleusercontent.com/u/0/d/1uRRmDcYM7_JXU3n6y1aSZl8FK_oymq_u" alt="Mustard Seed Sports Court" class="rounded-[40px] shadow-2xl w-full h-[500px] object-cover">
+    </div>
+</section>
+
+        <!-- Facilities: Field -->
+      <section id="fac-gym" class="page-content py-20 bg-[var(--brand-light)]" style="display:none;">
+    
+    <div class="max-w-7xl mx-auto px-6 mb-24">
+        <div class="grid lg:grid-cols-2 gap-16 items-center">
+            <div class="reveal">
+                <span class="section-tag">Fitness & Health</span>
+                <h2 class="text-5xl font-bold text-brand-green mb-8">Modern Fitness Center</h2>
+                <p class="text-gray-600 leading-relaxed mb-8 text-lg">
+                    Our state-of-the-art gym is designed to support the physical development of our senior students and staff. Equipped with professional-grade machinery and free weights, it provides a safe environment for strength training, cardiovascular health, and athletic conditioning.
+                </p>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                    <div class="flex items-center gap-3 p-4 bg-white rounded-2xl shadow-sm border border-gray-100">
+                        <i class="fas fa-dumbbell text-brand-gold"></i>
+                        <span class="font-bold text-gray-700">Resistance Training</span>
+                    </div>
+                    <div class="flex items-center gap-3 p-4 bg-white rounded-2xl shadow-sm border border-gray-100">
+                        <i class="fas fa-heartbeat text-brand-gold"></i>
+                        <span class="font-bold text-gray-700">Cardio Zone</span>
+                    </div>
+                    <div class="flex items-center gap-3 p-4 bg-white rounded-2xl shadow-sm border border-gray-100">
+                        <i class="fas fa-user-shield text-brand-gold"></i>
+                        <span class="font-bold text-gray-700">Certified Supervision</span>
+                    </div>
+                    <div class="flex items-center gap-3 p-4 bg-white rounded-2xl shadow-sm border border-gray-100">
+                        <i class="fas fa-calendar-check text-brand-gold"></i>
+                        <span class="font-bold text-gray-700">Personalized Programs</span>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="reveal">
+                <div class="relative h-[550px] rounded-[40px] overflow-hidden shadow-2xl">
+                    <img src="https://lh3.googleusercontent.com/u/0/d/16zrbTQA5C65FvPAka8gSmSiSEPxq7Qvw" 
+                         alt="Gym Main View" class="w-full h-full object-cover">
+                    <div class="absolute inset-0 bg-gradient-to-t from-black/30 to-transparent"></div>
+                </div>
+            </div>
         </div>
     </div>
 
-    <div class="grid lg:grid-cols-2 gap-20 items-center mb-20">
-        <div class="reveal order-2 lg:order-1">
-            <img src="https://lh3.googleusercontent.com/u/0/d/1Zy8lp-ZUJSY9PI9wxQGvlrmKGB5kqaGy" alt="Mustard Seed Athletics Field" class="rounded-[40px] shadow-2xl w-full h-[500px] object-cover">
-        </div>
-        <div class="reveal order-1 lg:order-2">
-            <h3 class="text-2xl font-bold mb-6 text-brand-green">Expert Healthcare & Wellness</h3>
-            <p class="text-gray-600 mb-8">
-                Our program is led by a <strong>Certified Athletic Trainer</strong> and Health Specialist. With a strong background in injury care and rehabilitation, we ensure a well-rounded scope on student healthcare.
-            </p>
-            
-            <div class="space-y-4">
-                <div class="flex items-center gap-4 p-4 bg-white rounded-2xl shadow-sm border border-gray-50">
-                    <i class="fas fa-user-md text-brand-gold"></i>
-                    <div>
-                        <span class="block font-bold text-gray-800">Injury Care & Prevention</span>
-                        <span class="text-xs text-gray-500">Professional rehabilitation and wellness focus.</span>
-                    </div>
-                </div>
-                <div class="flex items-center gap-4 p-4 bg-white rounded-2xl shadow-sm border border-gray-50">
-                    <i class="fas fa-heartbeat text-brand-gold"></i>
-                    <div>
-                        <span class="block font-bold text-gray-800">Health Promotion</span>
-                        <span class="text-xs text-gray-500">Continuous education for a safer sports environment.</span>
-                    </div>
-                </div>
+    <div class="max-w-7xl mx-auto px-6 pb-20">
+        <div class="grid md:grid-cols-2 gap-8 reveal">
+            <div class="h-[450px] rounded-[40px] overflow-hidden shadow-xl border-8 border-white">
+                <img src="https://lh3.googleusercontent.com/u/0/d/17fn2EHVfUw6w5lvTtJFCoYA76beipbs1" 
+                     alt="Gym Equipment" class="w-full h-full object-cover">
             </div>
+            <div class="h-[450px] rounded-[40px] overflow-hidden shadow-xl border-8 border-white">
+                <img src=" https://lh3.googleusercontent.com/u/0/d/1uSWuFMzHbBsM25IeCjitziHKhb25YoCp" 
+                     alt="Fitness Area" class="w-full h-full object-cover">
+            </div>
+        </div>
+        
+        <div class="mt-16 text-center reveal">
+            <button onclick="showPage('book-tour')" class="bg-brand-green text-white px-10 py-4 rounded-full font-bold hover:bg-brand-gold transition-all shadow-lg hover:-translate-y-1">
+                Enquire About Sports Programs
+            </button>
         </div>
     </div>
 </section>
         <!-- Facilities: Pool -->
-            <section id="fac-pool" class="page-content py-32 px-6 max-w-7xl mx-auto" style="display:none;">
-    <span class="section-tag reveal">Elite Facilities</span>
-    <h2 class="text-5xl md:text-6xl font-bold text-brand-green mb-10 reveal">Aquatic Center</h2>
+<section id="fac-sports" class="page-content py-20 bg-[var(--brand-light)]" style="display:none;">
     
-    <div class="grid lg:grid-cols-12 gap-12 items-center">
-        <div class="lg:col-span-7 reveal">
-            <img src="https://lh3.googleusercontent.com/u/0/d/1abwHZwrw0GqORTQm1EGamJ64lnFVKOnu" alt="Swimming Pool" class="facility-img shadow-2xl">
-        </div>
-        
-        <div class="lg:col-span-5 flex flex-col gap-8 reveal">
-            <div>
-                <h3 class="text-3xl font-bold mb-6 text-brand-gold">World-Class Swimming</h3>
-                <p class="text-gray-600 leading-relaxed">
-                    Our Aquatic Center features a semi-olympic size swimming pool designed for both competitive training and recreational safety. Water safety is a core pillar of our physical education program.
+    <div class="max-w-7xl mx-auto px-6 mb-32">
+        <div class="grid lg:grid-cols-2 gap-16 items-center">
+            <div class="reveal">
+                <span class="section-tag">Athletics</span>
+                <h2 class="text-5xl font-bold text-brand-green mb-8">Field & Track</h2>
+                <p class="text-gray-600 leading-relaxed mb-8 text-lg">
+                    Our expansive sports grounds are designed to foster physical excellence and teamwork. From professional-grade football pitches to multi-purpose courts, we provide the perfect stage for our athletes to shine.
                 </p>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-8">
+                    <div class="flex items-center gap-3 p-4 bg-white rounded-2xl shadow-sm border border-gray-100">
+                        <i class="fas fa-check text-brand-gold"></i>
+                        <span class="font-bold text-gray-700">Football & Rugby</span>
+                    </div>
+                    <div class="flex items-center gap-3 p-4 bg-white rounded-2xl shadow-sm border border-gray-100">
+                        <i class="fas fa-check text-brand-gold"></i>
+                        <span class="font-bold text-gray-700">Basketball Court</span>
+                    </div>
+                    <div class="flex items-center gap-3 p-4 bg-white rounded-2xl shadow-sm border border-gray-100">
+                        <i class="fas fa-check text-brand-gold"></i>
+                        <span class="font-bold text-gray-700">Athletics Track</span>
+                    </div>
+                    <div class="flex items-center gap-3 p-4 bg-white rounded-2xl shadow-sm border border-gray-100">
+                        <i class="fas fa-check text-brand-gold"></i>
+                        <span class="font-bold text-gray-700">Tennis Court</span>
+                    </div>
+                </div>
             </div>
-            
-            <div class="grid grid-cols-2 gap-4 items-center bg-brand-light p-4 rounded-[32px]">
-                <img src="https://lh3.googleusercontent.com/u/0/d/14utoibVlpHukBWubM-ASeqSdmipEojBQ" alt="Pool Training" class="w-full h-32 object-cover rounded-2xl shadow-md">
-                <p class="text-xs font-bold text-brand-green uppercase tracking-wider">
-                    Professional Coaching & Lifeguard Supervision
+            <div class="reveal">
+                <div class="relative h-[500px] rounded-[40px] overflow-hidden shadow-2xl">
+                    <img src="https://lh3.googleusercontent.com/u/0/d/1Zy8lp-ZUJSY9PI9wxQGvlrmKGB5kqaGy" alt="Sports Field" class="w-full h-full object-cover">
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="w-full h-[400px] mb-32 reveal px-6">
+        <div class="max-w-7xl mx-auto h-full">
+            <img src="https://lh3.googleusercontent.com/u/0/d/1uRRmDcYM7_JXU3n6y1aSZl8FK_oymq_u" 
+                 alt="Basketball Court Detail" class="w-full h-full object-cover rounded-[40px] shadow-xl">
+        </div>
+    </div>
+
+    <div class="max-w-7xl mx-auto px-6 mb-32">
+        <div class="text-center mb-16 reveal">
+            <h3 class="text-4xl font-bold text-brand-green mb-4">Sports Across Every Age</h3>
+            <p class="text-gray-500 max-w-2xl mx-auto">Nurturing talent from the first steps in Kindergarten to competitive Senior championships.</p>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-12 gap-6 reveal">
+            <div class="md:col-span-4">
+                <div class="relative h-[600px] rounded-[40px] overflow-hidden shadow-xl group">
+                    <img src=" https://lh3.googleusercontent.com/u/0/d/1Idewdmr0QF6UxTObwxKMxMpL8K6Jg7ZH" alt="KG Sports" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110">
+                    <div class="absolute inset-0 bg-black/20 group-hover:bg-black/10 transition-colors"></div>
+                    <div class="absolute bottom-8 left-8">
+                        <span class="bg-white/90 backdrop-blur px-4 py-1 rounded-full text-xs font-bold text-brand-green uppercase tracking-widest mb-2 inline-block">Kindergarten</span>
+                        <p class="text-white text-xl font-bold">Foundation Sports</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="md:col-span-8 grid grid-cols-1 gap-6">
+                <div class="relative h-[285px] rounded-[40px] overflow-hidden shadow-xl group">
+                    <img src="https://lh3.googleusercontent.com/u/0/d/1-40qE0Ew-vrB8GWvjIJNm_L8n8kTZq9e" alt="Primary School Sports" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110">
+                    <div class="absolute inset-0 bg-black/20 group-hover:bg-black/10 transition-colors"></div>
+                    <div class="absolute bottom-6 left-8">
+                        <span class="bg-white/90 backdrop-blur px-4 py-1 rounded-full text-xs font-bold text-brand-green uppercase tracking-widest mb-2 inline-block">Senior School</span>
+                        <p class="text-white text-xl font-bold">Competitive Athletics</p>
+                    </div>
+                </div>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6 h-[290px]">
+                    <div class="relative rounded-[40px] overflow-hidden shadow-xl group">
+                        <img src="https://lh3.googleusercontent.com/u/0/d/1b9YSPiwKDpWYVFJQ1xA22RwwNe2UmFZ9" alt="Junior Sports" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110">
+                        <div class="absolute bottom-6 left-6">
+                            <p class="text-white font-bold">Junior Football</p>
+                        </div>
+                    </div>
+                    <div class="relative rounded-[40px] overflow-hidden shadow-xl group">
+                        <img src="https://lh3.googleusercontent.com/u/0/d/1-weZR5eIkQ0SuEN9Ukjy6mdJ6FLq2B56" alt="Training" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110">
+                        <div class="absolute bottom-6 left-6">
+                            <p class="text-white font-bold">Skill Training</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="max-w-7xl mx-auto px-6 mb-32">
+        <div class="grid lg:grid-cols-2 gap-16 items-center">
+            <div class="reveal order-2 lg:order-1">
+                <div class="relative h-[500px] rounded-[40px] overflow-hidden shadow-2xl">
+                    <img src="https://lh3.googleusercontent.com/u/0/d/1abwHZwrw0GqORTQm1EGamJ64lnFVKOnu" alt="Swimming Pool" class="w-full h-full object-cover">
+                </div>
+            </div>
+            <div class="reveal order-1 lg:order-2">
+                <span class="section-tag">Aquatics</span>
+                <h2 class="text-5xl font-bold text-brand-green mb-8">Aquatic Center</h2>
+                <p class="text-gray-600 leading-relaxed mb-8 text-lg">
+                    Water safety and competitive swimming are core pillars of our PE department. Our standard swimming pool is maintained to the highest hygiene levels and is supervised by certified lifeguards at all times.
+                </p>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                    <div class="flex items-center gap-3 p-4 bg-white rounded-2xl shadow-sm border border-gray-100">
+                        <i class="fas fa-tint text-brand-gold"></i>
+                        <span class="font-bold text-gray-700">Temperature Controlled</span>
+                    </div>
+                    <div class="flex items-center gap-3 p-4 bg-white rounded-2xl shadow-sm border border-gray-100">
+                        <i class="fas fa-tint text-brand-gold"></i>
+                        <span class="font-bold text-gray-700">25m Racing Lanes</span>
+                    </div>
+                    <div class="flex items-center gap-3 p-4 bg-white rounded-2xl shadow-sm border border-gray-100">
+                        <i class="fas fa-tint text-brand-gold"></i>
+                        <span class="font-bold text-gray-700">Learner's Section</span>
+                    </div>
+                    <div class="flex items-center gap-3 p-4 bg-white rounded-2xl shadow-sm border border-gray-100">
+                        <i class="fas fa-tint text-brand-gold"></i>
+                        <span class="font-bold text-gray-700">Professional Coaching</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="max-w-4xl mx-auto px-6 reveal">
+        <div class="bg-white p-8 md:p-12 rounded-[40px] shadow-xl border border-brand-gold/10 flex flex-col md:flex-row items-center gap-10">
+            <div class="relative shrink-0">
+                <img src="https://lh3.googleusercontent.com/u/0/d/14utoibVlpHukBWubM-ASeqSdmipEojBQ" alt="Coaching Team" class="w-40 h-40 rounded-3xl object-cover shadow-lg ring-4 ring-brand-light">
+                <div class="absolute -bottom-4 -right-4 bg-brand-gold text-white p-3 rounded-xl">
+                    <i class="fas fa-award"></i>
+                </div>
+            </div>
+            <div>
+                <h4 class="text-3xl font-bold text-brand-green mb-4">Expert Coaching Team</h4>
+                <p class="text-gray-600 leading-relaxed italic text-lg">
+                    "Our department is staffed by certified lifeguards and professional sports instructors dedicated to nurturing the physical potential of every student through safe and encouraging mentorship."
                 </p>
             </div>
         </div>
     </div>
+
 </section>
         <!--Boarding-->
-      <section id="fac-boarding" class="page-content py-32 px-6 max-w-7xl mx-auto" style="display:none;">
+     <section id="fac-boarding" class="page-content py-32 px-6 max-w-7xl mx-auto" style="display:none;">
     <div class="text-center mb-16 reveal">
         <h2 class="text-5xl md:text-6xl font-bold text-brand-green mb-4">Boarding</h2>
         <div class="w-20 h-1 bg-brand-gold mx-auto"></div>
     </div>
 
-    <div class="grid lg:grid-cols-2 gap-16 items-start">
+    <div class="grid lg:grid-cols-2 gap-16 items-start mb-24">
         <div class="reveal">
             <p class="text-gray-600 text-lg leading-relaxed mb-8">
                 Our boarding Wing has modern living quarters making it <strong>A Home Away From Home</strong>. 
@@ -1761,7 +1981,19 @@ async function submitApplication(event) {
         <div class="reveal">
             <div class="relative">
                 <div class="absolute -top-4 -left-4 w-full h-full border-2 border-brand-gold rounded-[40px] -z-10"></div>
-                <img src="https://lh3.googleusercontent.com/u/0/d/1FLlVKDs_YM_BX9hLMkNRxim_Hm9-x2AV" alt="Mustard Seed Boarding Facilities" class="rounded-[40px] shadow-2xl w-full h-[500px] object-cover">
+                <img src="https://lh3.googleusercontent.com/u/0/d/1FLlVKDs_YM_BX9hLMkNRxim_Hm9-x2AV" alt="Mustard Seed Boarding Facilities" class="rounded-[40px] shadow-2xl w-full h-[550px] object-cover">
+            </div>
+        </div>
+    </div>
+
+    <div class="reveal">
+        <div class="relative h-[450px] rounded-[40px] overflow-hidden shadow-xl group">
+            <img src=" https://lh3.googleusercontent.com/u/0/d/1cMkCf9DytR6bcd8Wt1d-wV2vi4oOhu7B" 
+                 alt="Student Life in Boarding" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105">
+            <div class="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent"></div>
+            <div class="absolute bottom-10 left-10">
+                <p class="text-white text-2xl font-bold">A Supportive Community</p>
+                <p class="text-white/80">Providing a balanced environment for study and recreation.</p>
             </div>
         </div>
     </div>
@@ -1992,7 +2224,7 @@ async function submitApplication(event) {
             </div>
             </section>
             <!--Event & News-->
-        <section id="NE" class="page-content py-32 px-6 bg-[var(--brand-light)]" style="display:none;">
+      <section id="NE" class="page-content py-32 px-6 bg-[var(--brand-light)]" style="display:none;">
     <div class="max-w-7xl mx-auto">
         <div class="text-center mb-16 reveal">
             <span class="inline-block bg-[#e8f0eb] text-brand-green px-4 py-1.5 rounded-full text-[10px] font-bold uppercase tracking-widest mb-4">
@@ -2008,8 +2240,8 @@ async function submitApplication(event) {
                     <span class="w-2 h-2 rounded-full bg-brand-gold"></span>
                     <span class="text-xs font-bold text-brand-gold uppercase tracking-widest">16 March 2026</span>
                 </div>
-                <h3 class="text-2xl font-bold mb-4 text-brand-green group-hover:text-brand-gold transition-colors">YR 11 Mock 2 Preparetion for IGCSE</h3>
-                <p class="text-gray-500 mb-8 leading-relaxed">All candidates are reminded that the mock examinations begin on March 16th. Please ensure you are familiar with the timetable, arrive promptly, and have all necessary stationery. This is a crucial opportunity to prepare for the final exams. Best of luck to all students!</p>
+                <h3 class="text-2xl font-bold mb-4 text-brand-green group-hover:text-brand-gold transition-colors">YR 11 Mock 2 Preparation</h3>
+                <p class="text-gray-500 mb-8 leading-relaxed">All candidates are reminded that the mock examinations begin on March 16th. This is a crucial opportunity to prepare for the final IGCSE exams. Best of luck!</p>
                 <a href="#" class="inline-flex items-center gap-2 text-brand-green font-bold text-sm uppercase tracking-wider group/link">
                     Read Story <i class="fas fa-arrow-right text-xs transition-transform group-hover/link:translate-x-1"></i>
                 </a>
@@ -2021,7 +2253,7 @@ async function submitApplication(event) {
                     <span class="text-xs font-bold text-brand-gold uppercase tracking-widest">02 April 2026</span>
                 </div>
                 <h3 class="text-2xl font-bold mb-4 text-brand-green group-hover:text-brand-gold transition-colors">Annual Talent Show</h3>
-                <p class="text-gray-500 mb-8 leading-relaxed">Discover the incredible inventions and showcasing amazing talent during the closing day of term 2</p>
+                <p class="text-gray-500 mb-8 leading-relaxed">Discover incredible inventions and amazing talent during our end-of-term showcase. A perfect way to close Term 2!</p>
                 <a href="#" class="inline-flex items-center gap-2 text-brand-green font-bold text-sm uppercase tracking-wider group/link">
                     Read Story <i class="fas fa-arrow-right text-xs transition-transform group-hover/link:translate-x-1"></i>
                 </a>
@@ -2030,10 +2262,10 @@ async function submitApplication(event) {
             <div class="bg-white p-8 rounded-[32px] shadow-sm border border-gray-100 reveal group hover:shadow-md transition-all duration-300">
                 <div class="flex items-center gap-3 mb-6">
                     <span class="w-2 h-2 rounded-full bg-brand-gold"></span>
-                    <span class="text-xs font-bold text-brand-gold uppercase tracking-widest">N/A</span>
+                    <span class="text-xs font-bold text-brand-gold uppercase tracking-widest">Update</span>
                 </div>
-                <h3 class="text-2xl font-bold mb-4 text-brand-green group-hover:text-brand-gold transition-colors">No event </h3>
-                <p class="text-gray-500 mb-8 leading-relaxed">posting soon.</p>
+                <h3 class="text-2xl font-bold mb-4 text-brand-green group-hover:text-brand-gold transition-colors">Admissions 2026</h3>
+                <p class="text-gray-500 mb-8 leading-relaxed">Applications for the next academic year are now open. Secure your child's place in our global learning community.</p>
                 <a href="#" class="inline-flex items-center gap-2 text-brand-green font-bold text-sm uppercase tracking-wider group/link">
                     Read Story <i class="fas fa-arrow-right text-xs transition-transform group-hover/link:translate-x-1"></i>
                 </a>
@@ -2053,7 +2285,7 @@ async function submitApplication(event) {
                         </div>
                         <div>
                             <h4 class="font-bold text-brand-green">Mock 2 Examination</h4>
-                            <p class="text-sm text-gray-500">End-term exams and candidates preparation for IGCSE</p>
+                            <p class="text-sm text-gray-500">IGCSE candidate intensive preparation week.</p>
                         </div>
                     </div>
                 </div>
@@ -2064,9 +2296,94 @@ async function submitApplication(event) {
                             <span class="text-[10px] uppercase font-bold text-gray-400">April</span>
                         </div>
                         <div>
-                            <h4 class="font-bold text-brand-green">Closing day</h4>
-                            <p class="text-sm text-gray-500">The last day of Term 2 2026</p>
+                            <h4 class="font-bold text-brand-green">Closing Day</h4>
+                            <p class="text-sm text-gray-500">The last day of Term 2 2026.</p>
                         </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="mt-24 max-w-4xl mx-auto reveal">
+            <div class="bg-white rounded-[40px] shadow-xl overflow-hidden border border-brand-gold/10">
+                <div class="bg-brand-green p-8 text-center">
+                    <h3 class="text-3xl font-bold text-white mb-2">Major Co-Curricular Highlights</h3>
+                    <p class="text-white/80">Celebrating talent, teamwork, and community spirit</p>
+                </div>
+                
+                <div class="p-10">
+                    <div class="grid md:grid-cols-3 gap-8 text-center">
+                        <div class="group">
+                            <div class="w-16 h-16 bg-brand-light rounded-2xl flex items-center justify-center mx-auto mb-4 group-hover:bg-brand-gold transition-all">
+                                <i class="fas fa-trophy text-brand-green group-hover:text-white text-2xl"></i>
+                            </div>
+                            <h4 class="font-bold text-brand-green mb-2">HOC Cup</h4>
+                            <p class="text-xs text-gray-500 leading-relaxed">Inter-house football and sports challenge.</p>
+                        </div>
+                        <div class="group">
+                            <div class="w-16 h-16 bg-brand-light rounded-2xl flex items-center justify-center mx-auto mb-4 group-hover:bg-brand-gold transition-all">
+                                <i class="fas fa-swimmer text-brand-green group-hover:text-white text-2xl"></i>
+                            </div>
+                            <h4 class="font-bold text-brand-green mb-2">Swimming Gala</h4>
+                            <p class="text-xs text-gray-500 leading-relaxed">Competitive racing and water safety showcases.</p>
+                        </div>
+                        <div class="group">
+                            <div class="w-16 h-16 bg-brand-light rounded-2xl flex items-center justify-center mx-auto mb-4 group-hover:bg-brand-gold transition-all">
+                                <i class="fas fa-running text-brand-green group-hover:text-white text-2xl"></i>
+                            </div>
+                            <h4 class="font-bold text-brand-green mb-2">Sports Day</h4>
+                            <p class="text-xs text-gray-500 leading-relaxed">Track and field events for all year groups.</p>
+                        </div>
+                    </div>
+
+                    <div class="mt-12 p-6 bg-brand-light rounded-3xl border border-brand-gold/20 flex flex-col md:flex-row items-center gap-6">
+                        <div class="bg-white p-4 rounded-2xl shadow-sm">
+                            <i class="fas fa-users text-brand-gold text-2xl"></i>
+                        </div>
+                        <div>
+                            <h4 class="font-bold text-brand-green">A Special Invitation for Parents</h4>
+                            <p class="text-sm text-gray-600 italic leading-relaxed">
+                                We invite all parents to attend and participate! You are welcome to **take part in the designated parents' races** during Sports Day. Let's make it a day to remember!
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="mt-24 reveal">
+            <div class="flex items-center justify-between mb-8">
+                <div>
+                    <h3 class="text-3xl font-bold text-brand-green">Sports Day Memories</h3>
+                    <p class="text-brand-gold font-bold uppercase tracking-widest text-xs mt-1">Term 1 • November 2025</p>
+                </div>
+                <div class="hidden md:block">
+                    <span class="text-sm text-gray-400 italic">Parents and staff in action!</span>
+                </div>
+            </div>
+
+            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+                <div class="relative h-64 rounded-3xl overflow-hidden shadow-lg group">
+                    <img src="https://lh3.googleusercontent.com/u/0/d/13ozFL6FxoAVFmw1jULs_FFgrkcrjPBnE" alt="Parents Race Sports Day" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110">
+                    <div class="absolute inset-0 bg-black/20 group-hover:bg-black/40 transition-colors"></div>
+                    <div class="absolute bottom-4 left-4">
+                        <span class="bg-brand-gold text-white text-[10px] font-bold px-3 py-1 rounded-full uppercase">Community Race</span>
+                    </div>
+                </div>
+
+                <div class="relative h-64 rounded-3xl overflow-hidden shadow-lg group">
+                    <img src="https://lh3.googleusercontent.com/u/0/d/13jf1ZJ8EpliT4Fr89aBcaB-wiM4nNPy7" alt="Student Track Event" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110">
+                    <div class="absolute inset-0 bg-black/20 group-hover:bg-black/40 transition-colors"></div>
+                    <div class="absolute bottom-4 left-4">
+                        <span class="bg-brand-gold text-white text-[10px] font-bold px-3 py-1 rounded-full uppercase">Tag of war </span>
+                    </div>
+                </div>
+
+                <div class="relative h-64 rounded-3xl overflow-hidden shadow-lg group md:col-span-2 lg:col-span-1">
+                    <img src="https://lh3.googleusercontent.com/u/0/d/1u7i4gxPtDL9mPM7i1wX2TkGm1Jos7LKn" alt="Parents cheering" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110">
+                    <div class="absolute inset-0 bg-black/20 group-hover:bg-black/40 transition-colors"></div>
+                    <div class="absolute bottom-4 left-4">
+                        <span class="bg-brand-gold text-white text-[10px] font-bold px-3 py-1 rounded-full uppercase">Parent & staff Support</span>
                     </div>
                 </div>
             </div>

@@ -328,6 +328,19 @@ nav {
 .dark-mode #stats-tracker p {
     color: #9ca3af !important;
 }
+        /* Freeze the body to prevent scrolling */
+.no-scroll {
+    overflow: hidden;
+    height: 100vh;
+}
+
+/* Apply blur and disable interactions with the background */
+.content-blur {
+    filter: blur(8px);
+    transition: filter 0.5s ease;
+    pointer-events: none; /* Prevents users from clicking links behind the banner */
+    user-select: none;    /* Prevents text selection behind the banner */
+}
     </style>
 </head>
 <body class="bg-[#fafafa]">
@@ -2510,6 +2523,25 @@ async function submitApplication(event) {
         </button>
     </div>
 </div>
+        
+        <div id="cookie-banner" class="fixed bottom-0 left-0 w-full bg-[#005a32] text-white p-4 z-[100] transform translate-y-full transition-transform duration-500 shadow-2xl border-t border-[#c5a059]">
+    <div class="max-w-7xl mx-auto flex flex-col md:flex-row items-center justify-between gap-4">
+        <div class="flex items-center gap-3">
+            <i class="fas fa-cookie-bite text-[#c5a059] text-2xl"></i>
+            <p class="text-sm font-medium">
+                We use cookies to enhance your experience on our portal. By clicking "Accept", you agree to our storage of cookies on your device.
+            </p>
+        </div>
+        <div class="flex gap-3 shrink-0">
+            <button onclick="handleCookieChoice('declined')" class="px-6 py-2 border border-[#c5a059] text-[#c5a059] hover:bg-[#c5a059] hover:text-white transition-colors rounded-md text-sm font-bold uppercase tracking-wider">
+                Decline
+            </button>
+            <button onclick="handleCookieChoice('accepted')" class="px-6 py-2 bg-[#c5a059] text-white hover:bg-[#b08e4d] transition-colors rounded-md text-sm font-bold uppercase tracking-wider">
+                Accept
+            </button>
+        </div>
+    </div>
+</div>
     
         
     </footer>
@@ -2796,6 +2828,34 @@ function calculateFees() {
         btn.innerText = "CONFIRM TOUR REQUEST";
         btn.disabled = false;
     }
+}
+    </script>
+    <script>
+ document.addEventListener("DOMContentLoaded", function() {
+    const banner = document.getElementById('cookie-banner');
+    const mainContent = document.getElementById('main-content');
+    const cookieChoice = localStorage.getItem('school_cookie_consent');
+
+    if (!cookieChoice) {
+        // Show banner and apply blur after a small delay
+        setTimeout(() => {
+            banner.classList.remove('translate-y-full');
+            document.body.classList.add('no-scroll');
+            if (mainContent) mainContent.classList.add('content-blur');
+        }, 800);
+    }
+});
+
+function handleCookieChoice(choice) {
+    const banner = document.getElementById('cookie-banner');
+    const mainContent = document.getElementById('main-content');
+    
+    localStorage.setItem('school_cookie_consent', choice);
+    
+    // Hide banner and remove blur/scroll-lock
+    banner.classList.add('translate-y-full');
+    document.body.classList.remove('no-scroll');
+    if (mainContent) mainContent.classList.remove('content-blur');
 }
     </script>
 </body>

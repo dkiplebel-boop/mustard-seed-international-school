@@ -328,18 +328,17 @@ nav {
 .dark-mode #stats-tracker p {
     color: #9ca3af !important;
 }
-        /* Freeze the body to prevent scrolling */
+     /* Prevents scrolling when the cookie banner is active */
 .no-scroll {
     overflow: hidden;
     height: 100vh;
 }
 
-/* Apply blur and disable interactions with the background */
+/* Optional: Add a subtle blur to the main content to emphasize the banner */
 .content-blur {
-    filter: blur(8px);
-    transition: filter 0.5s ease;
-    pointer-events: none; /* Prevents users from clicking links behind the banner */
-    user-select: none;    /* Prevents text selection behind the banner */
+    filter: blur(4px);
+    pointer-events: none; /* Prevents clicking links/buttons behind the banner */
+    user-select: none;
 }
     </style>
 </head>
@@ -762,11 +761,11 @@ function loadVideo() {
 </script>
 </section>
 
-<section id="about-history" class="page-content py-32 px-6 max-w-7xl mx-auto" style="display:none;">
+   <section id="about-history" class="page-content py-32 px-6 max-w-7xl mx-auto" style="display:none;">
     <span class="section-tag reveal">Our Journey</span>
     <h2 class="text-5xl md:text-6xl font-bold text-brand-green mb-10 reveal">Our History</h2>
     
-    <div class="grid lg:grid-cols-2 gap-20 items-center">
+    <div class="grid lg:grid-cols-2 gap-20 items-center mb-20">
         <div class="reveal order-2 lg:order-1">
             <img src="https://lh3.googleusercontent.com/u/0/d/13Yh-GRww7LouFYngZ2jZk7GkE0VlY_L4" alt="Mustard Seed Early Days" class="rounded-[40px] shadow-2xl w-full h-[500px] object-cover border-8 border-white">
         </div>
@@ -775,7 +774,7 @@ function loadVideo() {
             <p class="text-gray-600 leading-relaxed mb-6">
                 Established over two decades ago in the serene suburbs of Kiamunyi, Nakuru, Mustard Seed began with a simple but powerful idea: that from a small seed of quality education, great leaders can grow. 
                 <br><br>
-                What started as a local initiative has blossomed into a premier <strong>Cambridge International School</strong>. Over the years, we have expanded our facilities to include state-of-the-art labs, an aquatic center, and elite boarding wings, while maintaining the personal, family-oriented atmosphere that defines the "Mustard Seed Way."
+                What started as a local initiative has blossomed into a premier <strong>Cambridge International School</strong>. Over the years, we have expanded our facilities to include state-of-the-art labs, an aquatic center, and elite boarding wings.
             </p>
             <div class="flex gap-8 border-t pt-8">
                 <div>
@@ -789,6 +788,25 @@ function loadVideo() {
             </div>
         </div>
     </div>
+
+    <div class="max-w-4xl mx-auto p-10 bg-[#f9f9f7] rounded-[40px] border-t-8 border-brand-gold shadow-sm reveal">
+        <span class="text-brand-gold font-bold uppercase tracking-widest text-sm mb-4 block">Leadership Reflection</span>
+        <h2 class="text-3xl font-bold text-brand-green mb-6">A Word from the Principal</h2>
+        <div class="text-gray-700 leading-relaxed italic space-y-4">
+            <p>
+                "Welcome to Mustard Seed International Schools (MSIS). As a school accredited by Cambridge Assessment International Education, we are a caring home of quality where education is a serious business, yet full of fun and memorable experiences."
+            </p>
+            <p>
+                "Our vibrant community is a beehive of activity, supported by professional staff and engaged parents. We strive to 'turn mirrors into windows,' opening the minds of our learners to global opportunities through a rich curriculum."
+            </p>
+        </div>
+        <div class="mt-8 pt-6 border-t border-gray-200">
+            <p class="font-bold text-brand-green">Mr. Abraham Lubanga</p>
+            <p class="text-sm uppercase tracking-widest text-brand-gold">Head of Center, MSIS</p>
+        </div>
+    </div>
+
+
   
   <div class="my-16">
     <h2 class="text-3xl font-bold text-brand-green dark:text-brand-gold font-serif mb-8 text-center lg:text-left italic">
@@ -1671,7 +1689,6 @@ async function submitApplication(event) {
                 <div class="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent"></div>
                 <div class="absolute bottom-10 left-10 text-white">
                     <p class="text-3xl font-bold mb-2">Safety is Our Priority</p>
-                    <p class="text-lg opacity-90">GPS tracked fleet for real-time monitoring and peace of mind.</p>
                 </div>
             </div>
         </div>
@@ -2831,30 +2848,34 @@ function calculateFees() {
 }
     </script>
     <script>
- document.addEventListener("DOMContentLoaded", function() {
+ dodocument.addEventListener("DOMContentLoaded", function() {
     const banner = document.getElementById('cookie-banner');
-    const mainContent = document.getElementById('main-content');
+    const mainContent = document.querySelector('main'); // Ensure your page content is wrapped in <main>
     const cookieChoice = localStorage.getItem('school_cookie_consent');
 
     if (!cookieChoice) {
-        // Show banner and apply blur after a small delay
         setTimeout(() => {
             banner.classList.remove('translate-y-full');
+            // Freeze the background
             document.body.classList.add('no-scroll');
+            // Optional: Blur the background content
             if (mainContent) mainContent.classList.add('content-blur');
-        }, 800);
+        }, 1000);
     }
 });
 
 function handleCookieChoice(choice) {
     const banner = document.getElementById('cookie-banner');
-    const mainContent = document.getElementById('main-content');
+    const mainContent = document.querySelector('main');
     
     localStorage.setItem('school_cookie_consent', choice);
     
-    // Hide banner and remove blur/scroll-lock
+    // Hide the banner
     banner.classList.add('translate-y-full');
+
+    // Unfreeze the background
     document.body.classList.remove('no-scroll');
+    // Remove blur
     if (mainContent) mainContent.classList.remove('content-blur');
 }
     </script>

@@ -363,9 +363,30 @@ nav {
     transition: transform 0.3s ease;
 }
 
-/* Specific leaf geometry */
+/* Unique Leaf Button Geometry */
 .leaf-shape {
-    border-radius: 2px 30px 2px 30px;
+    border-radius: 2px 30px 2px 30px; 
+}
+
+/* Visibility Control */
+#backToTop.show {
+    opacity: 1 !important;
+    transform: translateY(0) scale(1) !important;
+}
+
+/* Tooltip Labels for Action Icons */
+#backToTop [aria-label]:hover::after {
+    content: attr(aria-label);
+    position: absolute;
+    right: 55px;
+    background: rgba(0, 0, 0, 0.8);
+    color: white;
+    padding: 4px 12px;
+    border-radius: 4px;
+    font-size: 11px;
+    font-weight: 600;
+    white-space: nowrap;
+    pointer-events: none;
 }
        
     </style>
@@ -2590,18 +2611,35 @@ async function submitApplication(event) {
     </div>
 </div>
 
-      <div id="backToTop" class="fixed bottom-6 right-6 z-[1500] cursor-pointer opacity-0 translate-y-10 transition-all duration-500 scale-0">
-    <div class="relative w-12 h-12 flex items-center justify-center group">
-        <svg class="absolute inset-0 w-full h-full -rotate-90 transform" viewBox="0 0 50 50">
-            <circle cx="25" cy="25" r="22" fill="transparent" stroke="rgba(0, 90, 50, 0.1)" stroke-width="3" />
-            <circle id="scrollProgressCircle" cx="25" cy="25" r="22" fill="transparent" 
-                    stroke="var(--brand-gold)" stroke-width="3" 
-                    stroke-dasharray="138.2" stroke-dashoffset="138.2" 
-                    stroke-linecap="round" class="transition-all duration-100 ease-out" />
-        </svg>
+      <div id="backToTop" class="fixed bottom-10 right-10 z-[5000] opacity-0 translate-y-10 scale-90 transition-all duration-500 group">
+    
+    <div class="absolute bottom-0 right-0 mb-16 flex flex-col gap-3 pointer-events-none group-hover:pointer-events-auto pb-6">
         
-        <div class="w-9 h-9 bg-brand-green rounded-tl-[1px] rounded-br-[1px] rounded-tr-[18px] rounded-bl-[18px] flex items-center justify-center shadow-md group-hover:bg-brand-gold transition-colors duration-300">
-            <i class="fas fa-leaf text-white text-sm"></i>
+        <a href="https://wa.me/254704336717" target="_blank" aria-label="WhatsApp Us" 
+           class="w-12 h-12 bg-green-500 text-white rounded-full flex items-center justify-center shadow-lg opacity-0 translate-y-4 transition-all duration-300 group-hover:opacity-100 group-hover:translate-y-0 delay-[0ms] hover:scale-110">
+            <i class="fab fa-whatsapp text-xl"></i>
+        </a>
+        
+        <button onclick="showPage('book-tour')" aria-label="Book a Tour" 
+                class="w-12 h-12 bg-brand-gold text-white rounded-full flex items-center justify-center shadow-lg opacity-0 translate-y-4 transition-all duration-300 group-hover:opacity-100 group-hover:translate-y-0 delay-[75ms] hover:scale-110">
+            <i class="fas fa-calendar-check text-lg"></i>
+        </button>
+        
+        <a href="https://www.google.com/maps/dir/@-0.2715069,36.0238912,17z/data=!3m1!4b1!4m6!3m5!1s0x18298cf505362d0d:0x36e634439c6e775d!8m2!3d-0.2715123!4d36.0264661!16s%2Fm%2F0gg5gxs?entry=ttu&g_ep=EgoyMDI2MDMxMS4wIKXMDSoASAFQAw%3D%3D" target="_blank" aria-label="Get Directions" 
+           class="w-12 h-12 bg-blue-600 text-white rounded-full flex items-center justify-center shadow-lg opacity-0 translate-y-4 transition-all duration-300 group-hover:opacity-100 group-hover:translate-y-0 delay-[150ms] hover:scale-110">
+            <i class="fas fa-map-marker-alt text-lg"></i>
+        </a>
+    </div>
+
+    <div class="relative cursor-pointer" onclick="window.scrollTo({ top: 0, behavior: 'smooth' });">
+        <svg class="w-16 h-16 transform -rotate-90">
+            <circle class="text-gray-200" stroke-width="4" stroke="currentColor" fill="transparent" r="22" cx="32" cy="32"/>
+            <circle id="scrollProgressCircle" class="text-brand-green" stroke-width="4" stroke-dasharray="138.23" stroke-dashoffset="138.23" stroke-linecap="round" stroke="currentColor" fill="transparent" r="22" cx="32" cy="32"/>
+        </svg>
+        <div class="absolute inset-0 flex items-center justify-center">
+            <div class="leaf-shape bg-brand-green w-10 h-10 flex items-center justify-center text-white shadow-xl transition-transform group-hover:scale-110 active:scale-95">
+                <i class="fas fa-leaf text-sm"></i>
+            </div>
         </div>
     </div>
 </div>

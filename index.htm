@@ -388,6 +388,14 @@ nav {
     white-space: nowrap;
     pointer-events: none;
 }
+        @media (max-width: 768px) {
+    /* On mobile, we use a class instead of hover to show icons */
+    #mobileActions.is-open {
+        opacity: 1 !important;
+        translate: 0 0 !important;
+        pointer-events: auto !important;
+    }
+}
        
     </style>
 </head>
@@ -1394,7 +1402,7 @@ function loadVideo() {
     </div>
           <div class="flex justify-center mt-6">
     <button onclick="printSpecificSection('printable-fees')" class="no-print flex items-center gap-2 px-6 py-3 bg-[#005a32] text-white rounded-lg hover:bg-[#c5a059] transition-all">
-        <i class="fas fa-file-pdf"></i> SAVE FEE TABLE ONLY
+        <i class="fas fa-file-pdf"></i> SAVE PDF FEE STRUCTURE
     </button>
 </div>
            <div class="mt-20 p-10 bg-brand-light rounded-[40px] shadow-inner reveal">
@@ -2611,33 +2619,33 @@ async function submitApplication(event) {
     </div>
 </div>
 
-      <div id="backToTop" class="fixed bottom-10 right-10 z-[5000] opacity-0 translate-y-10 scale-90 transition-all duration-500 group">
+      <div id="backToTop" class="fixed bottom-6 right-6 md:bottom-10 md:right-10 z-[5000] opacity-0 translate-y-10 scale-90 transition-all duration-500 group">
     
-    <div class="absolute bottom-0 right-0 mb-16 flex flex-col gap-3 pointer-events-none group-hover:pointer-events-auto pb-6">
+    <div id="mobileActions" class="absolute bottom-0 right-0 mb-16 flex flex-col gap-3 pointer-events-none group-hover:pointer-events-auto md:pb-10 transition-all duration-300 opacity-0 translate-y-4 md:group-hover:opacity-100 md:group-hover:translate-y-0">
         
-        <a href="https://wa.me/254704336717" target="_blank" aria-label="WhatsApp Us" 
-           class="w-12 h-12 bg-green-500 text-white rounded-full flex items-center justify-center shadow-lg opacity-0 translate-y-4 transition-all duration-300 group-hover:opacity-100 group-hover:translate-y-0 delay-[0ms] hover:scale-110">
+        <a href="https://wa.me/254721300121" target="_blank" 
+           class="w-12 h-12 bg-green-500 text-white rounded-full flex items-center justify-center shadow-lg hover:scale-110 transition-transform">
             <i class="fab fa-whatsapp text-xl"></i>
         </a>
         
-        <button onclick="showPage('book-tour')" aria-label="Book a Tour" 
-                class="w-12 h-12 bg-brand-gold text-white rounded-full flex items-center justify-center shadow-lg opacity-0 translate-y-4 transition-all duration-300 group-hover:opacity-100 group-hover:translate-y-0 delay-[75ms] hover:scale-110">
+        <button onclick="showPage('book-tour')" 
+                class="w-12 h-12 bg-brand-gold text-white rounded-full flex items-center justify-center shadow-lg hover:scale-110 transition-transform">
             <i class="fas fa-calendar-check text-lg"></i>
         </button>
         
-        <a href="https://www.google.com/maps/dir/@-0.2715069,36.0238912,17z/data=!3m1!4b1!4m6!3m5!1s0x18298cf505362d0d:0x36e634439c6e775d!8m2!3d-0.2715123!4d36.0264661!16s%2Fm%2F0gg5gxs?entry=ttu&g_ep=EgoyMDI2MDMxMS4wIKXMDSoASAFQAw%3D%3D" target="_blank" aria-label="Get Directions" 
-           class="w-12 h-12 bg-blue-600 text-white rounded-full flex items-center justify-center shadow-lg opacity-0 translate-y-4 transition-all duration-300 group-hover:opacity-100 group-hover:translate-y-0 delay-[150ms] hover:scale-110">
+        <a href="https://www.google.com/maps/dir/@-0.2715069,36.0238912,17z/data=!3m1!4b1!4m6!3m5!1s0x18298cf505362d0d:0x36e634439c6e775d!8m2!3d-0.2715123!4d36.0264661!16s%2Fm%2F0gg5gxs?entry=ttu&g_ep=EgoyMDI2MDMxMS4wIKXMDSoASAFQAw%3D%3D" target="_blank" 
+           class="w-12 h-12 bg-blue-600 text-white rounded-full flex items-center justify-center shadow-lg hover:scale-110 transition-transform">
             <i class="fas fa-map-marker-alt text-lg"></i>
         </a>
     </div>
 
-    <div class="relative cursor-pointer" onclick="window.scrollTo({ top: 0, behavior: 'smooth' });">
+    <div id="leafMainBtn" class="relative cursor-pointer">
         <svg class="w-16 h-16 transform -rotate-90">
             <circle class="text-gray-200" stroke-width="4" stroke="currentColor" fill="transparent" r="22" cx="32" cy="32"/>
             <circle id="scrollProgressCircle" class="text-brand-green" stroke-width="4" stroke-dasharray="138.23" stroke-dashoffset="138.23" stroke-linecap="round" stroke="currentColor" fill="transparent" r="22" cx="32" cy="32"/>
         </svg>
         <div class="absolute inset-0 flex items-center justify-center">
-            <div class="leaf-shape bg-brand-green w-10 h-10 flex items-center justify-center text-white shadow-xl transition-transform group-hover:scale-110 active:scale-95">
+            <div class="leaf-shape bg-brand-green w-10 h-10 flex items-center justify-center text-white shadow-xl transition-transform active:scale-95">
                 <i class="fas fa-leaf text-sm"></i>
             </div>
         </div>
@@ -2963,28 +2971,48 @@ function handleCookieChoice(choice) {
     </script>
     <script>
   const backToTop = document.getElementById('backToTop');
+const leafMainBtn = document.getElementById('leafMainBtn');
+const mobileActions = document.getElementById('mobileActions');
 const progressCircle = document.getElementById('scrollProgressCircle');
-const circumference = 2 * Math.PI * 22; // Updated for smaller radius
+const circumference = 2 * Math.PI * 22;
 
+let lastTap = 0;
+
+// Handle Scroll Visibility & Progress
 window.addEventListener('scroll', () => {
-    // Visibility toggle
     if (window.scrollY > 400) {
         backToTop.classList.add('show');
     } else {
         backToTop.classList.remove('show');
+        mobileActions.classList.remove('is-open'); // Close icons if user scrolls back to top
     }
 
-    // Progress calculation
     const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
     const scrollHeight = document.documentElement.scrollHeight - document.documentElement.clientHeight;
     const scrollPercent = (scrollTop / scrollHeight);
-    
     const offset = circumference - (scrollPercent * circumference);
     progressCircle.style.strokeDashoffset = offset;
 });
 
-backToTop.addEventListener('click', () => {
-    window.scrollTo({ top: 0, behavior: 'smooth' });
+// Double Tap vs Single Tap Logic
+leafMainBtn.addEventListener('click', function (e) {
+    const now = Date.now();
+    const DOUBLE_TAP_DELAY = 300;
+
+    if (now - lastTap < DOUBLE_TAP_DELAY) {
+        // DOUBLE TAP detected
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+        mobileActions.classList.remove('is-open'); 
+    } else {
+        // SINGLE TAP detected
+        if (window.innerWidth <= 768) { // Only run toggle on mobile
+            mobileActions.classList.toggle('is-open');
+        } else {
+            // On Desktop, a single click can still mean "Go to Top"
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+    }
+    lastTap = now;
 });
         </script>
     <script>

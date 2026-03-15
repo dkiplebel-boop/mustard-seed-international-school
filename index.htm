@@ -3061,13 +3061,17 @@ function toggleMobileDropdown(id) {
 }
 
 function showPage(pageId) {
-    // Hide all pages
-    document.querySelectorAll('.page-content').forEach(page => {
-        page.style.display = 'none';
-    });
-    // Show selected page
-    document.getElementById(pageId).style.display = 'block';
-    // Scroll to top
+    // 1. Your existing logic to hide pages and show the new one
+    const pages = document.querySelectorAll('.page-content');
+    pages.forEach(p => p.classList.remove('page-active'));
+    
+    document.getElementById(pageId).classList.add('page-active');
+
+    // 2. THE FIX: Add this line to update the browser history
+    // This adds "#pageId" to the URL (e.g., mysite.com/#book-tour)
+    history.pushState({ page: pageId }, null, "#" + pageId);
+    
+    // Scroll to top so it feels like a new page
     window.scrollTo(0, 0);
 }
 
@@ -3514,6 +3518,23 @@ function rotateHero() {
 
 // Start the loop every 5 seconds
 setInterval(rotateHero, 5000);
+    </script>
+    <script>window.onpopstate = function(event) {
+    if (event.state && event.state.page) {
+        // If there is a saved state, show that page
+        showPageFromHistory(event.state.page);
+    } else {
+        // If no state (user went all the way back), show the home page
+        showPageFromHistory('home');
+    }
+};
+
+// A small helper function so we don't cause an infinite loop
+function showPageFromHistory(pageId) {
+    const pages = document.querySelectorAll('.page-content');
+    pages.forEach(p => p.classList.remove('page-active'));
+    document.getElementById(pageId).classList.add('page-active');
+}
     </script>
 </body>
 </html>

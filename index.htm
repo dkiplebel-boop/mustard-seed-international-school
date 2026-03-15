@@ -220,54 +220,75 @@ nav {
 .brand-subtitle {
     color: var(--brand-gold) !important;
 }
-      /* Refined Mobile Drawer Styles */
+     /* --- Enhanced Mobile Drawer Transitions --- */
+
+/* The main container slide-in */
 #mobileMenu {
-    backdrop-filter: blur(15px);
-    -webkit-backdrop-filter: blur(15px);
-    background-color: rgba(0, 90, 50, 0.98); /* Brand green with slight transparency */
+    transition: transform 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+    background-color: rgba(0, 58, 32, 0.98); /* Ensure it matches --brand-green */
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
 }
 
-/* Hide scrollbar but allow scrolling */
-#mobileMenu::-webkit-scrollbar {
-    display: none;
-}
-
-#mobileMenu {
-    -ms-overflow-style: none;
-    scrollbar-width: none;
-}
-
+/* Base state for all mobile dropdowns */
 .mobile-dropdown {
     max-height: 0;
+    opacity: 0;
     overflow: hidden;
-    transition: max-height 0.4s ease-out; /* Smooth growth */
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    transform: translateY(-10px);
 }
 
+/* Active state triggered by your JS toggle function */
 .mobile-dropdown.active {
-    max-height: 500px; /* Adjust based on how many links you have */
+    max-height: 800px; /* High enough to fit all sub-links */
+    opacity: 1;
+    transform: translateY(0);
+    margin-top: 8px;
+    margin-bottom: 12px;
+    padding: 8px 0;
 }
 
-/* Specific style for the white collapse button */
-.mobile-close-btn {
-    color: #ffffff !important;
-}
-:root {
-    /* Easily change this hex code to change the icon color */
-    --menu-icon-color: #ffffff; 
+/* Interactive link feedback */
+.mobile-nav-link-item {
+    transition: all 0.2s ease;
+    border-radius: 8px;
 }
 
+.mobile-nav-link-item:active {
+    background: rgba(255, 255, 255, 0.1);
+    padding-left: 10px;
+    color: var(--brand-gold);
+}
+
+/* Icon rotation for the chevron arrows */
+.rotate-180 {
+    transform: rotate(180deg);
+}
+
+/* Custom Scrollbar for the drawer (if content is long) */
+#mobileMenu::-webkit-scrollbar {
+    width: 4px;
+}
+
+#mobileMenu::-webkit-scrollbar-thumb {
+    background: var(--brand-gold);
+    border-radius: 10px;
+}
+
+/* Apply button pulse effect */
+@keyframes soft-pulse {
+    0% { box-shadow: 0 0 0 0 rgba(197, 160, 89, 0.4); }
+    70% { box-shadow: 0 0 0 10px rgba(197, 160, 89, 0); }
+    100% { box-shadow: 0 0 0 0 rgba(197, 160, 89, 0); }
+}
+
+.apply-btn-mobile {
+    animation: soft-pulse 2s infinite;
+}
+        /* Forces the mobile toggle icon to be white */
 .mobile-nav-toggle {
-    color: var(--menu-icon-color) !important;
-    transition: color 0.3s ease, transform 0.2s ease;
-}
-
-/* Optional: Change color when the user taps/hovers */
-.mobile-nav-toggle:hover {
-    color: var(--brand-gold) !important;
-}
-
-.mobile-nav-toggle:active {
-    transform: scale(0.9);
+    color: #ffffff !important;
 }
 
         /* Dark Mode Styles */
@@ -485,7 +506,7 @@ nav {
     </nav>
 
     <!-- Mobile Drawer -->
-  <div id="mobileMenu" class="fixed inset-0 bg-brand-green/95 z-[2000] transform translate-x-full transition-transform duration-500 lg:hidden overflow-y-auto">
+ <div id="mobileMenu" class="fixed inset-0 bg-brand-green/95 z-[2000] transform translate-x-full transition-transform duration-500 lg:hidden overflow-y-auto">
     <div class="p-6 pb-12">
         <div class="flex justify-between items-center mb-8 border-b border-white/10 pb-6">
             <div class="flex items-center gap-3">
@@ -498,8 +519,8 @@ nav {
                 </div>
             </div>
             <button onclick="toggleMenu()" class="text-white p-2 hover:rotate-90 transition-transform">
-    <i class="fas fa-times text-2xl"></i>
-</button>
+                <i class="fas fa-times text-2xl"></i>
+            </button>
         </div>
         
         <nav class="flex flex-col space-y-1">
@@ -550,7 +571,20 @@ nav {
                     </div>
                 </div>
             </div>
-            
+
+            <div class="border-b border-white/5">
+                <div onclick="toggleMobileDropdown('m-academia')" class="py-4 flex justify-between items-center text-white text-base font-bold cursor-pointer">
+                    <span>ACADEMIA</span>
+                    <i id="m-academia-icon" class="fas fa-chevron-down text-xs text-brand-gold transition-transform duration-300"></i>
+                </div>
+                <div id="m-academia" class="mobile-dropdown bg-black/10 rounded-xl overflow-hidden mb-2">
+                    <div class="flex flex-col py-2 px-4 space-y-1 text-gray-300 text-sm">
+                        <a onclick="showPage('school-calendar'); toggleMenu();" class="py-3 flex items-center gap-3"><i class="fas fa-calendar-alt text-brand-gold w-4"></i> School Calendar</a>
+                        <a onclick="showPage('NE'); toggleMenu();" class="py-3 flex items-center gap-3"><i class="fas fa-bullhorn text-brand-gold w-4"></i> News & Events</a>
+                    </div>
+                </div>
+            </div>
+
             <div class="border-b border-white/5">
                 <div onclick="toggleMobileDropdown('m-facilities')" class="py-4 flex justify-between items-center text-white text-base font-bold cursor-pointer">
                     <span>FACILITIES</span>
@@ -559,9 +593,9 @@ nav {
                 <div id="m-facilities" class="mobile-dropdown bg-black/10 rounded-xl overflow-hidden mb-2">
                     <div class="flex flex-col py-2 px-4 space-y-1 text-gray-300 text-sm">
                         <a onclick="showPage('fac-dining'); toggleMenu();" class="py-3 flex items-center gap-3"><i class="fas fa-utensils text-brand-gold w-4"></i> Dining Hall</a>
-                        <a onclick="showPage('fac-gym'); toggleMenu();" class="py-3 flex items-center gap-3"><i class="fas fa-dumbbell text-brand-gold w-4"></i> Athletics & Sports</a>
-                        <a onclick="showPage('fac-sports'); toggleMenu();" class="py-3 flex items-center gap-3"><i class="fas fa-running text-brand-gold w-4"></i> Aquatic Center</a>
-                        <a onclick="showPage('fac-boarding'); toggleMenu();" class="py-3 flex items-center gap-3"><i class="fas fa-bed text-brand-gold w-4"></i> Boarding</a>
+                        <a onclick="showPage('fac-gym'); toggleMenu();" class="py-3 flex items-center gap-3"><i class="fas fa-dumbbell text-brand-gold w-4"></i> Gym </a>
+                        <a onclick="showPage('fac-sports'); toggleMenu();" class="py-3 flex items-center gap-3"><i class="fas fa-running text-brand-gold w-4"></i> Sports & Aquatics</a>
+                        <a onclick="showPage('fac-boarding'); toggleMenu();" class="py-3 flex items-center gap-3"><i class="fas fa-bed text-brand-gold w-4"></i> Flexible Boarding</a>
                     </div>
                 </div>
             </div>
@@ -573,43 +607,30 @@ nav {
                 </div>
                 <div id="m-labs" class="mobile-dropdown bg-black/10 rounded-xl overflow-hidden mb-2">
                     <div class="flex flex-col py-2 px-4 space-y-1 text-gray-300 text-sm">
-                        <a onclick="showPage('fac-ict'); toggleMenu();" class="py-3 flex items-center gap-3"><i class="fas fa-laptop-code text-brand-gold w-4"></i> ICT Lab</a>
-                        <a onclick="showPage('fac-science'); toggleMenu();" class="py-3 flex items-center gap-3"><i class="fas fa-flask text-brand-gold w-4"></i> Science Lab</a>
-                        <a onclick="showPage('fac-library'); toggleMenu();" class="py-3 flex items-center gap-3"><i class="fas fa-book-open text-brand-gold w-4"></i> Library</a>
+                        <a onclick="showPage('fac-ict'); toggleMenu();" class="py-3 flex items-center gap-3"><i class="fas fa-laptop-code text-brand-gold w-4"></i> ICT Laboratory</a>
+                        <a onclick="showPage('fac-science'); toggleMenu();" class="py-3 flex items-center gap-3"><i class="fas fa-flask text-brand-gold w-4"></i> Science Laboratory</a>
+                        <a onclick="showPage('fac-library'); toggleMenu();" class="py-3 flex items-center gap-3"><i class="fas fa-book-open text-brand-gold w-4"></i> Literacy Library</a>
                         <a onclick="showPage('MS'); toggleMenu();" class="py-3 flex items-center gap-3"><i class="fas fa-music text-brand-gold w-4"></i> Music</a>
                     </div>
                 </div>
             </div>
 
-           <div class="border-b border-white/5">
-    <div onclick="toggleMobileDropdown('m-academia')" class="py-4 flex justify-between items-center text-white text-base font-bold cursor-pointer">
-        <span>ACADEMIA</span>
-        <i id="m-academia-icon" class="fas fa-chevron-down text-xs text-brand-gold transition-transform duration-300"></i>
-    </div>
-    <div id="m-academia" class="mobile-dropdown bg-black/10 rounded-xl overflow-hidden mb-2">
-        <div class="flex flex-col py-2 px-4 space-y-1 text-gray-300 text-sm">
-            <a onclick="showPage('school-calendar'); toggleMenu();" class="py-3 flex items-center gap-3"><i class="fas fa-calendar-alt text-brand-gold w-4"></i> School Calendar</a>
-            <a onclick="showPage('NE'); toggleMenu();" class="py-3 flex items-center gap-3"><i class="fas fa-bullhorn text-brand-gold w-4"></i> News & Events</a>
-        </div>
-    </div>
-</div>
-            
-            <div class="flex items-center gap-4">
-    <button onclick="toggleDarkMode()" class="text-white hover:text-brand-gold transition-colors p-2" title="Toggle Dark Mode">
-        <i id="theme-icon" class="fas fa-moon text-lg"></i>
-    </button>
-            
             <div class="pt-8 flex flex-col gap-4">
+                <div class="flex items-center justify-between mb-4">
+                    <button onclick="toggleDarkMode()" class="text-white hover:text-brand-gold transition-colors p-2 flex items-center gap-3" title="Toggle Dark Mode">
+                        <i id="theme-icon" class="fas fa-moon text-lg"></i>
+                        <span class="text-xs uppercase font-bold tracking-widest opacity-60">Appearance</span>
+                    </button>
+                </div>
+                
                 <button onclick="showPage('adm-enroll'); toggleMenu();" class="bg-brand-gold text-white py-4 rounded-xl font-bold tracking-widest shadow-lg active:scale-95 transition-transform">
                     APPLY 2026
                 </button>
 
-               
-                
                 <div class="flex justify-center gap-8 pt-6 text-white/40">
                     <a href="#" class="hover:text-brand-gold transition-colors"><i class="fab fa-facebook text-2xl"></i></a>
                     <a href="#" class="hover:text-brand-gold transition-colors"><i class="fab fa-instagram text-2xl"></i></a>
-                    <a href="#" class="hover:text-brand-gold transition-colors"><i class="fab fa-x-twitter text-2xl"></i></a>
+                    <a href="#" class="hover:text-brand-gold transition-colors"><i class="fab fa-youtube text-2xl"></i></a>
                 </div>
             </div>
         </nav>

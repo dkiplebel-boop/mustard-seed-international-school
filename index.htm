@@ -1520,45 +1520,121 @@ function loadVideo() {
         <i class="fas fa-file-pdf"></i> SAVE PDF FEE STRUCTURE
     </button>
 </div>
-           <div class="mt-20 p-10 bg-brand-light rounded-[40px] shadow-inner reveal">
-    <h3 class="text-3xl font-bold text-brand-green mb-8 text-center">Estimated Fees Calculator</h3>
-    <div class="grid md:grid-cols-2 gap-10">
-        <div class="space-y-6">
+        <div class="bg-white rounded-3xl p-6 lg:p-10 shadow-2xl border border-gray-100 max-w-5xl mx-auto my-12 reveal">
+    <div class="flex flex-col md:flex-row md:items-center justify-between gap-4 mb-10">
+        <div class="flex items-center gap-4">
+            <div class="w-14 h-14 bg-brand-green rounded-2xl flex items-center justify-center text-white shadow-lg">
+                <i class="fas fa-calculator text-2xl"></i>
+            </div>
             <div>
-                <label>Select Level</label>
-               <select id="calc-level" class="form-input bg-white">
-    <optgroup label="Early Years">
-        <option value="38500">Playgroup (PG)</option>
-        <option value="42900">K1 - K3</option>
-    </optgroup>
-    <optgroup label="Junior School">
-        <option value="51800">Year 1</option>
-        <option value="51800">Year 2</option>
-        <option value="61500">Year 3</option>
-        <option value="61500">Year 4</option>
-        <option value="68900">Year 5</option>
-        <option value="68900">Year 6</option>
-    </optgroup>
-    <optgroup label="Secondary & Senior">
-        <option value="80000">Year 7</option>
-        <option value="80000">Year 8</option>
-        <option value="90250">Year 9</option>
-        <option value="90250">Year 10</option>
-        <option value="92600">Year 11</option>
-        <option value="91580">Year 12</option>
-        <option value="91580">Year 13</option>
-    </optgroup>
-</select>
+                <h3 class="text-2xl font-bold text-brand-green">MSIS Fee Estimator</h3>
+                <p class="text-sm text-gray-500 font-medium">Academic Year 2025/2026 • Termly Basis</p>
             </div>
-            <div class="flex items-center gap-4">
-                <input type="checkbox" id="calc-boarding" class="w-5 h-5 accent-brand-green">
-                <label class="mb-0">Include Boarding (+40,000 KES)</label>
-            </div>
-            <button onclick="calculateFees()" class="w-full bg-brand-green text-white py-4 rounded-xl font-bold hover:bg-brand-gold transition-colors">Calculate Total</button>
         </div>
-        <div class="bg-white p-8 rounded-3xl shadow-lg flex flex-col justify-center items-center text-center">
-            <span class="text-gray-500 uppercase text-xs font-bold tracking-widest mb-2">Estimated Per Term</span>
-            <div class="text-5xl font-bold text-brand-green">KES <span id="total-display">0</span></div>
+        <div class="bg-brand-gold/10 px-4 py-2 rounded-xl">
+            <span class="text-brand-gold font-bold text-xs uppercase tracking-widest">Official Quote</span>
+        </div>
+    </div>
+
+    <div class="grid lg:grid-cols-5 gap-8">
+        <div class="lg:col-span-3 space-y-6">
+            
+            <div>
+                <label class="block text-[11px] font-bold text-gray-400 uppercase tracking-widest mb-2">1. Student Year Group</label>
+                <select id="calc-level" class="w-full p-4 rounded-xl bg-gray-50 border-2 border-transparent focus:border-brand-green outline-none transition-all font-medium" onchange="calculateDetailedFees()">
+                    <option value="0">Choose a class...</option>
+                    <optgroup label="Early Years">
+                        <option value="85000">Playgroup</option>
+                        <option value="95000">KG 1 / KG 2</option>
+                        <option value="105000">KG 3</option>
+                    </optgroup>
+                    <optgroup label="Primary School">
+                        <option value="130000">Year 1 - 2</option>
+                        <option value="145000">Year 3 - 4</option>
+                        <option value="155000">Year 5 - 6</option>
+                    </optgroup>
+                    <optgroup label="Secondary">
+                        <option value="195000">Year 7 - 8</option>
+                        <option value="210000">Year 9</option>
+                        <option value="245000">Year 10 (IGCSE)</option>
+                        <option value="265000">Year 11 (IGCSE)</option>
+                    </optgroup>
+                </select>
+            </div>
+
+            <div class="grid md:grid-cols-2 gap-4">
+                <div>
+                    <label class="block text-[11px] font-bold text-gray-400 uppercase tracking-widest mb-2">2. Enrollment</label>
+                    <select id="calc-new" class="w-full p-4 rounded-xl bg-gray-50 outline-none" onchange="calculateDetailedFees()">
+                        <option value="0">Returning Student</option>
+                        <option value="25000">New Student (+ Admission)</option>
+                    </select>
+                </div>
+                <div>
+                    <label class="block text-[11px] font-bold text-gray-400 uppercase tracking-widest mb-2">3. Sibling Discount</label>
+                    <select id="calc-siblings" class="w-full p-4 rounded-xl bg-gray-50 outline-none" onchange="calculateDetailedFees()">
+                        <option value="0">None</option>
+                        <option value="0.05">2nd Child (5%)</option>
+                        <option value="0.10">3rd Child+ (10%)</option>
+                    </select>
+                </div>
+            </div>
+
+            <div>
+                <label class="block text-[11px] font-bold text-gray-400 uppercase tracking-widest mb-2">4. Residency</label>
+                <select id="calc-boarding" class="w-full p-4 rounded-xl bg-gray-50 border-2 border-transparent focus:border-brand-green outline-none transition-all" onchange="calculateDetailedFees()">
+                    <option value="0">Day Scholar</option>
+                    <option value="90000">Full Boarding (+ KES 90,000)</option>
+                </select>
+            </div>
+
+            <div id="transport-container">
+                <label class="block text-[11px] font-bold text-gray-400 uppercase tracking-widest mb-2">5. Transport Zone (Day Scholars Only)</label>
+                <select id="calc-bus" class="w-full p-4 rounded-xl bg-gray-50 outline-none" onchange="calculateDetailedFees()">
+                    <option value="0">No Transport</option>
+                    <option value="15000">Zone 1 (Kiamunyi/Olive Inn) - 15k</option>
+                    <option value="22500">Zone 2 (Milimani/CBD/Section 58) - 22.5k</option>
+                    <option value="30000">Zone 3 (Lanet/Ngata/Pipeline) - 30k</option>
+                </select>
+            </div>
+        </div>
+
+        <div class="lg:col-span-2 bg-brand-green rounded-3xl p-8 text-white flex flex-col justify-between shadow-xl relative overflow-hidden">
+            <div class="absolute -bottom-12 -right-12 w-48 h-48 bg-white/5 rounded-full"></div>
+            
+            <div>
+                <div class="flex justify-between items-start mb-6">
+                    <h4 class="text-brand-gold font-bold uppercase tracking-widest text-[10px]">Fee Breakdown</h4>
+                    <span id="res-class-badge" class="bg-white/10 text-[9px] px-3 py-1 rounded-full border border-white/10">No Class</span>
+                </div>
+
+                <div class="space-y-4">
+                    <div class="flex justify-between text-sm opacity-80">
+                        <span>Tuition Fee</span>
+                        <span id="res-tuition">KES 0</span>
+                    </div>
+                    <div class="flex justify-between text-sm opacity-80">
+                        <span>Boarding Fee</span>
+                        <span id="res-boarding">KES 0</span>
+                    </div>
+                    <div class="flex justify-between text-sm opacity-80">
+                        <span>Transport/Admission</span>
+                        <span id="res-extras">KES 0</span>
+                    </div>
+                    <div class="flex justify-between text-sm text-brand-gold font-bold border-t border-white/10 pt-4">
+                        <span>Applied Discount</span>
+                        <span id="res-discount">- KES 0</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="mt-8">
+                <p class="text-[10px] text-white/50 uppercase tracking-widest mb-1">Total Termly Estimate</p>
+                <h2 class="text-4xl font-bold mb-6" id="res-total">KES 0</h2>
+                <button onclick="window.print()" class="w-full py-4 bg-brand-gold hover:bg-white hover:text-brand-green text-white rounded-xl font-bold transition-all flex items-center justify-center gap-3">
+                    <i class="fas fa-print"></i> PRINT QUOTE
+                </button>
+            </div>
         </div>
     </div>
 </div>
@@ -2434,7 +2510,43 @@ async function submitApplication(event) {
             </section>
             <!--Event & News-->
       <section id="NE" class="page-content py-32 px-6 bg-[var(--brand-light)]" style="display:none;">
-    <div class="max-w-7xl mx-auto">
+
+
+
+<div class="max-w-5xl mx-auto my-8 px-4">
+    <div class="bg-brand-green rounded-3xl p-6 md:p-8 relative overflow-hidden shadow-xl border border-white/10">
+        <div class="absolute -top-12 -right-12 w-48 h-48 bg-brand-gold/10 rounded-full"></div>
+        
+        <div class="flex flex-col md:flex-row items-center justify-between gap-6 relative z-10">
+            <div class="text-center md:text-left">
+                <div class="inline-flex items-center gap-2 bg-brand-gold/20 text-brand-gold px-3 py-1 rounded-full text-[10px] font-bold uppercase tracking-[0.2em] mb-3">
+                    <i class="fas fa-clock animate-pulse"></i> Exam Countdown
+                </div>
+                <h3 id="event-title" class="text-white text-2xl md:text-3xl font-bold">IGCSE Exams Start</h3>
+                <p id="event-date" class="text-white/60 text-sm mt-1">First Paper: ICT - April 1st, 2026</p>
+            </div>
+
+            <div class="flex gap-3 md:gap-4">
+                <div class="flex flex-col items-center">
+                    <div id="days" class="w-14 h-14 md:w-20 md:h-20 bg-white/5 border border-white/10 rounded-2xl flex items-center justify-center text-white text-2xl md:text-4xl font-bold">00</div>
+                    <span class="text-[10px] text-brand-gold uppercase font-bold mt-2 tracking-widest">Days</span>
+                </div>
+                <div class="flex flex-col items-center">
+                    <div id="hours" class="w-14 h-14 md:w-20 md:h-20 bg-white/5 border border-white/10 rounded-2xl flex items-center justify-center text-white text-2xl md:text-4xl font-bold">00</div>
+                    <span class="text-[10px] text-brand-gold uppercase font-bold mt-2 tracking-widest">Hrs</span>
+                </div>
+                <div class="flex flex-col items-center">
+                    <div id="minutes" class="w-14 h-14 md:w-20 md:h-20 bg-white/5 border border-white/10 rounded-2xl flex items-center justify-center text-white text-2xl md:text-4xl font-bold">00</div>
+                    <span class="text-[10px] text-brand-gold uppercase font-bold mt-2 tracking-widest">Min</span>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+          
+          
+          <div class="max-w-7xl mx-auto">
         <div class="text-center mb-16 reveal">
             <span class="inline-block bg-[#e8f0eb] text-brand-green px-4 py-1.5 rounded-full text-[10px] font-bold uppercase tracking-widest mb-4">
                 Campus Life
@@ -2744,7 +2856,7 @@ async function submitApplication(event) {
             <div class="max-w-2xl">
                 <h4 class="text-brand-green font-bold text-lg mb-1">Privacy & Experience</h4>
                 <p class="text-sm md:text-base text-gray-500 leading-relaxed">
-                    We use cookies to ensure you get the best experience on our school portal. By continuing to browse, you agree to our digital privacy and data protection standards.
+                    We use cookies to ensure you get the best experience on our school portal. By continuing to browse, you agree to our digital privacy and data protection standards.  <strong>NB: FOR MOBILE USERS DOUBLE TAP LEAF TO GO TO TOP OF THE PAGE</strong>
                 </p>
             </div>
         </div>
@@ -3052,13 +3164,47 @@ window.addEventListener('load', function() {
 }
 </script>
 <script>
-// Fees Calculator Logic
-function calculateFees() {
-    const baseFee = parseInt(document.getElementById('calc-level').value);
-    const boardingFee = document.getElementById('calc-boarding').checked ? 40000 : 0;
-    const total = baseFee + boardingFee;
+function calculateDetailedFees() {
+    // 1. Inputs
+    const baseTuition = parseFloat(document.getElementById('calc-level').value) || 0;
+    const admission = parseFloat(document.getElementById('calc-new').value) || 0;
+    const siblingRate = parseFloat(document.getElementById('calc-siblings').value) || 0;
+    const boardingFee = parseFloat(document.getElementById('calc-boarding').value) || 0;
+    const transportContainer = document.getElementById('transport-container');
     
-    document.getElementById('total-display').innerText = total.toLocaleString();
+    let transportFee = 0;
+
+    // 2. Logic: If boarding is selected, hide and reset transport
+    if (boardingFee > 0) {
+        transportContainer.style.opacity = "0.3";
+        transportContainer.style.pointerEvents = "none";
+        document.getElementById('calc-bus').value = "0";
+        transportFee = 0;
+    } else {
+        transportContainer.style.opacity = "1";
+        transportContainer.style.pointerEvents = "auto";
+        transportFee = parseFloat(document.getElementById('calc-bus').value) || 0;
+    }
+
+    // 3. Math
+    const discountAmount = baseTuition * siblingRate;
+    const extras = admission + transportFee;
+    const grandTotal = (baseTuition - discountAmount) + boardingFee + extras;
+
+    // 4. Formatting
+    const format = (num) => "KES " + num.toLocaleString('en-KE');
+
+    // 5. DOM Updates
+    document.getElementById('res-tuition').innerText = format(baseTuition);
+    document.getElementById('res-boarding').innerText = format(boardingFee);
+    document.getElementById('res-extras').innerText = format(extras);
+    document.getElementById('res-discount').innerText = "- " + format(discountAmount);
+    document.getElementById('res-total').innerText = format(grandTotal);
+
+    // Update Badge
+    const levelSelect = document.getElementById('calc-level');
+    const badge = document.getElementById('res-class-badge');
+    badge.innerText = baseTuition > 0 ? levelSelect.options[levelSelect.selectedIndex].text : "No Class Selected";
 }
 
     </script>
@@ -3265,5 +3411,45 @@ window.addEventListener('scroll', function() {
 
 
         </script>
+<script>
+    // --- IGCSE EXAM COUNTDOWN LOGIC ---
+const startDate = new Date("April 1, 2026 08:00:00").getTime();
+const endDate = new Date("June 9, 2026 14:00:00").getTime();
+
+function updateCountdown() {
+    const now = new Date().getTime();
+    let targetDate = startDate;
+    
+    // Switch title and target if exams have already started
+    if (now > startDate) {
+        targetDate = endDate;
+        document.getElementById('event-title').innerText = "IGCSE Exams End In";
+        document.getElementById('event-date').innerText = "Final Paper: Chem P2 - June 9th, 2026";
+    }
+
+    const distance = targetDate - now;
+
+    // Time calculations
+    const d = Math.floor(distance / (1000 * 60 * 60 * 24));
+    const h = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+    const m = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+
+    // Update Display
+    document.getElementById("days").innerText = d < 10 ? "0" + d : d;
+    document.getElementById("hours").innerText = h < 10 ? "0" + h : h;
+    document.getElementById("minutes").innerText = m < 10 ? "0" + m : m;
+
+    // If exams are finished
+    if (distance < 0) {
+        clearInterval(countdownInterval);
+        document.getElementById('event-title').innerText = "IGCSE Exams Completed";
+        document.getElementById('event-date').innerText = "Congratulations to the Class of 2026!";
+    }
+}
+
+// Update every minute
+const countdownInterval = setInterval(updateCountdown, 60000);
+updateCountdown(); // Run immediately
+    </script>
 </body>
 </html>

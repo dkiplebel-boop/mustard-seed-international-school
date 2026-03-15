@@ -440,6 +440,21 @@ nav {
     transition-duration: 0.01ms !important;
     scroll-behavior: auto !important;
 }
+        .hero-slide {
+    transition: opacity 1.5s ease-in-out;
+    background-size: cover;
+    background-position: center;
+}
+
+.hero-slide.active {
+    opacity: 1 !important;
+    animation: zoomSlow 10s ease-in-out infinite alternate;
+}
+
+@keyframes zoomSlow {
+    from { transform: scale(1); }
+    to { transform: scale(1.07); }
+}
        
     </style>
 </head>
@@ -731,18 +746,30 @@ nav {
             </div>
     </div>
         <!-- Home Section -->
-        <section id="home" class="page-content page-active">
-            <div class="hero-gradient h-screen flex items-center justify-center text-center text-white px-6">
-                <div class="max-w-5xl">
-                    <span class="section-tag bg-opacity-90">Kiamunyi, Nakuru</span>
-                    <h1 class="text-6xl md:text-8xl font-bold mb-8 leading-tight reveal">Elevating Global <br/><span class="text-brand-gold italic">Perspectives.</span></h1>
-                    <p class="text-xl md:text-2xl mb-12 font-light text-gray-200 max-w-2xl mx-auto reveal">Providing a world-class British Curriculum education in the heart of Nakuru's serene suburbs. Shaping leaders for the 2026 global landscape.</p>
-                    <div class="flex flex-col sm:flex-row gap-5 justify-center reveal">
-                        <button onclick="showPage('book-tour')" class="bg-[#c5a059] text-white px-8 py-4 rounded-full transition-all duration-300 hover:bg-white hover:text-[#005a32] border border-[#005a32]">Book a Tour</button>
-                        <button onclick="showPage('adm-fees')" class="bg-[##F4FAFC] text-white px-8 py-4 rounded-full transition-all duration-300 hover:bg-white hover:text-[#005a32] border border-[#ffffff]">View 2025/26 Fees</button>
-                    </div>
-                </div>
+       <section id="home" class="page-content page-active relative overflow-hidden">
+    <div id="hero-slider" class="absolute inset-0 z-0 h-screen">
+        <div class="hero-slide active absolute inset-0 bg-cover bg-center transition-opacity duration-1000" 
+             style="background-image: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), url('https://lh3.googleusercontent.com/u/0/d/17eO9N7kX5VPDRkIeTx2otJOnOVuGrYrO');"></div>
+        <div class="hero-slide opacity-0 absolute inset-0 bg-cover bg-center transition-opacity duration-1000" 
+             style="background-image: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), url('https://lh3.googleusercontent.com/u/0/d/1V7YvN3D4Z7qXuQqJuswoCd8XzsVhIVlS');"></div>
+        <div class="hero-slide opacity-0 absolute inset-0 bg-cover bg-center transition-opacity duration-1000" 
+             style="background-image: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), url('https://lh3.googleusercontent.com/u/0/d/1t1-7789UCeLjhNQZHhJZ4kJgimtujUuF');"></div>
+        <div class="hero-slide opacity-0 absolute inset-0 bg-cover bg-center transition-opacity duration-1000" 
+             style="background-image: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), url('https://lh3.googleusercontent.com/u/0/d/1kCdswCjoLFhCUbdGP0foNduL7Fvt-fb6');"></div>
+    </div>
+
+    <div class="relative z-10 h-screen flex items-center justify-center text-center text-white px-6">
+        <div class="max-w-5xl">
+            <span class="section-tag bg-opacity-90 bg-brand-gold text-white px-4 py-1.5 rounded-full text-[10px] font-bold uppercase tracking-widest">Kiamunyi, Nakuru</span>
+            <h1 class="text-6xl md:text-8xl font-bold mb-8 leading-tight mt-6 reveal">Elevating Global <br/><span class="text-brand-gold italic">Perspectives.</span></h1>
+            <p class="text-xl md:text-2xl mb-12 font-light text-gray-200 max-w-2xl mx-auto reveal">Providing a world-class British Curriculum education in the heart of Nakuru's serene suburbs. Shaping leaders for the 2026 global landscape.</p>
+            <div class="flex flex-col sm:flex-row gap-5 justify-center reveal">
+                <button onclick="showPage('book-tour')" class="bg-[#c5a059] text-white px-8 py-4 rounded-full transition-all duration-300 hover:bg-white hover:text-[#005a32] border border-[#c5a059] font-bold">Book a Tour</button>
+                <button onclick="showPage('adm-fees')" class="bg-transparent text-white px-8 py-4 rounded-full transition-all duration-300 hover:bg-white hover:text-[#005a32] border border-white font-bold">View 2025/26 Fees</button>
             </div>
+        </div>
+    </div>
+
             
             <div class="py-24 px-6 bg-white">
                 <div class="max-w-7xl mx-auto grid md:grid-cols-3 gap-16">
@@ -3456,6 +3483,26 @@ function updateCountdown() {
 // Update every 1 second
 const countdownInterval = setInterval(updateCountdown, 1000);
 updateCountdown();
+    </script>
+    <script>// --- HERO BACKGROUND SLIDER LOGIC ---
+let currentHeroSlide = 0;
+const slides = document.querySelectorAll('.hero-slide');
+
+function rotateHero() {
+    // 1. Fade out current slide
+    slides[currentHeroSlide].classList.remove('active');
+    slides[currentHeroSlide].classList.add('opacity-0');
+
+    // 2. Move to next (loop back to 0 at the end)
+    currentHeroSlide = (currentHeroSlide + 1) % slides.length;
+
+    // 3. Fade in next slide
+    slides[currentHeroSlide].classList.add('active');
+    slides[currentHeroSlide].classList.remove('opacity-0');
+}
+
+// Start the loop every 5 seconds
+setInterval(rotateHero, 5000);
     </script>
 </body>
 </html>

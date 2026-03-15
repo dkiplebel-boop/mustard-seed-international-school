@@ -440,20 +440,27 @@ nav {
     transition-duration: 0.01ms !important;
     scroll-behavior: auto !important;
 }
-        .hero-slide {
-    transition: opacity 1.5s ease-in-out;
+/* The Zoom Animation */
+@keyframes slowZoom {
+    from { transform: scale(1); }
+    to { transform: scale(1.1); }
+}
+
+.hero-slide {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
     background-size: cover;
     background-position: center;
+    opacity: 0; /* Hidden by default */
+    transition: opacity 1.5s ease-in-out; /* Smooth fade duration */
 }
 
 .hero-slide.active {
-    opacity: 1 !important;
-    animation: zoomSlow 10s ease-in-out infinite alternate;
-}
-
-@keyframes zoomSlow {
-    from { transform: scale(1); }
-    to { transform: scale(1.07); }
+    opacity: 1;
+    z-index: 10;
+    animation: slowZoom 6s linear infinite alternate; /* The zoom effect */
 }
        
     </style>
@@ -2970,7 +2977,7 @@ async function submitApplication(event) {
     
 
     <script>
-        // Scroll Logic
+      // Scroll Logic
       // Update this part of your script
 window.addEventListener('scroll', function() {
     const nav = document.getElementById('mainNav');
@@ -3059,6 +3066,26 @@ function toggleMobileDropdown(id) {
         icon.style.transform = dropdown.classList.contains('active') ? 'rotate(180deg)' : 'rotate(0deg)';
     }
 }
+
+function showPage(pageId) {
+    // Hide all pages
+    document.querySelectorAll('.page-content').forEach(page => {
+        page.style.display = 'none';
+    });
+    // Show selected page
+    document.getElementById(pageId).style.display = 'block';
+    // Scroll to top
+    window.scrollTo(0, 0);
+}
+
+        // Initialize on load
+        window.onload = function() {
+            initScrollReveal();
+            // Force nav color if starting on subpage
+            if (document.querySelector('.page-active').id !== 'home') {
+                document.getElementById('mainNav').classList.add('nav-scrolled');
+            }
+        };
 
 
 
@@ -3422,17 +3449,7 @@ window.addEventListener('DOMContentLoaded', () => {
         if(document.getElementById('motion-label')) document.getElementById('motion-label').innerText = "Enable Motion";
     }
 });
-        // --- CENTRALIZED CONTROL SCRIPT ---
-
-// 1. Single Scroll Listener
-window.addEventListener('scroll', function() {
-    const nav = document.getElementById('mainNav');
-    if (window.scrollY > 60) {
-        nav.classList.add('nav-scrolled');
-    } else {
-        nav.classList.remove('nav-scrolled');
-    }
-});
+    
 
 
         </script>
@@ -3478,11 +3495,50 @@ function updateCountdown() {
 const countdownInterval = setInterval(updateCountdown, 1000);
 updateCountdown();
 
-   // Set the initial history state on load
-window.addEventListener('load', () => {
-    history.replaceState({ pageId: 'home' }, "", "#home");
-});
+  
     </script>
+    <script>
+
+    let heroInterval;
+
+function initHeroSlider() {
+    const slides = document.querySelectorAll('.hero-slide');
+    if (slides.length === 0) return;
+
+    let currentSlide = 0;
+
+    // Ensure the first slide is active immediately
+    slides.forEach((slide, index) => {
+        if (index === 0) {
+            slide.classList.add('active');
+            slide.classList.remove('opacity-0');
+        } else {
+            slide.classList.remove('active');
+            slide.classList.add('opacity-0');
+        }
+    });
+
+    // Clear any existing interval
+    if (heroInterval) clearInterval(heroInterval);
+
+    // Switch slides every 5 seconds
+    heroInterval = setInterval(() => {
+        // 1. Hide current slide
+        slides[currentSlide].classList.remove('active');
+        slides[currentSlide].classList.add('opacity-0');
+
+        // 2. Increment index
+        currentSlide = (currentSlide + 1) % slides.length;
+
+        // 3. Show next slide
+        slides[currentSlide].classList.add('active');
+        slides[currentSlide].classList.remove('opacity-0');
+    }, 5000); 
+}
+
+// Start the slider when the page is ready
+document.addEventListener('DOMContentLoaded', initHeroSlider);
+        </script>
 
 </body>
 </html>

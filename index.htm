@@ -417,6 +417,29 @@ nav {
         pointer-events: auto !important;
     }
 }
+/* High Contrast: Maximize black/white difference */
+.high-contrast {
+    filter: contrast(1.5) brightness(1.1) !important;
+}
+.high-contrast body {
+    background: #fff !important;
+    color: #000 !important;
+}
+
+/* Monochrome: Removes all color for users with color-blindness or ADHD */
+.grayscale-mode {
+    filter: grayscale(100%) !important;
+}
+
+/* Reduced Motion: Kills all transitions and animations */
+.reduced-motion *, 
+.reduced-motion *::before, 
+.reduced-motion *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+}
        
     </style>
 </head>
@@ -493,9 +516,36 @@ nav {
         <a onclick="showPage('MS')" class="dropdown-item"><i class="fas fa-music w-4"></i> Music</a>
     </div>
 </div>
-            <button onclick="toggleDarkMode()" class="text-white hover:text-brand-gold transition-colors p-2 mx-2" title="Toggle Dark Mode">
-    <i id="theme-icon-desktop" class="fas fa-moon text-lg"></i>
-</button>
+
+            
+<div class="nav-item group">
+    <span class="nav-link flex items-center cursor-pointer">
+        <i class="fas fa-cog text-lg transition-transform duration-500 group-hover:rotate-90"></i>
+    </span>
+    <div class="dropdown-menu w-64 shadow-2xl border border-gray-100 dark:border-white/10">
+        <p class="px-6 py-2 text-[10px] uppercase tracking-widest text-gray-400 font-bold border-b border-gray-100 dark:border-white/5 mb-2">Accessibility Tools</p>
+        
+        <div onclick="toggleDarkMode()" class="dropdown-item">
+            <i id="theme-icon-settings" class="fas fa-moon w-5"></i>
+            <span>Dark Mode</span>
+        </div>
+        
+        <div onclick="toggleHighContrast()" class="dropdown-item">
+            <i class="fas fa-adjust w-5"></i>
+            <span>High Contrast</span>
+        </div>
+
+        <div onclick="toggleGrayscale()" class="dropdown-item">
+            <i class="fas fa-tint-slash w-5"></i>
+            <span>Monochrome</span>
+        </div>
+        
+        <div onclick="toggleReducedMotion()" class="dropdown-item">
+            <i class="fas fa-stop-circle w-5"></i>
+            <span id="motion-label">Reduce Motion</span>
+        </div>
+    </div>
+</div>
 
             <button onclick="showPage('adm-enroll')" class="bg-[#c5a059] text-white px-8 py-4 rounded-full transition-all duration-300 hover:bg-white hover:text-[#005a32] border border-[#005a32]">Apply 2026</button>
         </div>
@@ -615,13 +665,59 @@ nav {
                 </div>
             </div>
 
-            <div class="pt-8 flex flex-col gap-4">
-                <div class="flex items-center justify-between mb-4">
-                    <button onclick="toggleDarkMode()" class="text-white hover:text-brand-gold transition-colors p-2 flex items-center gap-3" title="Toggle Dark Mode">
-                        <i id="theme-icon" class="fas fa-moon text-lg"></i>
-                        <span class="text-xs uppercase font-bold tracking-widest opacity-60">Appearance</span>
-                    </button>
+      <div class="border-b border-white/5">
+    <div onclick="toggleMobileDropdown('m-settings')" class="py-4 flex justify-between items-center text-white text-base font-bold cursor-pointer">
+        <span class="flex items-center gap-2">
+            <i class="fas fa-sliders-h text-brand-gold text-sm"></i> SETTINGS
+        </span>
+        <i id="m-settings-icon" class="fas fa-chevron-down text-[10px] text-brand-gold transition-transform duration-300"></i>
+    </div>
+
+    <div id="m-settings" class="mobile-dropdown bg-black/10 rounded-xl overflow-hidden mb-2">
+        <div class="flex flex-col p-3 space-y-2">
+            
+            <div onclick="toggleDarkMode()" class="flex justify-between items-center p-3 rounded-xl bg-white/5 border border-white/5 cursor-pointer active:scale-95 transition-all">
+                <div class="flex items-center">
+                    <div class="w-8 h-8 rounded-lg bg-brand-gold/10 flex items-center justify-center mr-3">
+                        <i class="fas fa-moon text-brand-gold text-xs"></i>
+                    </div>
+                    <span class="text-sm font-medium text-gray-200">Dark Mode</span>
                 </div>
+                <div id="darkmode-status-mobile" class="w-8 h-4 bg-white/20 rounded-full relative transition-colors">
+                     <div class="absolute left-1 top-1 w-2 h-2 bg-white rounded-full transition-transform"></div>
+                </div>
+            </div>
+
+            <div onclick="toggleHighContrast()" class="flex justify-between items-center p-3 rounded-xl bg-white/5 border border-white/5 cursor-pointer active:scale-95 transition-all">
+                <div class="flex items-center">
+                    <div class="w-8 h-8 rounded-lg bg-brand-gold/10 flex items-center justify-center mr-3">
+                        <i class="fas fa-circle-half-stroke text-brand-gold text-xs"></i>
+                    </div>
+                    <span class="text-sm font-medium text-gray-200">High Contrast</span>
+                </div>
+            </div>
+
+            <div onclick="toggleGrayscale()" class="flex justify-between items-center p-3 rounded-xl bg-white/5 border border-white/5 cursor-pointer active:scale-95 transition-all">
+                <div class="flex items-center">
+                    <div class="w-8 h-8 rounded-lg bg-brand-gold/10 flex items-center justify-center mr-3">
+                        <i class="fas fa-eye text-brand-gold text-xs"></i>
+                    </div>
+                    <span class="text-sm font-medium text-gray-200">Grayscale</span>
+                </div>
+            </div>
+
+            <div onclick="toggleReducedMotion()" class="flex justify-between items-center p-3 rounded-xl bg-white/5 border border-white/5 cursor-pointer active:scale-95 transition-all">
+                <div class="flex items-center">
+                    <div class="w-8 h-8 rounded-lg bg-brand-gold/10 flex items-center justify-center mr-3">
+                        <i class="fas fa-person-running text-brand-gold text-xs"></i>
+                    </div>
+                    <span class="text-sm font-medium text-gray-200">Reduced Motion</span>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>
                 
                 <button onclick="showPage('adm-enroll'); toggleMenu();" class="bg-brand-gold text-white py-4 rounded-xl font-bold tracking-widest shadow-lg active:scale-95 transition-transform">
                     APPLY 2026
@@ -633,9 +729,7 @@ nav {
                     <a href="#" class="hover:text-brand-gold transition-colors"><i class="fab fa-youtube text-2xl"></i></a>
                 </div>
             </div>
-        </nav>
     </div>
-</div>
         <!-- Home Section -->
         <section id="home" class="page-content page-active">
             <div class="hero-gradient h-screen flex items-center justify-center text-center text-white px-6">
@@ -3111,5 +3205,65 @@ leafMainBtn.addEventListener('click', function (e) {
     window.location.reload(); 
 }
     </script>
+    <script>
+    function setLanguage(lang) {
+    // This updates the HTML lang attribute for accessibility
+    document.documentElement.lang = lang;
+    
+    // Example: You can add logic here to redirect or swap text content
+    console.log("Language changed to: " + lang);
+    
+    // Close mobile menu if open
+    const mobileMenu = document.getElementById('mobileMenu');
+    if (mobileMenu && !mobileMenu.classList.contains('translate-x-full')) {
+        toggleMenu();
+    }
+}
+    </script>
+    <script>
+// Toggle High Contrast
+function toggleHighContrast() {
+    document.body.classList.toggle('high-contrast');
+    localStorage.setItem('msis-contrast', document.body.classList.contains('high-contrast'));
+}
+
+// Toggle Grayscale
+function toggleGrayscale() {
+    document.body.classList.toggle('grayscale-mode');
+    localStorage.setItem('msis-grayscale', document.body.classList.contains('grayscale-mode'));
+}
+
+// Toggle Reduced Motion
+function toggleReducedMotion() {
+    document.body.classList.toggle('reduced-motion');
+    const isActive = document.body.classList.contains('reduced-motion');
+    document.getElementById('motion-label').innerText = isActive ? "Enable Motion" : "Reduce Motion";
+    localStorage.setItem('msis-motion', isActive);
+}
+
+// Load Preferences on Start
+window.addEventListener('DOMContentLoaded', () => {
+    if (localStorage.getItem('msis-contrast') === 'true') document.body.classList.add('high-contrast');
+    if (localStorage.getItem('msis-grayscale') === 'true') document.body.classList.add('grayscale-mode');
+    
+    if (localStorage.getItem('msis-motion') === 'true') {
+        document.body.classList.add('reduced-motion');
+        if(document.getElementById('motion-label')) document.getElementById('motion-label').innerText = "Enable Motion";
+    }
+});
+        // --- CENTRALIZED CONTROL SCRIPT ---
+
+// 1. Single Scroll Listener
+window.addEventListener('scroll', function() {
+    const nav = document.getElementById('mainNav');
+    if (window.scrollY > 60) {
+        nav.classList.add('nav-scrolled');
+    } else {
+        nav.classList.remove('nav-scrolled');
+    }
+});
+
+
+        </script>
 </body>
 </html>

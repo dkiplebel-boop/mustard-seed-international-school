@@ -10,38 +10,114 @@
     <style>
 
 
-/* iOS 26 Liquid Glass Base */
+/* --- FULL iOS 26 LIQUID GLASS THEME --- */
+
+/* Base Logic: Only applies if .iphone-mode is present on body */
+.iphone-mode {
+    background-color: #f0f0f7; /* Classic iOS light grey background */
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+}
+
+/* 1. MORPHING NAVIGATION BAR */
 .iphone-mode #mainNav {
-    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    transition: all 0.5s cubic-bezier(0.32, 0.72, 0, 1);
     backdrop-filter: blur(25px) saturate(180%);
     -webkit-backdrop-filter: blur(25px) saturate(180%);
-    border: 0.5px solid rgba(255, 255, 255, 0.3);
+    border: 0.5px solid rgba(255, 255, 255, 0.4);
+    z-index: 100;
 }
 
-/* Floating State (Top of Page) */
+/* Floating State (At the top) */
 .iphone-mode nav.at-top {
-    background: rgba(255, 255, 255, 0.2);
-    margin: 15px;
+    background: rgba(255, 255, 255, 0.25);
+    margin: 15px auto;
     border-radius: 30px;
     width: calc(100% - 30px);
+    left: 0;
+    right: 0;
 }
 
-/* iOS 26 Dark Glass (Triggered on Scroll) */
+/* Scrolled State (Dark Glass) */
 .iphone-mode nav.scrolled {
-    background: rgba(15, 15, 15, 0.7) !important; /* Deep Dark Glass */
-    backdrop-filter: blur(35px) saturate(150%) !important;
-    -webkit-backdrop-filter: blur(35px) saturate(150%) !important;
-    border-bottom: 0.5px solid rgba(255, 255, 255, 0.1);
+    background: rgba(10, 10, 10, 0.8) !important;
+    backdrop-filter: blur(40px) saturate(140%) !important;
+    -webkit-backdrop-filter: blur(40px) saturate(140%) !important;
     margin: 0 !important;
     border-radius: 0 !important;
     width: 100% !important;
+    border-bottom: 0.5px solid rgba(255, 255, 255, 0.1);
 }
 
-/* Adjust text color for dark glass */
+/* Adjusting nav text when scrolled (Dark Glass mode) */
 .iphone-mode nav.scrolled .nav-link, 
 .iphone-mode nav.scrolled i,
 .iphone-mode nav.scrolled span {
     color: #ffffff !important;
+}
+
+/* 2. GLASSY BUTTONS */
+.iphone-mode button, 
+.iphone-mode .cta-button,
+.iphone-mode .btn-primary {
+    background: rgba(255, 255, 255, 0.3) !important;
+    backdrop-filter: blur(15px);
+    -webkit-backdrop-filter: blur(15px);
+    border: 1px solid rgba(255, 255, 255, 0.4) !important;
+    border-radius: 999px !important; /* Perfect Pill Shape */
+    color: #1a1a1a !important;
+    font-weight: 600;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+    transition: transform 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.iphone-mode button:active {
+    transform: scale(0.95); /* Haptic feel */
+    background: rgba(255, 255, 255, 0.5) !important;
+}
+
+/* 3. iOS SHEET DRAWER (Mobile Menu) */
+.iphone-mode #mobileMenu {
+    background: rgba(255, 255, 255, 0.5) !important;
+    backdrop-filter: blur(45px) saturate(190%) !important;
+    -webkit-backdrop-filter: blur(45px) saturate(190%) !important;
+    border-left: 0.5px solid rgba(255, 255, 255, 0.3);
+    box-shadow: -10px 0 30px rgba(0,0,0,0.1);
+}
+
+/* The Grab Handle for the Drawer */
+.iphone-mode #mobileMenu::before {
+    content: "";
+    position: absolute;
+    top: 50%;
+    left: 8px;
+    transform: translateY(-50%);
+    width: 5px;
+    height: 45px;
+    background: rgba(0, 0, 0, 0.15);
+    border-radius: 10px;
+}
+
+/* Drawer Links as Glass Tiles */
+.iphone-mode #mobileMenu a {
+    background: rgba(255, 255, 255, 0.25);
+    margin: 10px 20px;
+    border-radius: 18px;
+    padding: 16px !important;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    text-align: center;
+    color: #000 !important;
+    font-weight: 500;
+}
+
+/* 4. CONTENT CARDS (Liquid Glass) */
+.iphone-mode .card, 
+.iphone-mode section > div.bg-white {
+    background: rgba(255, 255, 255, 0.4) !important;
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border-radius: 28px !important;
+    border: 1px solid rgba(255, 255, 255, 0.3) !important;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.03) !important;
 }
         
         
@@ -3576,29 +3652,32 @@ function initHeroSlider() {
 // Start the slider when the page is ready
 document.addEventListener('DOMContentLoaded', initHeroSlider);
         </script>
-    <script>
+    
+<script>
 document.addEventListener('DOMContentLoaded', () => {
-    const nav = document.getElementById('mainNav'); // Ensure your <nav> has id="mainNav"
+    const nav = document.getElementById('mainNav');
     const isIPhone = /iPhone/i.test(navigator.userAgent);
 
     if (isIPhone) {
         document.body.classList.add('iphone-mode');
-        nav.classList.add('at-top'); // Start in floating liquid mode
-
-        window.addEventListener('scroll', () => {
-            if (window.scrollY > 50) {
-                // Switch to Dark Glass
-                nav.classList.remove('at-top');
-                nav.classList.add('scrolled');
-            } else {
-                // Back to Liquid Glass
-                nav.classList.add('at-top');
-                nav.classList.remove('scrolled');
-            }
-        });
+        
+        if (nav) {
+            nav.classList.add('at-top');
+            window.addEventListener('scroll', () => {
+                if (window.scrollY > 40) {
+                    nav.classList.add('scrolled');
+                    nav.classList.remove('at-top');
+                } else {
+                    nav.classList.remove('scrolled');
+                    nav.classList.add('at-top');
+                }
+            });
+        }
     }
 });
 </script>
+
+
 
 </body>
 </html>

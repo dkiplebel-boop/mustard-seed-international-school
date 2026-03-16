@@ -8,6 +8,43 @@
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <style>
+
+
+/* iOS 26 Liquid Glass Base */
+.iphone-mode #mainNav {
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    backdrop-filter: blur(25px) saturate(180%);
+    -webkit-backdrop-filter: blur(25px) saturate(180%);
+    border: 0.5px solid rgba(255, 255, 255, 0.3);
+}
+
+/* Floating State (Top of Page) */
+.iphone-mode nav.at-top {
+    background: rgba(255, 255, 255, 0.2);
+    margin: 15px;
+    border-radius: 30px;
+    width: calc(100% - 30px);
+}
+
+/* iOS 26 Dark Glass (Triggered on Scroll) */
+.iphone-mode nav.scrolled {
+    background: rgba(15, 15, 15, 0.7) !important; /* Deep Dark Glass */
+    backdrop-filter: blur(35px) saturate(150%) !important;
+    -webkit-backdrop-filter: blur(35px) saturate(150%) !important;
+    border-bottom: 0.5px solid rgba(255, 255, 255, 0.1);
+    margin: 0 !important;
+    border-radius: 0 !important;
+    width: 100% !important;
+}
+
+/* Adjust text color for dark glass */
+.iphone-mode nav.scrolled .nav-link, 
+.iphone-mode nav.scrolled i,
+.iphone-mode nav.scrolled span {
+    color: #ffffff !important;
+}
+        
+        
         /* This class will be toggled by JavaScript */
 .nav-hidden {
     transform: translateY(-100%);
@@ -454,7 +491,7 @@ nav {
     background-size: cover;
     background-position: center;
     opacity: 0; /* Hidden by default */
-    transition: opacity 1.5s ease-in-out; /* Smooth fade duration */
+    transition: opacity 3.5s ease-in-out; /* Smooth fade duration */
 }
 
 .hero-slide.active {
@@ -3539,6 +3576,29 @@ function initHeroSlider() {
 // Start the slider when the page is ready
 document.addEventListener('DOMContentLoaded', initHeroSlider);
         </script>
+    <script>
+document.addEventListener('DOMContentLoaded', () => {
+    const nav = document.getElementById('mainNav'); // Ensure your <nav> has id="mainNav"
+    const isIPhone = /iPhone/i.test(navigator.userAgent);
+
+    if (isIPhone) {
+        document.body.classList.add('iphone-mode');
+        nav.classList.add('at-top'); // Start in floating liquid mode
+
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 50) {
+                // Switch to Dark Glass
+                nav.classList.remove('at-top');
+                nav.classList.add('scrolled');
+            } else {
+                // Back to Liquid Glass
+                nav.classList.add('at-top');
+                nav.classList.remove('scrolled');
+            }
+        });
+    }
+});
+</script>
 
 </body>
 </html>

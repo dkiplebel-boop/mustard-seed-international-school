@@ -9,6 +9,62 @@
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <style>
 
+        /* Styling for the Navigation Pill on Internal Pages */
+.nav-internal-pill {
+    background: rgba(0, 58, 32, 0.95) !important; /* Keep the dark brand green */
+    backdrop-filter: blur(15px);
+    -webkit-backdrop-filter: blur(15px);
+    border-radius: 50px !important; /* Perfect Pill Shape */
+    width: 90% !important;
+    max-width: 1200px;
+    margin: 15px auto !important;
+    left: 0;
+    right: 0;
+    padding: 0.6rem 2rem !important;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+    border: 1px solid rgba(255, 255, 255, 0.1) !important;
+}
+
+/* Hide the school name container when on internal pages */
+.hide-brand {
+    display: none !important;
+}
+
+        /* 1. Fluid Branding Transition */
+.brand-container {
+    transition: all 0.6s cubic-bezier(0.32, 0.72, 0, 1);
+    opacity: 1;
+    transform: scale(1);
+    transform-origin: left center;
+}
+
+/* State when scrolled */
+.nav-scrolled .brand-container {
+    opacity: 0;
+    transform: scale(0.8) translateX(-20px);
+    pointer-events: none;
+    width: 0; /* Collapses the space so links shift over fluidly */
+    margin-right: 0;
+}
+
+/* 2. Enhanced Liquid Glass Effect */
+#mainNav {
+    transition: all 0.7s cubic-bezier(0.32, 0.72, 0, 1) !important;
+}
+
+.nav-scrolled {
+    background: rgba(0, 58, 32, 0.85) !important;
+    backdrop-filter: blur(30px) saturate(150%) !important;
+    -webkit-backdrop-filter: blur(30px) saturate(150%) !important;
+    border-radius: 40px !important;
+    width: 92% !important;
+    margin: 15px auto !important;
+    left: 0;
+    right: 0;
+    padding: 0.8rem 2rem !important;
+    border: 1px solid rgba(255, 255, 255, 0.1) !important;
+}
+
 
 /* --- FULL iOS 26 LIQUID GLASS THEME --- */
 
@@ -123,8 +179,8 @@
         
         /* This class will be toggled by JavaScript */
 .nav-hidden {
-    transform: translateY(-100%);
-    transition: transform 0.3s ease-in-out;
+    transform: translateY(-120%) !important;
+    transition: transform 0.4s cubic-bezier(0.32, 0.72, 0, 1) !important;
 }
 
 /* Ensure the base nav has a transition too */
@@ -173,6 +229,7 @@ nav {
     backdrop-filter: none;
    
     transition: all 0.4s ease;
+    transition: transform 0.4s cubic-bezier(0.32, 0.72, 0, 1), background 0.3s ease !important;
 }
 
 .nav-scrolled {
@@ -217,24 +274,25 @@ nav {
         }
 
         .nav-item { position: relative; padding: 1rem 0; }
-        .dropdown-menu {
-            opacity: 0;
-            visibility: hidden;
-            transform: translateY(10px);
-            transition: all 0.3s cubic-bezier(0.23, 1, 0.32, 1);
-            position: absolute;
-            top: 100%;
-            left: 50%;
-            transform: translateX(-50%) translateY(10px);
-            min-width: 280px;
-            background: white;
-            color: #333;
-            box-shadow: 0 15px 50px rgba(0, 0, 0, 0.15);
-            border-radius: 12px;
-            padding: 1rem 0;
-            border: 1px solid #eee;
-            z-index: 100;
-        }
+       .dropdown-menu {
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(10px);
+    transition: all 0.3s cubic-bezier(0.23, 1, 0.32, 1);
+    position: absolute;
+    top: 100%;
+    left: 50%;
+    transform: translateX(-50%) translateY(10px);
+    min-width: 280px;
+    background: white;
+    color: #333;
+    box-shadow: 0 15px 50px rgba(0, 0, 0, 0.15);
+    /* Change 12px to a larger value for the pill shape */
+    border-radius: 40px; 
+    padding: 1.5rem 0; /* Increased padding slightly to balance the curves */
+    border: 1px solid #eee;
+    z-index: 100;
+}
         .nav-item:hover .dropdown-menu {
             opacity: 1;
             visibility: visible;
@@ -252,10 +310,13 @@ nav {
             cursor: pointer;
         }
         .dropdown-item:hover {
-            background: #f4f7f5;
-            color: var(--brand-green);
-            padding-left: 30px;
-        }
+    background: #f4f7f5;
+    color: var(--brand-green);
+    padding-left: 30px;
+    /* Optional: adds rounded corners to the highlight inside the menu */
+    border-radius: 20px; 
+    margin: 0 10px;
+}
 
         .mobile-dropdown {
             max-height: 0;
@@ -587,10 +648,10 @@ nav {
         <img src="https://lh3.googleusercontent.com/u/0/d/1fqO5ZbpIqUP3npZj_QJxc-mlqK62L8OH" alt="Mustard Seed Logo" class="w-full h-full object-contain p-1">
     </div>
     </div>
-            <div class="hidden sm:block">
-                <span class="block text-xl font-bold tracking-tight leading-none brand-text">MUSTARD SEED</span>
-                <span class="text-[10px] uppercase tracking-[0.3em] font-bold text-brand-gold">International School</span>
-            </div>
+           <div class="brand-container hidden sm:block ml-4">
+    <span class="block text-xl font-bold tracking-tight leading-none brand-text">MUSTARD SEED</span>
+    <span class="text-[10px] uppercase tracking-[0.3em] font-bold text-brand-gold">International School</span>
+</div>
         
         
         <div class="hidden lg:flex gap-10 font-bold uppercase text-[11px] tracking-widest items-center">
@@ -3181,13 +3242,40 @@ function toggleMobileDropdown(id) {
 }
 
 function showPage(pageId) {
-    // Hide all pages
-    document.querySelectorAll('.page-content').forEach(page => {
+    // 1. Hide all pages and show the requested one
+    const pages = document.querySelectorAll('.page-content');
+    pages.forEach(page => {
         page.style.display = 'none';
+        page.classList.remove('page-active');
     });
-    // Show selected page
-    document.getElementById(pageId).style.display = 'block';
-    // Scroll to top
+
+    const activePage = document.getElementById(pageId);
+    if (activePage) {
+        activePage.style.display = 'block';
+        activePage.classList.add('page-active');
+    }
+
+    // 2. Navigation Pill Logic for Non-Home Pages
+    const nav = document.getElementById('mainNav');
+    const brandContainer = document.querySelector('.brand-container');
+
+    if (pageId === 'home') {
+        // Reset to default home styling
+        nav.classList.remove('nav-internal-pill');
+        brandContainer.classList.remove('hide-brand');
+    } else {
+        // Apply "Clear Pill" look and hide the name
+        nav.classList.add('nav-internal-pill');
+        brandContainer.classList.add('hide-brand');
+    }
+
+    // Close mobile menu and scroll to top
+    if (typeof toggleMenu === 'function') {
+        const mobileMenu = document.getElementById('mobileMenu');
+        if (mobileMenu && !mobileMenu.classList.contains('translate-x-full')) {
+            toggleMenu();
+        }
+    }
     window.scrollTo(0, 0);
 }
 
@@ -3291,22 +3379,30 @@ window.addEventListener('load', function() {
     statsObserver.observe(document.getElementById('stats-tracker'));
 </script>
     <script>
-    let lastScrollY = window.scrollY;
-    const nav = document.querySelector('nav');
+  let lastScrollY = window.scrollY;
+const nav = document.getElementById('mainNav');
 
-    window.addEventListener('scroll', () => {
-        const currentScrollY = window.scrollY;
+window.addEventListener('scroll', () => {
+    const currentScrollY = window.scrollY;
 
-        if (currentScrollY > lastScrollY && currentScrollY > 100) {
-            // Scrolling DOWN - Hide the nav
-            nav.classList.add('nav-hidden');
-        } else {
-            // Scrolling UP - Show the nav
-            nav.classList.remove('nav-hidden');
-        }
+    // 1. Handle the "Pill" appearance (Glass effect)
+    if (currentScrollY > 50) {
+        nav.classList.add('nav-scrolled');
+    } else {
+        nav.classList.remove('nav-scrolled');
+    }
 
-        lastScrollY = currentScrollY;
-    });
+    // 2. Handle Hiding/Showing based on direction
+    if (currentScrollY > lastScrollY && currentScrollY > 150) {
+        // Scrolling DOWN - Hide the pill
+        nav.classList.add('nav-hidden');
+    } else {
+        // Scrolling UP - Show the pill
+        nav.classList.remove('nav-hidden');
+    }
+
+    lastScrollY = currentScrollY;
+});
 </script>
 <script>
    function toggleDarkMode() {

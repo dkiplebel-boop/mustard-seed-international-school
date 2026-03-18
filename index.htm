@@ -318,11 +318,7 @@ nav {
     margin: 0 10px;
 }
 
-        .mobile-dropdown {
-            max-height: 0;
-            overflow: hidden;
-            transition: max-height 0.4s ease;
-        }
+
         .mobile-dropdown.active { max-height: 1000px; }
         
         .section-tag {
@@ -396,31 +392,97 @@ nav {
 }
      /* --- Enhanced Mobile Drawer Transitions --- */
 
-/* The main container slide-in */
+
+
+/* --- FIXED FULL SCREEN MOBILE DRAWER --- */
 #mobileMenu {
-    transition: transform 0.5s cubic-bezier(0.4, 0, 0.2, 1);
-    background-color: rgba(0, 58, 32, 0.98); /* Ensure it matches --brand-green */
-    backdrop-filter: blur(10px);
-    -webkit-backdrop-filter: blur(10px);
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw; /* Force full viewport width */
+    height: 100vh; /* Force full viewport height */
+    z-index: 2000;
+    background-color: var(--brand-green); /* Solid brand green to prevent "poking through" */
+    transition: transform 0.6s cubic-bezier(0.32, 0.72, 0, 1);
+    transform: translateX(100%); /* Start completely off-screen to the right */
+    overflow-y: auto;
+    overflow-x: hidden;
+    display: flex;
+    flex-direction: column;
 }
 
-/* Base state for all mobile dropdowns */
+/* State when menu is open */
+#mobileMenu.active {
+    transform: translateX(0);
+}
+
+/* Ensure the background blur doesn't create "gaps" at the edges */
+.iphone-mode #mobileMenu {
+    background: rgba(0, 58, 32, 0.98) !important;
+    backdrop-filter: blur(20px) saturate(160%) !important;
+    -webkit-backdrop-filter: blur(20px) saturate(160%) !important;
+    width: 100vw !important;
+    border-left: none !important; /* Remove the border that might look like it's poking out */
+}
+
+/* Fix for nested dropdowns to ensure they don't push content off-screen */
 .mobile-dropdown {
     max-height: 0;
     opacity: 0;
     overflow: hidden;
-    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-    transform: translateY(-10px);
+    transition: all 0.5s ease-in-out;
+    background: rgba(0, 0, 0, 0.2); /* Subtle contrast for depth */
+    border-radius: 15px;
+    margin: 0 10px;
 }
 
-/* Active state triggered by your JS toggle function */
 .mobile-dropdown.active {
-    max-height: 800px; /* High enough to fit all sub-links */
+    max-height: 100vh; /* Allow it to grow as much as needed */
     opacity: 1;
-    transform: translateY(0);
-    margin-top: 8px;
-    margin-bottom: 12px;
-    padding: 8px 0;
+    padding: 10px 0;
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
+/* Menu Item Refinement */
+.mobile-nav-item-root {
+    padding: 16px 24px;
+    margin: 4px 12px;
+    border-radius: 16px;
+    display: flex;
+    justify-between;
+    align-items: center;
+    color: white;
+    font-weight: 600;
+    letter-spacing: 0.5px;
+    transition: all 0.3s ease;
+}
+
+/* Elegant spacing for nav items */
+.nav-link-mobile {
+    letter-spacing: 0.05em;
+    transition: all 0.3s ease;
+}
+
+.nav-link-mobile:active {
+    background: rgba(197, 160, 89, 0.15);
+    padding-left: 10px;
+}
+
+/* Sub-link refinement */
+.mobile-dropdown a {
+    padding: 12px 24px !important;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    color: rgba(255, 255, 255, 0.8) !important;
+    font-size: 0.9rem;
+    border-bottom: none !important;
+}
+
+.mobile-dropdown a i {
+    color: #c5a059; /* Brand Gold */
+    width: 20px;
 }
 
 /* Interactive link feedback */
@@ -3222,10 +3284,17 @@ window.addEventListener('scroll', function() {
         }
 
         // Mobile Menu Toggles
-       function toggleMenu() {
+      function toggleMenu() {
     const menu = document.getElementById('mobileMenu');
-    // This slides the drawer in and out using the Tailwind translate class
-    menu.classList.toggle('translate-x-full');
+    // We toggle 'active' which matches the CSS transform: translateX(0)
+    menu.classList.toggle('active');
+    
+    // Optional: Prevent the background page from scrolling when menu is open
+    if (menu.classList.contains('active')) {
+        document.body.style.overflow = 'hidden';
+    } else {
+        document.body.style.overflow = '';
+    }
 }
 
 function toggleMobileDropdown(id) {
